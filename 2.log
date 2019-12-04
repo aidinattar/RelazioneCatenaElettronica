@@ -2,20 +2,20 @@ Circuit: * C:\Users\User\Desktop\UniPD\Università\III anno\Laboratorio di Fisica
 
 Direct Newton iteration for .op point succeeded.
 
-Date: Thu Dec 05 00:16:52 2019
+Date: Thu Dec 05 00:24:32 2019
 Total elapsed time: 0.031 seconds.
 
 tnom = 27
 temp = 27
 method = modified trap
-totiter = 2436
-traniter = 2432
-tranpoints = 1217
-accept = 1216
-rejected = 1
+totiter = 2144
+traniter = 2140
+tranpoints = 1071
+accept = 1071
+rejected = 0
 matrix size = 10
 fillins = 0
 solver = Normal
-Matrix Compiler1: 364 bytes object code size  0.1/0.0/[0.0]
-Matrix Compiler2: 768 bytes object code size  0.1/0.1/[0.0]
+Matrix Compiler1: 364 bytes object code size  0.1/0.1/[0.0]
+Matrix Compiler2: 768 bytes object code size  0.1/0.1/[0.1]
 
