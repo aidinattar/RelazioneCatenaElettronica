@@ -1,0 +1,21 @@
+Circuit: * C:\Users\User\Desktop\UniPD\Università\III anno\Laboratorio di Fisica\laboratorio\terza esperienza\github\4.asc
+
+Direct Newton iteration for .op point succeeded.
+
+Date: Thu Dec 05 00:29:01 2019
+Total elapsed time: 0.066 seconds.
+
+tnom = 27
+temp = 27
+method = modified trap
+totiter = 2226
+traniter = 2222
+tranpoints = 1112
+accept = 1100
+rejected = 12
+matrix size = 32
+fillins = 17
+solver = Normal
+Matrix Compiler1: 2.29 KB object code size  0.4/0.2/[0.1]
+Matrix Compiler2: 2.93 KB object code size  0.2/0.2/[0.1]
+
