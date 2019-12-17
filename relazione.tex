@@ -1,0 +1,116 @@
+\documentclass{article}  
+\usepackage{graphicx}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{float}
+\usepackage[italian]{babel}
+\usepackage{listings}
+\usepackage[usenames]{color}
+\usepackage{natbib}
+\usepackage{siunitx}
+\usepackage[strict]{changepage}
+\usepackage{physics}
+\usepackage{wrapfig}
+\usepackage[a4paper, top=2cm, bottom=2cm, right=2cm, left=2cm]{geometry}
+\usepackage{array}
+\usepackage{color}
+\usepackage{colortbl}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{multirow}
+\usepackage{enumitem}
+\usepackage{hyperref}
+\usepackage{times}
+\usepackage{booktabs}
+
+
+
+\title{Relazione di laboratorio: studio di catena elettronica}
+\author{Docente: dott. Garfagnini, dott. Lunardon \\
+Gruppo 14}
+\date{Anno accademico 2019/20}
+
+\begin{document}
+
+
+
+\maketitle
+
+\begin{itemize}
+    \item[$\circ$] Aidin Attar - 1170698 - aidin.attar@studenti.unipd.it
+    \item[$\circ$] Ema Baci - 1171107 – ema.baci@studenti.unipd.it
+    \item[$\circ$] Alessandro Bianchetti – 1162147 – alessandro.bianchetti@studenti.unipd.it
+\end{itemize}
+
+\vspace{3 cm}
+\begin{large}\textsc{\textbf{Scopo dell'esperienza}: studio della curva di trasferimento di un amplificatore invertente, del circuito con amplificatore delle differenze (non invertente), dei circuiti sommatore invertente, derivatore, raddrizzatore di precisione.} 
+\end{large}
+\vspace{8.5cm}
+
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.5, angle=0]{unipd_logo.png}
+\end{figure}
+
+%\newpage \tableofcontents \newpage
+
+\twocolumn
+
+
+
+\section{Conclusioni}
+
+
+\appendix
+\section{Appendici}
+\label{appendice}
+\subsection{Costruzione dell'errore sulle misure}
+\label{Calcerr}
+
+Nel trattare i dati rilevati dall'oscilloscopio nel corso dell'esperienza si sono assegnati gli errori alle misure tenendo conto che ogni misura è affetta da un'incertezza di origine sistematica e da una di lettura, dovuta al posizionamento dei cursori sulla schermata. Per semplificare il calcolo degli errori, si sceglie di considerare un errore massimo $\Delta_{\%}$ di tipo percentuale per identificare il contributo sistematico presente nella presa dati, e un errore massimo $\Delta_{lett}$ per coprire le fluttuazioni casuali. La percentuale del valore letto da utilizzare come $\Delta_{\%}$ è del $3\%$ per le tensioni e dello $0.01\%$ sui tempi: per quanto riguarda invece l'errore di lettura, si è considerato 1/10 della divisione utilizzata.
+Tuttavia, poiché l'errore percentuale sui tempi è sempre decisamente trascurabile rispetto a quello di lettura, lo si è omesso nel calcolo dell'incertezza totale.
+
+Infine, si precisa che tutti i risultati sono presentati con un errore non massimo, ma di tipo statistico: si riporta la regola di conversione, in ipotesi di distribuzione uniforme per l'errore sistematico e in ipotesi di distribuzione triangolare per l'errore di lettura.
+
+\begin{equation}
+\sigma_{\%}=\frac{2\Delta_{\%}}{\sqrt{12}} \quad \quad \sigma_{lett}=\frac{2\Delta_{lett}}{\sqrt{24}}
+\end{equation}
+
+Un meccanismo analogo vale per le misure dirette di grandezze quali resistenze e capacità effettuate con il multimetro: anche in questo caso abbiamo un contributo sistematico e uno casuale, il primo dato ancora da un errore percentuale e il secondo da un errore in digit. Tale contributo in digit è dato da $\Delta_{dgt}=ns$ dove $n=\#digit$ è un numero intero riportato sul manuale dello strumento e $s$ è la sensibilità usata nella lettura del valore. Anche qui si utilizza la conversione in errori statistici in ipotesi di distribuzione uniforme.
+
+\subsection{Commento sull'accettazione/rifiuto dei fit}
+Nel corso della relazione sono stati riportati diverse volte i parametri per la verifica della bontà del fit, sostenendo che essi permettessero di accettare o rifiutare l'interpolazione.
+
+
+Per quanto riguarda i valori di $\chi^{(2)}$, l'ipotesi che il fit descriva i dati viene accettata o rifiutata con 0.90 CL, mentre
+per il valore di $t$ di Student l'ipotesi di non correlazione è stata rifiutata o accettata con lo stesso CL.
+
+
+\subsection{Tabella delle compatibilità}
+\medskip
+\begin{table}[H]
+    \centering
+    \begin{tabular}{c}
+        %\hline
+        \begin{Large}
+        $\lambda=\frac{|a-b|}{\sqrt{\sigma_a^2+\sigma_b^2}}$
+        \end{Large}\\
+        %\hline
+    \end{tabular}
+    \hspace{0.5cm}
+    \begin{tabular}{cc}
+        \toprule
+        &       \textbf{Compatibilità   }       \\
+        \midrule
+        0$\leq \lambda$<1   &Ottima                 \\
+        1<$\leq \lambda$<2   &Buona                  \\
+        2<$\leq \lambda$<3   &Accettabile            \\
+        3<$\leq\lambda$<5   &Pessima                \\
+        $ \lambda \geq $  5     &Non compatibile        \\
+        \bottomrule
+    \end{tabular}
+    \caption{Indicazioni lettura compatibilità}
+\end{table}
+
+\subsection{Dati sperimentali}
+\end{document}
