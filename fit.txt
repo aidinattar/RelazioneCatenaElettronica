@@ -1,0 +1,88 @@
+preamplificatore
+
+file con i dati sperimentali: 1_1.txt
+asse x: V_{pre}^{max} (mV)       
+asse y: Q_{in} (pC)
+ FCN=0.646438 FROM MIGRAD    STATUS=CONVERGED      76 CALLS          77 TOTAL
+                     EDM=1.32106e-09    STRATEGY= 1      ERROR MATRIX ACCURATE 
+  EXT PARAMETER                                   STEP         FIRST   
+  NO.   NAME      VALUE            ERROR          SIZE      DERIVATIVE 
+   1  offset      -3.22502e+00   2.87800e+00   9.48851e-04   5.11713e-06
+   2  slope       -4.51480e-01   9.87012e-03   3.25419e-06  -6.41707e-03
+A:	 -3.22502	 +/- 	2.878	 	 	 89.24%
+B:	 -0.45148	 +/- 	0.00987012	 	 	 2.19%
+
+
+COVARIANCE MATRIX :
+ 
+2x2 matrix is as follows
+
+     |      0    |      1    |
+-------------------------------
+   0 |      8.283     0.02416 
+   1 |    0.02416   9.742e-05 
+
+chi2:		0.646438
+rho:		-0.999874
+
+
+
+
+shaper
+
+file con i dati sperimentali: 2_1.txt
+asse x: V_{pre}^{max} (mV)       
+asse y: Q_{in} (pC)
+ FCN=0.256262 FROM MIGRAD    STATUS=CONVERGED      55 CALLS          56 TOTAL
+                     EDM=1.09119e-07    STRATEGY= 1      ERROR MATRIX ACCURATE 
+  EXT PARAMETER                                   STEP         FIRST   
+  NO.   NAME      VALUE            ERROR          SIZE      DERIVATIVE 
+   1  offset      -2.97885e+00   3.47865e+00   1.00219e-03   3.58893e-05
+   2  slope       -1.32314e+00   3.07220e-02   8.85029e-06   1.15998e-02
+A:	 -2.97885	 +/- 	3.47865	 	 	 116.78%
+B:	 -1.32314	 +/- 	0.030722	 	 	 2.32%
+
+
+COVARIANCE MATRIX :
+ 
+2x2 matrix is as follows
+
+     |      0    |      1    |
+-------------------------------
+   0 |       12.1     0.09086 
+   1 |    0.09086   0.0009438 
+
+chi2:		0.256262
+rho:		-0.99993
+
+
+
+
+Catena completa
+
+file con i dati sperimentali: 3_1.txt
+asse x: V_{pre}^{max} (V)
+asse y: Q_{in} (pC)
+ FCN=0.180481 FROM MIGRAD    STATUS=CONVERGED      53 CALLS          54 TOTAL
+                     EDM=9.14818e-08    STRATEGY= 1      ERROR MATRIX ACCURATE 
+  EXT PARAMETER                                   STEP         FIRST   
+  NO.   NAME      VALUE            ERROR          SIZE      DERIVATIVE 
+   1  offset      -3.09400e+00   3.32169e+00   9.26292e-04   2.24483e-04
+   2  slope        1.66903e+02   3.82798e+00   1.06756e-03   1.20973e-04
+A:	 -3.094	 +/- 	3.32169	 	 	 107.36%
+B:	 166.903	 +/- 	3.82798	 	 	 2.29%
+
+
+COVARIANCE MATRIX :
+ 
+2x2 matrix is as follows
+
+     |      0    |      1    |
+-------------------------------
+   0 |      11.03      -10.82 
+   1 |     -10.82       14.65 
+
+chi2:		0.180481
+rho:		0.999947
+
+
