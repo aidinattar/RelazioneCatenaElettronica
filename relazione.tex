@@ -56,6 +56,125 @@ Gruppo 14}
 
 \twocolumn
 
+\subsection*{Descrizione dell'apparato} La seguente esperienza è stata svolta sul banco di lavoro 1. L'apparato di misura consiste di 
+un oscilloscopio digitale Tektronix TBS 1102B EDU, un generatore di funzioni Tektronix AFG 1022, un alimentatore di tensione continua stabilizzato,
+due multimetri digitali (metrix e ) e una scheda Arduino Due. 
+Si è inoltre fatto uso di due integrati TL082C contenenti in tutto 4 amplificatori operazionali.
+
+I circuiti studiati sono stati costruiti sulla basetta millefori alimentando gli amplificatori operazionali come nello schema riportato 
+in figura \ref{fig:alimentazione}, in particolare si è fatto uso del modello TL082 JFET; dopodiché si sono 
+costruiti i circuiti da studiare;  i valori misurati di resistenze e capacità utilizzate verranno riportati in seguito.
+Si è inoltre fatto uso di due sonde con fattore di attenuazione 10x precedentemente compensate per la visualizzazione del 
+segnale nei due canali dell'oscilloscopio.
+
+Per l'analisi dati sono stati utilizzati programmi scritti in c++, root, gnuplot ed Excel.
+
+\begin{center}
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.1875, angle=0]{alimentazione.pdf}
+\caption{ Schema per l'alimentazione dell'operazionale }
+\label{fig:alimentazione}
+\end{figure}
+\end{center} 
+
+\section{Preamplificatore di carica}
+
+\subsection{Breve discussione del circuito}
+
+Lo scopo dell'esperienza completa è csotruire un circuito che possa rilevare piccoli segnali, amplificarli tanto da poterli processare con più facilità
+e poi amplificarli ulteriormente per offrirli allo sperimentatore. Il primo passo della realizzazione di tale \textit{catena elettronica} è il circuito
+preamplificatore. Qui il generatore di funzione è utilizzato proprio per simulare piccoli segnali di cui sopra analoghi a quelli che proverrebbero tipicamente 
+da esperienze di spettrocopia: si forniscono dunque in ingresso impulsi di tensione (PULSE) come quelli che produrrebbe il passaggio di una radiazione ionizzante in 
+un volume di gas. 
+Si è dunque costruito il circuito come in figura
+
+\begin{center}
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.1875, angle=0]{preamp.pdf}
+\caption{ Circuito amplificatore di carica }
+\label{fig:preamp}
+\end{figure}
+\end{center}
+
+la cui funzione di trasferimento è data, nel formalismo di Laplace, da
+
+\begin{equation}
+    \label{eqn:preamp_Laplace}
+    H(s) = -\frac{R_{pre}}{R_{in}} \frac{1}{1+sR_{pre}C_{pre}}
+\end{equation}
+
+in cui possiamo effettuare la sostituzione $s \longleftrightarrow i\omega$ per riprodurre la soluzione stazionaria. Considerando poi
+solamente il modulo, e definendo il tempo caratteristico $\tau_{pre}=R_{pre}C_{pre}$, avremo
+
+\begin{equation}
+    \label{eqn:preamp_trasf}
+    H(\omega) = \frac{R_{pre}}{R_{in}} \frac{1}{\sqrt{1+\omega^2\tau_{pre}^2}}
+\end{equation}
+
+Si osserva inoltre che inserendo nella formula \ref{eqn:preamp_Laplace} la trasformata di Laplace dell'impulso di tensione, pari a 
+$V_{in}$/s, si otterrà in uscita, antitrasformando opportunamente, un segnale esponenziale corrispondente a
+
+\begin{equation}
+    \label{eqn:Vout1_preamp}
+    V_{pre}^{pulse}(t) = -\frac{R_{pre}}{R_{in}}V_{in}(1-e^{-\frac{t}{\tau_{pre}}})
+\end{equation}
+
+Quest'ultima è valida finché dura l'impulso di tensione: essendo $T_{pulse} << \tau_{pre}$, potremo considerare l'espansione in 
+serie di Taylor della \ref{eqn:Vout1_preamp}, ottenendo una discesa lineare. Tale discesa lineare si interromperà all'esaurirsi dell'
+impulso in ingresso, lasciando posto alla formula della scarica del condensatore $C_{pre}$, caricato proprio dallo stesso impulso.
+Ne risulta un grafico che ha un picco negativo $V_{pre}^{max}$ in corrispondenza di t = $T_{pulse}$, per poi risalire con la curva esponenziale
+dettata da
+
+\begin{equation}
+    \label{eqn:Vout2_preamp}
+    V_{pre}^{RC}(t) = V_{pre}^{max}e^{-\frac{t}{\tau_{pre}}}.
+\end{equation}
+
+\subsection{Discussione dati}
+
+Si è successivamente impostato un impulso della durata di $T_{pulse}$ = $2 \mu s$: sapendo inoltre che la carica da iniettare 
+corrispondeva a $Q_{in}^{th}$ = $80 pC$ 
+e che la resistenza di ingresso scelta misurava $R_{in}=(26.64\pm0.01) k\Omega$ ($\sigma_{\%}=0.04\%$), si è selezionata l'altezza
+$V_{in}$ dell'impulso in modo che fosse soddisfatta la relazione
+
+\begin{equation}
+    Q_{in} = \frac{V_{in}}{R_{in}} T_{pulse}.
+\end{equation}
+
+Ne si è ricavato $V_{in}^{th}$ =1.06 V. Per controllare la correttezza del circuito si è misurato il picco $V_{pre}^{max}$, che sarà
+dato, utilizzando l'approssimazione della \ref{eqn:Vout1_preamp}, da
+
+\begin{equation}
+    \label{eqn:Vpre_max}
+    V_{pre}^{max} = -\frac{R_{pre}}{R_{in}} V_{in} \frac{T_{pulse}}{\tau_{pre}} = - \frac{Q_{in}}{C_{pre}}
+\end{equation}
+
+da cui $V_{pre,th}^{max}$ = . Si ottiene dalla misura $V_{pre,sper}^{max} = (-176 \pm 4) mV$
+
+Si è inoltre la verificata la linearità tra $Q_{in}$ e $V_{pre}^{max}$ descritta da \ref{eqn:Vpre_max} variando la durata dell'impulso
+in ingresso e quindi la carica iniettata nel circuito. Si riporta il grafico del fit 
+
+FIT + RESIDUI
+
+Inoltre dallo studio della \ref{eqn:Vout2_preamp}, e in particolare della sua linearizzazione logaritmica, è possibile ricavare
+una stima sperimentale di $\tau_{pre}$. Infatti applicando il logaritmo naturale ottengo
+
+\begin{equation}
+    \log V(t) = \log V_{pre}^{max} - \frac{t}{\tau_{pre}}
+\end{equation}
+
+per cui si trova una relazione lineare tra $\log V(t)$ e t, da cui $\tau_{pre}$=-1/b con b slope del fit.
+
+FIT LOG 
+
+
+Si è infine effettuato uno studio in frequenza del circuito con lo scopo di verificare la \ref{eqn:preamp_trasf}, variando la frequenza
+e verificando il variare del modulo dell'ampiezza di fronte a un ingresso sinusoidale.
+
+BODE
+
 
 
 \section{Conclusioni}
