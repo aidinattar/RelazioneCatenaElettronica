@@ -24,6 +24,9 @@ COVARIANCE MATRIX :
 
 chi2:		0.646438
 rho:		-0.999874
+t: 		-63.0159
+comp:		0.960837
+sigma:		0.464198
 
 
 
@@ -54,7 +57,9 @@ COVARIANCE MATRIX :
 
 chi2:		0.256262
 rho:		-0.99993
-
+t: 		-84.4558
+comp:		1.12013
+sigma:		0.292268
 
 
 
@@ -84,5 +89,41 @@ COVARIANCE MATRIX :
 
 chi2:		0.180481
 rho:		0.999947
+t: 		96.7784
+comp:		1.15106
+sigma:		0.245276
 
+
+
+
+
+rc preamplificatore
+
+file con i dati sperimentali: expo.dat
+asse x: time t (s)
+asse y: log V  (V)
+ FCN=0.330655 FROM MIGRAD    STATUS=CONVERGED      41 CALLS          42 TOTAL
+                     EDM=6.49746e-20    STRATEGY= 1      ERROR MATRIX ACCURATE 
+  EXT PARAMETER                                   STEP         FIRST   
+  NO.   NAME      VALUE            ERROR          SIZE      DERIVATIVE 
+   1  offset      -1.75973e+00   2.01627e-02   6.22585e-06   3.24551e-08
+   2  slope       -4.68712e-03   1.33605e-04   3.15819e-07   4.36153e-06
+A:	 -1.75973	 +/- 	0.0201627	 	 	 1.15%
+B:	 -0.00468712	 +/- 	0.000133605	 	 	 2.85%
+
+
+COVARIANCE MATRIX :
+ 
+2x2 matrix is as follows
+
+     |      0    |      1    |
+-------------------------------
+   0 |  0.0004065  -2.253e-06 
+   1 | -2.253e-06   1.785e-08 
+
+chi2:		0.330655
+rho:		-0.999917
+t: 		-154.797
+comp:		1.6366
+sigma:		0.234754
 
