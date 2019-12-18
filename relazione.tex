@@ -82,7 +82,7 @@ Per l'analisi dati sono stati utilizzati programmi scritti in c++, root, gnuplot
 
 \subsection{Breve discussione del circuito}
 
-Lo scopo dell'esperienza completa è csotruire un circuito che possa rilevare piccoli segnali, amplificarli tanto da poterli processare con più facilità
+Lo scopo dell'esperienza completa è costruire un circuito che possa rilevare piccoli segnali, amplificarli tanto da poterli processare con più facilità
 e poi amplificarli ulteriormente per offrirli allo sperimentatore. Il primo passo della realizzazione di tale \textit{catena elettronica} è il circuito
 preamplificatore. Qui il generatore di funzione è utilizzato proprio per simulare piccoli segnali di cui sopra analoghi a quelli che proverrebbero tipicamente 
 da esperienze di spettrocopia: si forniscono dunque in ingresso impulsi di tensione (PULSE) come quelli che produrrebbe il passaggio di una radiazione ionizzante in 
@@ -175,8 +175,99 @@ e verificando il variare del modulo dell'ampiezza di fronte a un ingresso sinuso
 
 BODE
 
+\section{Circuito formatore}
+\subsection{Shaper base CR-RC}
+\subsubsection{Breve discussione del circuito}
+
+Il secondo passo per la costruzione della catena elettronica consiste invece nella costruzione del circuito formatore il cui schema è riportato
+in figura (\ref{fig:shaper})
+
+\begin{center}
+    \begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.1875, angle=0]{shaper.pdf}
+    \caption{Circuito formatore}
+    \label{fig:shaper}
+    \end{figure}
+\end{center}
 
 
+Per la costruzione del buffer, necessario per disaccoppiare gli stadi CR e RC si è utilizzato il secondo opamp presente nel transistor TL082.
+
+Si specifica inoltre che i valori di $C_{sh}^{(1)}=C_{sh}^{(2)}$ e $R_{sh}^{(1)}=R_{sh}^{(2)}$ sono stati scelti in modo da ottenere il valore di $\tau_{sh}$ indicato nel logbook.
+
+La funzione di trasferimento in funzione di $\omega$ è la seguente:
+\begin{equation}
+H(\omega)=\frac{\omega \tau}{1+\omega^2\tau^2}
+\end{equation}
+
+Si è quindi ottenuta la funzione $V_{out}(t)$ facendo l'antitrasformata della funzione nel dominio delle frequenze:
+
+$$    V_{out}(t)= - \frac{V_0}{\tau} t \cdot e^{-\frac{t}{\tau}} $$
+
+\subsubsection{discussione dei dati}
+Si è nuovamente impostata sul generatore di funzioni un'onda quadra di frequenza di ?? Hz e ampiezza pari a $V_{in}^{th}$
+in modo che simuli il comportamento di un preamplificatore ideale che mantenga il segnale alto per un tempo indefinito.
+
+Sapendo che $t_{th}=R_{sh}^{(1)} C_{sh}^{(1)} = R_{sh}^{(2)} C_{sh}^{(2)}=220 \mu s$ si sono scelti e misurati i seguenti valori:
+$$
+R_{sh}^{(1)} = (68.305  \pm )k\Omega \quad\quad \sigma_{\%}=  \%
+$$
+$$
+R_{sh}^{(2)} = (68.075  \pm )k\Omega \quad\quad \sigma_{\%}=  \%
+$$
+$$
+C_{sh}^{(1)}= (234 \pm  )pF \quad\quad \sigma_{\%}=  \%
+$$
+$$
+C_{sh}^{(2)}= (234 \pm  )pF \quad\quad \sigma_{\%}=  \%
+$$
+
+dove l'errore è stato calcolato secondo quanto scritto in appendice tenendo conto delle specifiche del multimetro Metrix 32292 relative ad un fondoscala di 
+100 k$\Omega$ per le resistenze e di 1000 pF per le misure delle capacità.
+
+Mediante i cursori si è quindi misurato il valore massimo (in valore assoluto) $V_{sh}^{max}=346 \pm mV$ e il tempo corrispondente $\tau_{sh}^{max}=15.6 \pm \mu s$, dove gli errori 
+sono stati calcolati seguendo quanto scritto in appendice, si è utilizzato una divisione pari a 50 mV per l'asse verticale e pari a 25 $\mu$s per l'asse 
+orizzontale.
+
+Si è proceduto misurando un set di 10 punti della curva (riportati in in appendice), e si è ottenuto il seguente fit 
+ 
+FIT + RESIDUI
+
+Si è infine nuovamente studiato il comportamento del circuito al variare della frequenza (le misure sono riportate in appendice); si è ottenuto il seguente grafico di Bode
+
+\begin{center}
+    \begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.375, angle=0]{bodeshaper_no_pz.pdf}
+    \caption{}
+    \label{fig:bodeshaper_no_pz}
+    \end{figure}
+\end{center}
+
+\begin{center}
+    \begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.3875, angle=0]{bodeshaperresidui_no_pz.pdf}
+    \caption{ }
+    \label{fig:bodeshaperresidui_no_pz}
+    \end{figure}
+\end{center}
+
+\subsection{Shaper compensato}
+\subsubsection{Breve discussione del circuito}
+
+\begin{center}
+    \begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.1875, angle=0]{shaper.pdf}
+    \caption{Circuito formatore}
+    \label{fig:shaper}
+    \end{figure}
+\end{center}
+
+
+\subsubsection{discussione dei dati}
 \section{Conclusioni}
 
 
