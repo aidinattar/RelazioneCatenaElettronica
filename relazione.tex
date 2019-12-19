@@ -135,9 +135,15 @@ dettata da
 Si precisa che sono stati suggeriti dei valori per i parametri del circuito $\tau_{pre,th} = 220 \mu s$ e $C_{pre} = 450 pF$, con $R_{pre}$ calcolato di 
 conseguenza. Pertanto i valori misurati con il multimetro sono
 
-\[R_{pre} = (475.4 \pm 0.2)k\Omega \quad \sigma_{\%}=0.04 \%\]
-\[C_{pre} = (149 \pm 14) pF \quad \sigma_{\%}=3.1 \%\]
-\[\tau_{pre,th} = (213 \pm 7)\mu s \quad \sigma_{\%}=3.1 \%\]
+\[
+    R_{pre} = (475.4 \pm 0.2)k\Omega \quad \sigma_{\%}=0.04 \%    
+\]
+\[
+    C_{pre} = (149 \pm 14) pF \quad \sigma_{\%}=3.1 \%    
+\]
+\[
+    \tau_{pre,th} = (213 \pm 7)\mu s \quad \sigma_{\%}=3.1 \%     
+\]
 
 \subsection{Discussione dati}
 
@@ -191,7 +197,7 @@ interpolante e i principali parametri di bontà del fit.
         $\sigma_{y, post}$    &$\chi^{(2)}$    &$\lambda_{\chi}$   &$\rho$ &t      \\
         \midrule
         3 pC                  &0.65            &0.96               &-0.9998&-109.14\\
-        bottomrule
+        \bottomrule
     \end{tabular}
     \caption{parametri di verifica della bontà del fit}
 \end{table}
@@ -244,8 +250,12 @@ Dal valore della pendenza, come anticipato prima, ricaviamo una stima di $\tau_{
 ottenere una valutazione di $V_{pre}^{max}$ usando il parametro di offset a sapendo $V_{pre}^{max} = e^a$. Si riportano quindi i due
 valori calcolati con i loro errori calcolati per propagazione.
 
-\[\tau_{pre,sper} = (213 \pm 6)\mu s \quad \sigma_{\%} = 2.9 \%\]
-\[V_{pre}^{max} = (-172 \pm 3)mV \quad \sigma_{\%} = 2.0 \%\]
+\[
+\tau_{pre,sper} = (213 \pm 6)\mu s \quad \sigma_{\%} = 2.9 \%    
+\]
+\[
+V_{pre}^{max} = (-172 \pm 3)mV \quad \sigma_{\%} = 2.0 \%    
+\]
 
 che risultano ottimamente compatibili con i valori attesi $V:{pre.th}^{max}$ e $\tau_{pre,th}$, in quanto $\lambda_{\tau} = 0.01$
 e $\lambda_{V}=0.2$.
@@ -264,7 +274,18 @@ anche la simulazione effettuata su LTspice e il modello teorico rappresentato da
 \end{figure}
 \end{center}
 
-<<<<<<< HEAD
+Si osserva che i dati giacciono correttamente sulla simulazione e anche il modello teorico appare adeguato, nonostante il grafico 
+dei residui mostri una certa incompatibilità delle alte frequenze. COMMENTO
+
+\begin{center}
+    \begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.4, angle=0]{bodepreampresidui.pdf}
+    \caption{Grafico del grafico di Bode}
+    \label{fig:bodepreamp_res}
+    \end{figure}
+\end{center}
+
 \section{Circuito formatore}
 \subsection{Shaper base CR-RC}
 \subsubsection{Breve discussione del circuito}
@@ -274,25 +295,14 @@ in figura (\ref{fig:shaper})
 \begin{center}
     \begin{figure}[H]
     \centering
-    \includegraphics[scale=0.4, angle=0]{bodepreampresidui.pdf}
-    \caption{Grafico del grafico di Bode}
-    \label{fig:bodepreamp_res}
-    \end{figure}
-    \end{center}
-    
-    Si osserva che i dati giacciono correttamente sulla simulazione e anche il modello teorico appare adeguato, nonostante il grafico 
-    dei residui mostri una certa incompatibilità delle alte frequenze. COMMENTO
-\begin{center}
-    \begin{figure}[H]
-    \centering
     \includegraphics[scale=0.1875, angle=0]{shaper.pdf}
     \caption{Circuito formatore}
     \label{fig:shaper}
     \end{figure}
 \end{center}
+    
 
-
-Per la costruzione del buffer, necessario per disaccoppiare gli stadi CR e RC si è utilizzato il secondo opamp presente nel transistor TL082.
+Per la costruzione del buffer, necessario per disaccoppiare gli stadi CR e RC si è utilizzato il secondo opamp presente nel TL082.
 
 Si specifica inoltre che i valori di $C_{sh}^{(1)}=C_{sh}^{(2)}$ e $R_{sh}^{(1)}=R_{sh}^{(2)}$ sono stati scelti in modo da ottenere il valore di $\tau_{sh}$ indicato nel logbook.
 
@@ -330,45 +340,71 @@ Mediante i cursori si è quindi misurato il valore massimo (in valore assoluto) 
 sono stati calcolati seguendo quanto scritto in appendice, si è utilizzato una divisione pari a 50 mV per l'asse verticale e pari a 25 $\mu$s per l'asse 
 orizzontale.
 
-Si è proceduto misurando un set di 10 punti della curva (riportati in in appendice), e si è ottenuto il seguente fit 
+Si è proceduto misurando un set di 10 punti della curva (i cui valori sono riportati in in appendice), e si è ottenuto il seguente fit 
  
 FIT + RESIDUI
 
-Si è infine nuovamente studiato il comportamento del circuito al variare della frequenza (le misure sono riportate in appendice); si è ottenuto il seguente grafico di Bode
+Si è infine nuovamente studiato il comportamento del circuito al variare della frequenza (le misure sono riportate in appendice); si è ottenuto il seguente grafico di Bode (fig (\ref{fig:bodeshaper_no_pz}));
+al fine di ottenere un confronto immediato sono plottate sovrapposte la curva teorica relativa ai dati sperimentali ed il fit dei dati ottenuti mediante la simulazione di LT-spice:
 
 \begin{center}
     \begin{figure}[H]
     \centering
     \includegraphics[scale=0.375, angle=0]{bodeshaper_no_pz.pdf}
-    \caption{}
+    \caption{Grafico di Bode}
     \label{fig:bodeshaper_no_pz}
     \end{figure}
 \end{center}
 
+Si riporta quindi l'andamento dei residui:
 \begin{center}
     \begin{figure}[H]
     \centering
     \includegraphics[scale=0.3875, angle=0]{bodeshaperresidui_no_pz.pdf}
-    \caption{ }
+    \caption{ Grafico dei residui (Bode)}
     \label{fig:bodeshaperresidui_no_pz}
     \end{figure}
 \end{center}
 
 \subsection{Shaper compensato}
 \subsubsection{Breve discussione del circuito}
+Si è proceduto inserendo come segnale in ingresso dello shaper il segnale di uscita del preamplificatore. Subentra quindi il problema di dover compensare
+l'effetto del pole-zero: infatti, se si considera in ingresso un segnale del tipo $V_{in}(t)=V_0e^{-\frac{t}{\tau_{pre}}}$ si ottiene la seguente trasformata
+di Laplace :
+$$
+V_{in}(s)=\frac{Vo}{s+\frac{1}{\tau_{pre}}}
+$$
 
+che presenta un polo in $-\frac{1}{\tau_{pre}} $,  responsabile dell’undeshoot del segnale dopo la formazione.
+Il segnale in uscita dal primo stato del formatore sarà quindi: $V_{out}(s)^{CR}=\frac{V_{0}}{s+\frac{1}{\tau_{sh}}}$;
+si osserva quindi che inserendo una resistenza $R_{pz}$ in parallelo a $C_{sh}^{(1)}$ si ottiene invece:
+$$
+V_{out}(s)^{CR}=\frac{V_{0}}{s+\frac{1}{\tau_{sh}}}\cdot \frac{s+\frac{1}{\tau_{pz}}}{s+\frac{1}{\tau_{||}}}
+$$
+
+l’effetto del polo del preamplificatore è quindi annullato con quello dello zero del CR compensato.
+
+Inoltre se $R_{sh}^{(1,2)}$<< $R_{pz}$ si ha $\tau_{||} \approx \tau_{sh}$ e la situazione risulta quindi completamente 
+analoga a quella precedente in cui si aveva un segnale in ingreso a gradino.
+
+Lo schema del circuito dello shaper compensato è quindi il seguente:
+ 
 \begin{center}
     \begin{figure}[H]
     \centering
-    \includegraphics[scale=0.1875, angle=0]{shaper.pdf}
-    \caption{Circuito formatore}
+    \includegraphics[scale=0.1875, angle=0]{shapercomp.pdf}
+    \caption{Circuito formatore con compensazione}
     \label{fig:shaper}
     \end{figure}
 \end{center}
+dove $V_1$ è il segnale in uscita dal preamplificatore.
 
+%\begin{multline}
+%H(\omega)=\frac{1}{(1+(\omega\tau)^2)}\cdot \frac{R_{sh} }{}
+
+%\end{multline}
 
 \subsubsection{discussione dei dati}
-
 
 \begin{center}
     \begin{figure}[H]
@@ -378,8 +414,119 @@ Si è infine nuovamente studiato il comportamento del circuito al variare della 
     \label{fig:bodeshaper_no_pz}
     \end{figure}
 \end{center}
-\section{Conclusioni}
 
+
+\section{Catena elettronica}
+
+\subsection{Descrizione del circuito}
+
+Unendo il circuto preamplificatore con il circuito formatore otteniamo un segnale correttamente processato ma negativo e dunque non
+adatto all'acquisizione da parte di Arduino. Pertanto implementiamo un circuito amplificatore invertente, in particolare un
+amplificatore di strumentazione. Tale apparato consiste di un opamp alimentato nell'ingresso invertente, capace dunque di cambiare
+segno al segnale, preceduto da un buffer, che ha la funzione di garantire un'alta impedenza di ingresso: infatti con il solo 
+amplificatore invertente il segnale cadrebbe sulla resistenza $R_{1a}$, mentre grazie alla presenza dell'inseguitore di tensione 
+l'impedenza di ingresso è l'impedenza interna dell'opamp $U_1$, che si può considerare infinita.
+
+Da semplici considerazioni si trova che la funzione di trasferimento è costante rispetto alla frequenza e data dal
+
+\begin{equation}
+    \label{eqn:ampinv_trasf}
+    H = - \frac{R_{2a}}{R_{1a}} \left( \frac{R_{4a}}{R_{3a}} + 1 \right)
+\end{equation}
+
+Innanzitutto si è predisposta la corretta amplificazione, per poter visualizzare segnali dell'ordine di qualche volt immettendo
+nel circuito impulsi della durata di qualche unità di $\mu s$: si deve dunque considerare la quantità di carica $Q_{in}$ 
+scegliendo un impulso di durata $10 \mu s$ in ingresso, misurare l'uscita dell'apparato preamplificatore + shaper $V_{sh}$ 
+e si calcola l'opportuno apparato resistivo in modo da generare in uscita un segnale di approssimativamente 2 V, cioè imporre, usando
+la \ref{eqn:ampinv}, H = 2 V/$V_{sh}$, dove $V_{sh}$ corrisponde al picco in uscita dal formatore.
+
+Variando poi la durata dell'impulso di $V_{in}$ e quindi la carica $Q_{in}$ è verificata la relazione lineare che ancora
+intercorre con il $V_{out}$ della catena completa.
+
+Introducendo poi segnali sinusoidali in ingresso di frequenza variabile si è effettuato un grafico di Bode per verificare la risposta
+in frequenza della catena elettronica. Combinando quindi le funzioni di trasferimento del circuito preamplificatore 
+\ref{eqn:preamp_trasf}, dello shaper compensato AGGIUNGERE RIFERIMENTO CORRETTA e dell'amplificatore di strumentazione 
+\ref{eqn:ampinv_trasf}, si ottiene la funzione di trasferimento totale.
+
+\begin{multline}
+    \label{eqn:catena_trasf}
+    |H(\omega)| = \frac{R_{pre}}{R_{in}} \frac{1}{\sqrt{1+\omega^2\tau_{pre}^2}} \cdot \\
+    \cdot \frac{R_{sh}^2 + \omega^2 R_{pz}^2 \tau_{sh}^2}{(R_{sh}+R_{pz})^2 + \omega^2 R_{pz}^2 \tau_{sh}^2} \cdot \\
+    \cdot \frac{R_{2a}}{R_{1a}} \left( \frac{R_{4a}}{R_{3a}} + 1 \right)
+\end{multline}
+
+\subsection{Discussione dati}
+
+Utilizzando quindi il circuito fin qui costruito e iniettando la $V_{in}$ di cui sopra si trova $V_{sh} = (-282 \pm 5) mV$, pertanto
+$H_{th} \approx 7$. Si può dunque scegliere le resistenze di conseguenza, in particolare:
+
+\begin{align*}
+    R_{1a} = (15.003 \pm 0.007) k\Omega \quad \sigma_{\%} = 0.05\% \\
+    R_{2a} = (32.57 \pm 0.01) k\Omega \quad \sigma_{\%} = 0.04\% \\
+    R_{1a} = (14.999 \pm 0.007) k\Omega \quad \sigma_{\%} = 0.05\% \\
+    R_{1a} = (32.60 \pm 0.01) k\Omega \quad \sigma_{\%} = 0.04\% \\
+\end{align*}
+
+da cui $h_{sper}=-6.88$. Realizzato dunque il circuito si è proceduto con l'acquisizione di $V_{out}$ al variare dell'impulso in
+ingresso, di cui si riportano di seguito dati e fit lineare.
+
+\begin{center}
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.4, angle=0]{fitcatena.pdf}
+\caption{Relazione lineare tra carica iniettata e uscita della catena}
+\label{fig:catenaQvsV}
+\end{figure}
+\end{center}
+
+\begin{center}
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.4, angle=0]{residuicatena.pdf}
+\caption{Grafico dei residui della relazione tra $Q_{in}$ e $V_{out}$}
+\label{fig:catenaQvsV_res}
+\end{figure}
+\end{center}
+
+\begin{table}[ht]
+    \centering
+    \begin{tabular}{ccccc}
+        \toprule
+        $\sigma_{y, post}$    &$\chi^{(2)}$    &$\lambda_{\chi}$   &$\rho$ &t   \\
+        \midrule
+        0.05 V                &3.36            &1.33               &-0.9998&-154\\
+        \bottomrule
+    \end{tabular}
+    \caption{parametri di verifica della bontà del fit}
+\end{table}
+
+Si osserva che i parametri di bontà del fit sono buoni, a testimonianza di una ben verificata relazione
+
+Successivamente si presenta il grafico di Bode della catena, in cui sono raffigurati i dati sperimentali, i dati simulati
+su LTspice e il modello teorico espresso dalla \ref{eqn:catena_trasf}.
+
+\begin{center}
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.4, angle=0]{bodecatena.pdf}
+\caption{Grafico di Bode della risposta in frequenza della catena elettronica}
+\label{fig:catenaQvsV}
+\end{figure}
+\end{center}
+
+\begin{center}
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.4, angle=0]{bodecatenaresidui.pdf}
+\caption{Grafico dei residui tra dati sperimentali e modello}
+\label{fig:catenaQvsV_res}
+\end{figure}
+\end{center}
+
+Dal grafico dei residui si può osservare un certa incompatibilità dei dati, imputabile a una sottostima degli errori? 
+
+
+\section{Conclusioni}
 
 \appendix
 \section{Appendici}
