@@ -274,7 +274,18 @@ anche la simulazione effettuata su LTspice e il modello teorico rappresentato da
 \end{figure}
 \end{center}
 
-<<<<<<< HEAD
+Si osserva che i dati giacciono correttamente sulla simulazione e anche il modello teorico appare adeguato, nonostante il grafico 
+dei residui mostri una certa incompatibilità delle alte frequenze. COMMENTO
+
+\begin{center}
+    \begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.4, angle=0]{bodepreampresidui.pdf}
+    \caption{Grafico del grafico di Bode}
+    \label{fig:bodepreamp_res}
+    \end{figure}
+\end{center}
+
 \section{Circuito formatore}
 \subsection{Shaper base CR-RC}
 \subsubsection{Breve discussione del circuito}
@@ -284,25 +295,14 @@ in figura (\ref{fig:shaper})
 \begin{center}
     \begin{figure}[H]
     \centering
-    \includegraphics[scale=0.4, angle=0]{bodepreampresidui.pdf}
-    \caption{Grafico del grafico di Bode}
-    \label{fig:bodepreamp_res}
-    \end{figure}
-    \end{center}
-    
-    Si osserva che i dati giacciono correttamente sulla simulazione e anche il modello teorico appare adeguato, nonostante il grafico 
-    dei residui mostri una certa incompatibilità delle alte frequenze. COMMENTO
-\begin{center}
-    \begin{figure}[H]
-    \centering
     \includegraphics[scale=0.1875, angle=0]{shaper.pdf}
     \caption{Circuito formatore}
     \label{fig:shaper}
     \end{figure}
 \end{center}
+    
 
-
-Per la costruzione del buffer, necessario per disaccoppiare gli stadi CR e RC si è utilizzato il secondo opamp presente nel transistor TL082.
+Per la costruzione del buffer, necessario per disaccoppiare gli stadi CR e RC si è utilizzato il secondo opamp presente nel TL082.
 
 Si specifica inoltre che i valori di $C_{sh}^{(1)}=C_{sh}^{(2)}$ e $R_{sh}^{(1)}=R_{sh}^{(2)}$ sono stati scelti in modo da ottenere il valore di $\tau_{sh}$ indicato nel logbook.
 
@@ -340,45 +340,71 @@ Mediante i cursori si è quindi misurato il valore massimo (in valore assoluto) 
 sono stati calcolati seguendo quanto scritto in appendice, si è utilizzato una divisione pari a 50 mV per l'asse verticale e pari a 25 $\mu$s per l'asse 
 orizzontale.
 
-Si è proceduto misurando un set di 10 punti della curva (riportati in in appendice), e si è ottenuto il seguente fit 
+Si è proceduto misurando un set di 10 punti della curva (i cui valori sono riportati in in appendice), e si è ottenuto il seguente fit 
  
 FIT + RESIDUI
 
-Si è infine nuovamente studiato il comportamento del circuito al variare della frequenza (le misure sono riportate in appendice); si è ottenuto il seguente grafico di Bode
+Si è infine nuovamente studiato il comportamento del circuito al variare della frequenza (le misure sono riportate in appendice); si è ottenuto il seguente grafico di Bode (fig (\ref{fig:bodeshaper_no_pz}));
+al fine di ottenere un confronto immediato sono plottate sovrapposte la curva teorica relativa ai dati sperimentali ed il fit dei dati ottenuti mediante la simulazione di LT-spice:
 
 \begin{center}
     \begin{figure}[H]
     \centering
     \includegraphics[scale=0.375, angle=0]{bodeshaper_no_pz.pdf}
-    \caption{}
+    \caption{Grafico di Bode}
     \label{fig:bodeshaper_no_pz}
     \end{figure}
 \end{center}
 
+Si riporta quindi l'andamento dei residui:
 \begin{center}
     \begin{figure}[H]
     \centering
     \includegraphics[scale=0.3875, angle=0]{bodeshaperresidui_no_pz.pdf}
-    \caption{ }
+    \caption{ Grafico dei residui (Bode)}
     \label{fig:bodeshaperresidui_no_pz}
     \end{figure}
 \end{center}
 
 \subsection{Shaper compensato}
 \subsubsection{Breve discussione del circuito}
+Si è proceduto inserendo come segnale in ingresso dello shaper il segnale di uscita del preamplificatore. Subentra quindi il problema di dover compensare
+l'effetto del pole-zero: infatti, se si considera in ingresso un segnale del tipo $V_{in}(t)=V_0e^{-\frac{t}{\tau_{pre}}}$ si ottiene la seguente trasformata
+di Laplace :
+$$
+V_{in}(s)=\frac{Vo}{s+\frac{1}{\tau_{pre}}}
+$$
 
+che presenta un polo in $-\frac{1}{\tau_{pre}} $,  responsabile dell’undeshoot del segnale dopo la formazione.
+Il segnale in uscita dal primo stato del formatore sarà quindi: $V_{out}(s)^{CR}=\frac{V_{0}}{s+\frac{1}{\tau_{sh}}}$;
+si osserva quindi che inserendo una resistenza $R_{pz}$ in parallelo a $C_{sh}^{(1)}$ si ottiene invece:
+$$
+V_{out}(s)^{CR}=\frac{V_{0}}{s+\frac{1}{\tau_{sh}}}\cdot \frac{s+\frac{1}{\tau_{pz}}}{s+\frac{1}{\tau_{||}}}
+$$
+
+l’effetto del polo del preamplificatore è quindi annullato con quello dello zero del CR compensato.
+
+Inoltre se $R_{sh}^{(1,2)}$<< $R_{pz}$ si ha $\tau_{||} \approx \tau_{sh}$ e la situazione risulta quindi completamente 
+analoga a quella precedente in cui si aveva un segnale in ingreso a gradino.
+
+Lo schema del circuito dello shaper compensato è quindi il seguente:
+ 
 \begin{center}
     \begin{figure}[H]
     \centering
-    \includegraphics[scale=0.1875, angle=0]{shaper.pdf}
-    \caption{Circuito formatore}
+    \includegraphics[scale=0.1875, angle=0]{shapercomp.pdf}
+    \caption{Circuito formatore con compensazione}
     \label{fig:shaper}
     \end{figure}
 \end{center}
+dove $V_1$ è il segnale in uscita dal preamplificatore.
 
+%\begin{multline}
+%H(\omega)=\frac{1}{(1+(\omega\tau)^2)}\cdot \frac{R_{sh} }{}
+
+%\end{multline}
 
 \subsubsection{discussione dei dati}
-
 
 \begin{center}
     \begin{figure}[H]
@@ -389,7 +415,6 @@ Si è infine nuovamente studiato il comportamento del circuito al variare della 
     \end{figure}
 \end{center}
 \section{Conclusioni}
-
 
 \appendix
 \section{Appendici}
