@@ -24,9 +24,9 @@ COVARIANCE MATRIX :
 
 chi2:		0.646438
 rho:		-0.999874
-t: 		-63.0159
+t: 		-109.147
 comp:		0.960837
-sigma:		0.464198
+sigma:		2.97541
 
 
 
@@ -57,9 +57,9 @@ COVARIANCE MATRIX :
 
 chi2:		0.256262
 rho:		-0.99993
-t: 		-84.4558
+t: 		-146.282
 comp:		1.12013
-sigma:		0.292268
+sigma:		1.66068
 
 
 
@@ -89,9 +89,9 @@ COVARIANCE MATRIX :
 
 chi2:		0.180481
 rho:		0.999947
-t: 		96.7784
+t: 		167.625
 comp:		1.15106
-sigma:		0.245276
+sigma:		1.61622
 
 
 
@@ -123,7 +123,7 @@ COVARIANCE MATRIX :
 
 chi2:		0.330655
 rho:		-0.999917
-t: 		-154.797
+t: 		-189.587
 comp:		1.6366
-sigma:		0.234754
+sigma:		0.00813227
 
