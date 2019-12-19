@@ -136,7 +136,13 @@ Si precisa che sono stati suggeriti dei valori per i parametri del circuito $\ta
 conseguenza. Pertanto i valori misurati con il multimetro sono
 
 \[
-R_{pre} = (475.4 \pm 0.2)k\Omega  \qquad  C_{pre} = (149 \pm 14) pF    
+    R_{pre} = (475.4 \pm 0.2)k\Omega \quad \sigma_{\%}=0.04 \%    
+\]
+\[
+    C_{pre} = (149 \pm 14) pF \quad \sigma_{\%}=3.1 \%    
+\]
+\[
+    \tau_{pre,th} = (213 \pm 7)\mu s \quad \sigma_{\%}=3.1 \%     
 \]
 
 \subsection{Discussione dati}
@@ -240,20 +246,52 @@ Si riporta il grafico di tempi e lograitmi delle tensioni, interpolati linearmen
     \caption{parametri di verifica della bontà del fit}
 \end{table}
 
+Dal valore della pendenza, come anticipato prima, ricaviamo una stima di $\tau_{pre,sper}$. A scopo di controllo, è inoltre possibile 
+ottenere una valutazione di $V_{pre}^{max}$ usando il parametro di offset a sapendo $V_{pre}^{max} = e^a$. Si riportano quindi i due
+valori calcolati con i loro errori calcolati per propagazione.
 
+\[
+\tau_{pre,sper} = (213 \pm 6)\mu s \quad \sigma_{\%} = 2.9 \%    
+\]
+\[
+V_{pre}^{max} = (-172 \pm 3)mV \quad \sigma_{\%} = 2.0 \%    
+\]
+
+che risultano ottimamente compatibili con i valori attesi $V:{pre.th}^{max}$ e $\tau_{pre,th}$, in quanto $\lambda_{\tau} = 0.01$
+e $\lambda_{V}=0.2$.
 
 Si è infine effettuato uno studio in frequenza del circuito con lo scopo di verificare la \ref{eqn:preamp_trasf}, variando la frequenza
 e verificando il variare del modulo dell'ampiezza di fronte a un ingresso sinusoidale.
+Si riporta in particolare il grafico di Bode che raffigura frequenza e amplificazione in dB: ai punti sperimentali si è affiancata
+anche la simulazione effettuata su LTspice e il modello teorico rappresentato dalla \ref{eqn:preamp_trasf}.
 
-BODE
+\begin{center}
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.4, angle=0]{bodepreamp.pdf}
+\caption{Grafico di Bode del circuito preamplificatore}
+\label{fig:bodepreamp}
+\end{figure}
+\end{center}
 
+<<<<<<< HEAD
 \section{Circuito formatore}
 \subsection{Shaper base CR-RC}
 \subsubsection{Breve discussione del circuito}
 
 Il secondo passo per la costruzione della catena elettronica consiste invece nella costruzione del circuito formatore il cui schema è riportato
 in figura (\ref{fig:shaper})
-
+\begin{center}
+    \begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.4, angle=0]{bodepreampresidui.pdf}
+    \caption{Grafico del grafico di Bode}
+    \label{fig:bodepreamp_res}
+    \end{figure}
+    \end{center}
+    
+    Si osserva che i dati giacciono correttamente sulla simulazione e anche il modello teorico appare adeguato, nonostante il grafico 
+    dei residui mostri una certa incompatibilità delle alte frequenze. COMMENTO
 \begin{center}
     \begin{figure}[H]
     \centering
