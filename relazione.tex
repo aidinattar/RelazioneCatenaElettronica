@@ -132,14 +132,21 @@ dettata da
     V_{pre}^{RC}(t) = V_{pre}^{max}e^{-\frac{t}{\tau_{pre}}}.
 \end{equation}
 
+Si precisa che sono stati suggeriti dei valori per i parametri del circuito $\tau_{pre,th} = 220 \mu s$ e $C_{pre} = 450 pF$, con $R_{pre}$ calcolato di 
+conseguenza. Pertanto i valori misurati con il multimetro sono
+
+\[
+R_{pre} = (475.4 \pm 0.2)k\Omega  \qquad  C_{pre} = (149 \pm 14) pF    
+\]
+
 \subsection{Discussione dati}
 
 Si è successivamente impostato un impulso della durata di $T_{pulse}$ = $2 \mu s$: sapendo inoltre che la carica da iniettare 
-corrispondeva a $Q_{in}^{th}$ = $80 pC$ 
-e che la resistenza di ingresso scelta misurava $R_{in}=(26.64\pm0.01) k\Omega$ ($\sigma_{\%}=0.04\%$), si è selezionata l'altezza
-$V_{in}$ dell'impulso in modo che fosse soddisfatta la relazione
+corrispondeva a $Q_{in}^{th}$ = $80 pC$ e che la resistenza di ingresso scelta misurava $R_{in}=(26.64\pm0.01) k\Omega$ ($\sigma_{\%}=0.04\%$), 
+si è selezionata l'altezza $V_{in}$ dell'impulso in modo che fosse soddisfatta la relazione
 
 \begin{equation}
+    \label{eqn:Qin}
     Q_{in} = \frac{V_{in}}{R_{in}} T_{pulse}.
 \end{equation}
 
@@ -151,12 +158,47 @@ dato, utilizzando l'approssimazione della \ref{eqn:Vout1_preamp}, da
     V_{pre}^{max} = -\frac{R_{pre}}{R_{in}} V_{in} \frac{T_{pulse}}{\tau_{pre}} = - \frac{Q_{in}}{C_{pre}}
 \end{equation}
 
-da cui $V_{pre,th}^{max}$ = . Si ottiene dalla misura $V_{pre,sper}^{max} = (-176 \pm 4) mV$
+da cui, inserendo il valore misurato $V_{in}^{th}=(1.02\pm 0.02) V$, si ricava $V_{pre,th}^{max} =  (-170 \pm 6) mV$. Invece dalla 
+misura si ottiene $V_{pre,sper}^{max} = (-176 \pm 4) mV$, per cui $\lambda = 0.76$ e lo scostamento percentuale è $\epsilon = 3.2 \%$, 
+ossia il valore misurato è ottimamente compatibile con quello atteso.
 
 Si è inoltre la verificata la linearità tra $Q_{in}$ e $V_{pre}^{max}$ descritta da \ref{eqn:Vpre_max} variando la durata dell'impulso
-in ingresso e quindi la carica iniettata nel circuito. Si riporta il grafico del fit 
+in ingresso e quindi la carica iniettata nel circuito secondo \ref{eqn:Qin}. Si riportano quindi in grafico i punti, la retta 
+interpolante e i principali parametri di bontà del fit. 
 
-FIT + RESIDUI
+\begin{center}
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.4, angle=0]{fitpreamp.pdf}
+\caption{ Carica iniettata e picco di tensione in uscita}
+\label{fig:QinvsVpre}
+\end{figure}
+\end{center}
+
+\begin{center}
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.4, angle=0]{residuipreamp.pdf}
+\caption{Grafico dei residui della relazione tra $Q_{in}$ e $V_{pre}^{max}$}
+\label{fig:QinvsVpre_res}
+\end{figure}
+\end{center}
+
+\begin{table}[ht]
+    \centering
+    \begin{tabular}{ccccc}
+        \toprule
+        $\sigma_{y, post}$    &$\chi^{(2)}$    &$\lambda_{\chi}$   &$\rho$ &t   \\
+        \midrule
+        0.05 V                &3.36            &1.33               &-0.9998&-154\\
+        \bottomrule
+    \end{tabular}
+    \caption{parametri di verifica della bontà del fit}
+\end{table}
+
+Gli estimatori danno tutti risposta positiva, quindi possiamo concludere che la relaizone lineare è ben verificata.
+Inoltre dal valore di pendenza, considerando la legge lineare \ref{eqn:Vpre_max}, è possibile ottenere una stima sperimentale della capacità $C_{pre}$, 
+da confrontare con il valore misurato. Si ricava quindi $C_{pre,sper} = (452\pm 10)pF$, che ha $\lambda = 0.15 $ rispetto al valore misurato.
 
 Inoltre dallo studio della \ref{eqn:Vout2_preamp}, e in particolare della sua linearizzazione logaritmica, è possibile ricavare
 una stima sperimentale di $\tau_{pre}$. Infatti applicando il logaritmo naturale ottengo
@@ -166,8 +208,38 @@ una stima sperimentale di $\tau_{pre}$. Infatti applicando il logaritmo naturale
 \end{equation}
 
 per cui si trova una relazione lineare tra $\log V(t)$ e t, da cui $\tau_{pre}$=-1/b con b slope del fit.
+Si riporta il grafico di tempi e lograitmi delle tensioni, interpolati linearmente, e il relativo grafico dei residui
 
-FIT LOG 
+\begin{center}
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.4, angle=0]{preampRC.pdf}
+\caption{Relazione lineare tra logaritmi delle tensioni e tempi}
+\label{fig:QinvsVpre}
+\end{figure}
+\end{center}
+
+\begin{center}
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.4, angle=0]{preampRCresidui.pdf}
+\caption{Grafico dei residui della relazione tra $\log V$ e t}
+\label{fig:QinvsVpre}
+\end{figure}
+\end{center}
+
+\begin{table}[ht]
+    \centering
+    \begin{tabular}{ccccc}
+        \toprule
+        $\sigma_{y, post}$    &$\chi^{(2)}$    &$\lambda_{\chi}$   &$\rho$ &t   \\
+        \midrule
+        0.05 V                &3.36            &1.33               &-0.9998&-154\\
+        \bottomrule
+    \end{tabular}
+    \caption{parametri di verifica della bontà del fit}
+\end{table}
+
 
 
 Si è infine effettuato uno studio in frequenza del circuito con lo scopo di verificare la \ref{eqn:preamp_trasf}, variando la frequenza
