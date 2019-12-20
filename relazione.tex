@@ -72,7 +72,7 @@ Per l'analisi dati sono stati utilizzati programmi scritti in c++, root, gnuplot
 \begin{center}
 \begin{figure}[H]
 \centering
-\includegraphics[scale=0.1875, angle=0]{alimentazione.pdf}
+\includegraphics[scale=0.28, angle=0]{alimentazione.pdf}
 \caption{ Schema per l'alimentazione dell'operazionale }
 \label{fig:alimentazione}
 \end{figure}
@@ -92,7 +92,7 @@ Si è dunque costruito il circuito come in figura
 \begin{center}
 \begin{figure}[H]
 \centering
-\includegraphics[scale=0.1875, angle=0]{preamp.pdf}
+\includegraphics[scale=0.3, angle=0]{preamp.pdf}
 \caption{ Circuito amplificatore di carica }
 \label{fig:preamp}
 \end{figure}
@@ -172,7 +172,7 @@ interpolante e i principali parametri di bontà del fit.
 \begin{figure}[H]
 \centering
 \includegraphics[scale=0.4, angle=0]{fitpreamp.pdf}
-\caption{ Carica iniettata e picco di tensione in uscita}
+\caption{Carica iniettata e picco di tensione in uscita}
 \label{fig:QinvsVpre}
 \end{figure}
 \end{center}
@@ -286,29 +286,32 @@ dei residui mostri una certa incompatibilità delle alte frequenze. COMMENTO
 \subsection{Shaper base CR-RC}
 \subsubsection{Breve discussione del circuito}
 
-Il secondo passo per la costruzione della catena elettronica consiste invece nella costruzione del circuito formatore il cui schema è riportato
-in figura (\ref{fig:shaper})
+Il secondo passo per la costruzione della catena elettronica consiste invece nella costruzione del circuito formatore il cui schema è 
+riportato in figura (\ref{fig:shaper}), che dia per l'appunto una forma al segnale, tipicamente simile a un profilo gaussiano.
+
 \begin{center}
     \begin{figure}[H]
     \centering
-    \includegraphics[scale=0.1875, angle=0]{shaper.pdf}
+    \includegraphics[scale=0.3, angle=0]{shaper.pdf}
     \caption{Circuito formatore}
     \label{fig:shaper}
     \end{figure}
 \end{center}
     
+Si osserva che il circuito è costruito tramite due stadi RC e CR, disaccoppiati tramite un buffer costruito utilizzando il secondo 
+opamp presente nel TL082.
 
-Per la costruzione del buffer, necessario per disaccoppiare gli stadi CR e RC si è utilizzato il secondo opamp presente nel TL082.
+Si specifica inoltre che i valori di $C_{sh}^{(1)}=C_{sh}^{(2)}$ e $R_{sh}^{(1)}=R_{sh}^{(2)}$ sono stati scelti in modo da ottenere 
+il valore di $\tau_{sh}$ indicato nel logbook.
 
-Si specifica inoltre che i valori di $C_{sh}^{(1)}=C_{sh}^{(2)}$ e $R_{sh}^{(1)}=R_{sh}^{(2)}$ sono stati scelti in modo da ottenere il valore di $\tau_{sh}$ indicato 
-nel logbook.
-
-La funzione di trasferimento in funzione di $\omega$ è la seguente:
+Trattando il circuito con Laplace e considerando la fase stazionaria, si ottiene che la funzione di trasferimento in funzione di 
+$\omega$ è la seguente:
 \begin{equation}
 H(\omega)=\frac{\omega \tau}{1+\omega^2\tau^2}
 \end{equation}
 
-In particolare, inserendo in ingresso un'onda quadra tra 0 e $V_0$ si ottiene la funzione $V_{out}(t)$ facendo l'antitrasformata della funzione nel dominio delle frequenze:
+In particolare, inserendo in ingresso un'onda quadra tra 0 e $V_0$ si ottiene la funzione $V_{out}(t)$ facendo l'antitrasformata 
+dal dominio delle frequenze:
 
 \begin{equation}
     \label{eqn:V_sh}
@@ -317,10 +320,10 @@ In particolare, inserendo in ingresso un'onda quadra tra 0 e $V_0$ si ottiene la
     
 
 \subsubsection{Discussione dei dati}
-Si è nuovamente impostata sul generatore di funzioni un'onda quadra di frequenza di ?? Hz e ampiezza pari a $V_{in}^{th}$
+Si è nuovamente impostata sul generatore di funzioni un'onda quadra di frequenza di 100 Hz e ampiezza pari a $V_{in}^{th}=(992 \pm 15)mV$
 in modo che simuli il comportamento di un preamplificatore ideale che mantenga il segnale alto per un tempo indefinito.
 
-Sapendo che $t_{th}=R_{sh}^{(1)} C_{sh}^{(1)} = R_{sh}^{(2)} C_{sh}^{(2)}=220 \mu s$ si sono scelti e misurati i seguenti valori:
+Sapendo che $\tau_{th}=R_{sh}^{(1)} C_{sh}^{(1)} = R_{sh}^{(2)} C_{sh}^{(2)}=22 \mu s$ si sono scelti e misurati i seguenti valori:
 
 \begin{align*}
 R_{sh}^{(1)} = (68.31  \pm 0.03)k\Omega \quad\quad \sigma_{\%}=  0.04 \% \\
@@ -329,16 +332,19 @@ C_{sh}^{(1)}= (234 \pm  9)pF \quad\quad \sigma_{\%}= 4 \% \\
 C_{sh}^{(2)}= (234 \pm  9)pF \quad\quad \sigma_{\%}= 4 \% \\
 \end{align*}
 
-dove l'errore è stato calcolato secondo quanto scritto in appendice tenendo conto delle specifiche del multimetro Metrix 32292 relative ad un fondoscala di 
-100 k$\Omega$ per le resistenze e di 1000 pF per le misure delle capacità.
+dove l'errore è stato calcolato secondo quanto scritto in appendice tenendo conto delle specifiche del multimetro Metrix 32292 relative
+ad un fondoscala di 100 k$\Omega$ per le resistenze e di 1000 pF per le misure delle capacità.
 
-Mediante i cursori si è quindi misurato il valore massimo (in valore assoluto) $V_{sh}^{max}=(346 \pm 6)mV$ e il tempo corrispondente $\tau_{sh}^{max}=(16 \pm 1)\mu s$.
+Mediante i cursori si è quindi misurato il valore massimo (in valore assoluto) $V_{sh}^{max}=(346 \pm 6)mV$ e il tempo corrispondente 
+$\tau_{sh}^{max}=(16 \pm 1)\mu s$.
 
-Si è poi verificata la correttezza del trasferimento immettendo nel circuito un'onda quadra di altezza 1V e misurando un set di 10 punti della curva in uscita, indicata 
-dal modello in \ref{eqn:V_sh}. In particolare però per l'identificazione della curva teorica si è scelto di non utilizzare il $\tau_{sh,sper}$ ma bensì di sfruttatlo come 
-parametro per applicare il metodo del minimo $chi^{(2)}$, ossia vagliare i valori del $\chi_{(2)}$ rispetto ai dati sperimentali al variare di $\tau_{sh}$ e quindi
-della curva teorica e poi scegliere il tempo caratteristico per cui l'estimatore risulta avere un minimo. La scelta del minimo è stata effettuata tramite un fit
-parabolico in prossimità della convessità, e calcolando l'ascissa del vertice della parabola.
+Si è poi verificata la correttezza del trasferimento immettendo nel circuito un'onda quadra di altezza 1V e misurando un set di 10 punti 
+della curva in uscita, indicata dal modello in \ref{eqn:V_sh}. In particolare però per l'identificazione della curva teorica si è 
+scelto di non utilizzare il $\tau_{sh,sper}$ ma bensì di sfruttarlo come parametro per applicare il metodo del minimo $chi^{(2)}$, 
+ossia vagliare i valori del $\chi_{(2)}$ rispetto ai dati sperimentali al variare di $\tau_{sh}$ e quindi
+della curva teorica e poi scegliere il tempo caratteristico per cui l'estimatore risulta avere un minimo. 
+La scelta del minimo è stata effettuata tramite un fit parabolico in prossimità della convessità, e calcolando l'ascissa del 
+vertice della parabola.
 L'errore di $\tau_{sh}$ è dato dalla semidispersione ottenuta facendo riferimento all'intervallo [$\tau_+ ; \tau_-$] 
 tali per cui $\chi^{(2)}_{\pm} = \chi^{(2)}_{min} + 1$.
 
@@ -351,8 +357,8 @@ tali per cui $\chi^{(2)}_{\pm} = \chi^{(2)}_{min} + 1$.
     \end{figure}
 \end{center}
 
-Da cui si sceglie $\tau_{sh} = (\pm) \mu s$. Da tale decisione si può plottare il modello teorico assieme ai dati
-
+Da cui si sceglie $\tau_{sh} = (\pm) \mu s$. Da tale decisione si può plottare il modello teorico assieme ai dati come fatto nel
+grafico seguente
 
 \begin{center}
     \begin{figure}[H]
@@ -363,11 +369,12 @@ Da cui si sceglie $\tau_{sh} = (\pm) \mu s$. Da tale decisione si può plottare 
     \end{figure}
 \end{center}
 
-Si vede che i dati non sono compatibili con il modello teorico, in quanto pur riproducendone l'andamento risultano sensibilmente staccati. Questo è dovuto a mi scusi ma 
-io che cazzo ne so
+Si vede che i dati non sono compatibili con il modello teorico, in quanto pur riproducendone l'andamento risultano sensibilmente 
+staccati. Questo è dovuto a mi scusi ma io che cazzo ne so
 
-Si è infine nuovamente studiato il comportamento del circuito al variare della frequenza (le misure sono riportate in appendice); si è ottenuto il seguente grafico di Bode (fig (\ref{fig:bodeshaper_no_pz}));
-al fine di ottenere un confronto immediato sono plottate sovrapposte la curva teorica relativa ai dati sperimentali ed il fit dei dati ottenuti mediante la simulazione di LT-spice:
+Si è infine nuovamente studiato il comportamento del circuito al variare della frequenza (le misure sono riportate in appendice); si è 
+ottenuto il seguente grafico di Bode (fig (\ref{fig:bodeshaper_no_pz})); al fine di ottenere un confronto immediato sono plottate 
+sovrapposte la curva teorica relativa ai dati sperimentali ed il fit dei dati ottenuti mediante la simulazione di LT-spice:
 
 \begin{center}
     \begin{figure}[H]
@@ -377,6 +384,9 @@ al fine di ottenere un confronto immediato sono plottate sovrapposte la curva te
     \label{fig:bodeshaper_no_pz}
     \end{figure}
 \end{center}
+
+Si osserva il diverso comportamento dello shaper base, che opera come derivatore per frequenze basse e come integratore a frequenze
+alte.
 
 Si riporta quindi l'andamento dei residui:
 \begin{center}
@@ -390,23 +400,25 @@ Si riporta quindi l'andamento dei residui:
 
 \subsection{Shaper compensato}
 \subsubsection{Breve discussione del circuito}
-Si è proceduto inserendo come segnale in ingresso dello shaper il segnale di uscita del preamplificatore. Subentra quindi il problema di dover compensare
-l'effetto del pole-zero: infatti, se si considera in ingresso un segnale del tipo $V_{in}(t)=V_0e^{-\frac{t}{\tau_{pre}}}$ si ottiene la seguente trasformata
-di Laplace :
-$$
-V_{in}(s)=\frac{Vo}{s+\frac{1}{\tau_{pre}}}
-$$
+Si è proceduto inserendo come segnale in ingresso dello shaper il segnale di uscita del preamplificatore. Subentra quindi il problema 
+di dover compensare l'effetto del pole-zero: infatti, se si considera in ingresso un segnale del tipo 
+$V_{in}(t)=V_0 e^{-\frac{t}{\tau_{pre}}}$ si ottiene la seguente trasformata di Laplace :
 
-che presenta un polo in $-\frac{1}{\tau_{pre}} $,  responsabile dell’undeshoot del segnale dopo la formazione.
-Il segnale in uscita dal primo stato del formatore sarà quindi: $V_{out}(s)^{CR}=\frac{V_{0}}{s+\frac{1}{\tau_{sh}}}$;
+\begin{equation}
+    V_{in}(s)=\frac{Vo}{s+\frac{1}{\tau_{pre}}}    
+\end{equation}
+
+che presenta un polo in $-\frac{1}{\tau_{pre}} $,  responsabile dell’undeshoot del segnale.
+Il segnale in uscita dal primo stadio (CR) del formatore sarà quindi: $V_{out}(s)^{CR}=\frac{V_{0}}{s+\frac{1}{\tau_{sh}}}$;
 si osserva quindi che inserendo una resistenza $R_{pz}$ in parallelo a $C_{sh}^{(1)}$ si ottiene invece:
-$$
-V_{out}(s)^{CR}=\frac{V_{0}}{s+\frac{1}{\tau_{sh}}}\cdot \frac{s+\frac{1}{\tau_{pz}}}{s+\frac{1}{\tau_{||}}}
-$$
+
+\begin{equation}
+    V_{out}(s)^{CR}=\frac{V_{0}}{s+\frac{1}{\tau_{sh}}}\cdot \frac{s+\frac{1}{\tau_{pz}}}{s+\frac{1}{\tau_{\parallel}}}    
+\end{equation}
 
 l’effetto del polo del preamplificatore è quindi annullato con quello dello zero del CR compensato.
 
-Inoltre se $R_{sh}^{(1,2)}$<< $R_{pz}$ si ha $\tau_{||} \approx \tau_{sh}$ e la situazione risulta quindi completamente 
+Inoltre se $R_{sh}^{(1,2)}$ << $R_{pz}$ si ha $\tau_{\parallel} \approx \tau_{sh}$ e la situazione risulta quindi completamente 
 analoga a quella precedente in cui si aveva un segnale in ingreso a gradino.
 
 Lo schema del circuito dello shaper compensato è quindi il seguente:
@@ -414,7 +426,7 @@ Lo schema del circuito dello shaper compensato è quindi il seguente:
 \begin{center}
     \begin{figure}[H]
     \centering
-    \includegraphics[scale=0.1875, angle=0]{shapercomp.pdf}
+    \includegraphics[scale=0.3, angle=0]{shapercomp.pdf}
     \caption{Circuito formatore con compensazione}
     \label{fig:shaper}
     \end{figure}
@@ -428,15 +440,51 @@ dove $V_1$ è il segnale in uscita dal preamplificatore.
 
 \subsubsection{Discussione dei dati}
 
+Si è osservato che senza utilizzando lo shaper base per un segnale esponenziale come quello fornito dal preamplificatore si ottiene il 
+fenomeno dell'undershoot: infatti unendo preamp e shaper si è misurato $V_{sh, undershoot}=(346 \pm 6)mV$ (l'undershoot è positivo poichè
+il segnale è ribaltato a causa della natura invertente del preamplificatore). Inserendo invece la resistenza 
+$R_{pz} = (668.0 \pm 3) k\Omega$ si vede che l'effetto di undershoot sparisce e il segnale si adagia correttamente sullo zero 
+delle tensioni.
+
+Con il circuito correttamente compensato, si è verificato che la relazione tra carica iniettata e tensione in uscita fosse
+lineare, variando la durata dell'impulso in ingresso e acquisendo i picchi delle forme d'onda semigaussiane in uscita dallo shaper.
+
 \begin{center}
     \begin{figure}[H]
     \centering
-    \includegraphics[scale=0.375, angle=0]{bodeshaper_no_pz.pdf}
-    \caption{}
-    \label{fig:bodeshaper_no_pz}
+    \includegraphics[scale=0.375, angle=0]{fitshaper.pdf}
+    \caption{Carica iniettata e picco di tensione in uscita}
+    \label{fig:fitshaper}
     \end{figure}
 \end{center}
 
+Segue il grafico dei residui
+
+\begin{center}
+    \begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.375, angle=0]{residuishaper.pdf}
+    \caption{Grafico dei residui della relazione tra $Q_{in}$ e $V_{pre}^{max}$}
+    \label{fig:residuishaper}
+    \end{figure}
+\end{center}
+
+e i principali estimatori di bontà del fit.
+
+\begin{table}[ht]
+    \centering
+    \begin{tabular}{ccccc}
+        \toprule
+        $\sigma_{y, post}$    &$\chi^{(2)}$    &$\lambda_{\chi}$   &$\rho$  &t   \\
+        \midrule
+        1.7 V               &0.26            &1.12              &-0.99993&-146.28\\
+        \bottomrule
+    \end{tabular}
+    \caption{parametri di verifica della bontà del fit}
+\end{table}
+
+I parametri confermano la buona riuscita del fit lineare e dunque costituiscono la prova della relazione lineare che intercorre tra
+carica iniettata e uscita dello shaper.
 
 \section{Catena elettronica}
 
@@ -576,6 +624,34 @@ counts stimato attraverso un algoritmo che individua punti di massimo e di minim
 \end{center}
 
 Ne si ricava che il software acquisisce un punto in ogni intervallo pari alla slope b, ossia ogni $(1.0490 \pm 0.0002)\mu s$.
+
+Per la calibrazione verticale sulle tensioni si sono immesse nel circuito onde quadrate tra 0 e una tensione di altezza variabile, 
+per poi effettuare nuovamente un fit lineare del tipo $V = a + b \cdot ch$, dove ch stavolta esprime il plateau della tensione 
+in conteggi: il parametro b fornirà il fattore di conversione mV/counts, mentre a rappresenterà l'offset aggiunto dalla scheda al 
+segnale letto.
+
+\begin{center}
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.4, angle=0]{calibtempi.pdf}
+\caption{Calibrazione temporale}
+\label{fig:calibtempi}
+\end{figure}
+\end{center}
+
+\begin{center}
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.4, angle=0]{calibtempiresidui.pdf}
+\caption{Residui del fit di calibrazione temporale}
+\label{fig:calibtempiresidui}
+\end{figure}
+\end{center}
+
+
+Effettuata dunque la calibrazione, si è acquisita la forma d'onda in uscita dalla catena elettronica completa con in input il solito
+impulso di tensione, partendo da una durata di $10 \mu s$ e diminuendola via via di un'unità ad ogni nuova acquisizione.
+
 
 
 \section{Conclusioni}
