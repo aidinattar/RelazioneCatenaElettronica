@@ -242,6 +242,8 @@ Si riporta il grafico di tempi e lograitmi delle tensioni, interpolati linearmen
     \caption{parametri di verifica della bontà del fit}
 \end{table}
 
+Si osserva la buona riuscita del fit, che verifica la scarica RC del circuito al termine dell'impulso.
+
 Dal valore della pendenza, come anticipato prima, ricaviamo una stima di $\tau_{pre,sper}$. A scopo di controllo, è inoltre possibile 
 ottenere una valutazione di $V_{pre}^{max}$ usando il parametro di offset a sapendo $V_{pre}^{max} = e^a$. Si riportano quindi i due
 valori calcolati con i loro errori calcolati per propagazione.
@@ -270,8 +272,9 @@ anche la simulazione effettuata su LTspice e il modello teorico rappresentato da
 \end{figure}
 \end{center}
 
-Si osserva che i dati giacciono correttamente sulla simulazione e anche il modello teorico appare adeguato, nonostante il grafico 
-dei residui mostri una certa incompatibilità delle alte frequenze. COMMENTO
+Si osserva che i dati giacciono correttamente sulla simulazione e anche il modello teorico appare adeguato, nonostante gli ultimi punti si distacchino, seppur in modo
+non notevole, dal grafico. In ogni caso, come si osserva anche dal seguente grafico dei residui, gli errori sono sufficientemente ampi da tenere conto dell'imprecisione
+delle misure a frequenze alte, quando il segnale in uscita si trova all'estremo del range dell'oscilloscopio. Pertanto, il $\chi_{(2)}$ risulta ottimo.
 
 \begin{center}
     \begin{figure}[H]
@@ -320,7 +323,7 @@ dal dominio delle frequenze:
     
 
 \subsubsection{Discussione dei dati}
-Si è nuovamente impostata sul generatore di funzioni un'onda quadra di frequenza di 100 Hz e ampiezza pari a $V_{in}^{th}=(992 \pm 15)mV$
+Si è nuovamente impostata sul generatore di funzioni un'onda quadra di frequenza di 100 Hz e ampiezza pari a $V_{0}=(992 \pm 15)mV$
 in modo che simuli il comportamento di un preamplificatore ideale che mantenga il segnale alto per un tempo indefinito.
 
 Sapendo che $\tau_{th}=R_{sh}^{(1)} C_{sh}^{(1)} = R_{sh}^{(2)} C_{sh}^{(2)}=22 \mu s$ si sono scelti e misurati i seguenti valori:
@@ -340,7 +343,7 @@ $\tau_{sh}^{max}=(16 \pm 1)\mu s$.
 
 Si è poi verificata la correttezza del trasferimento immettendo nel circuito un'onda quadra di altezza 1V e misurando un set di 10 punti 
 della curva in uscita, indicata dal modello in \ref{eqn:V_sh}. In particolare però per l'identificazione della curva teorica si è 
-scelto di non utilizzare il $\tau_{sh,sper}$ ma bensì di sfruttarlo come parametro per applicare il metodo del minimo $chi^{(2)}$, 
+scelto di non utilizzare il $\tau_{sh,sper}$ ma bensì di sfruttarlo come parametro per applicare il metodo del minimo $\chi^{(2)}$, 
 ossia vagliare i valori del $\chi_{(2)}$ rispetto ai dati sperimentali al variare di $\tau_{sh}$ e quindi
 della curva teorica e poi scegliere il tempo caratteristico per cui l'estimatore risulta avere un minimo. 
 La scelta del minimo è stata effettuata tramite un fit parabolico in prossimità della convessità, e calcolando l'ascissa del 
@@ -352,7 +355,7 @@ tali per cui $\chi^{(2)}_{\pm} = \chi^{(2)}_{min} + 1$.
     \begin{figure}[H]
     \centering
     \includegraphics[scale=0.375, angle=0]{chi_forma_no_pz.pdf}
-    \caption{Andamento di $chi_{(2)}$ al variare di $\tau_{sh}$}
+    \caption{Andamento di $\chi_{(2)}$ al variare di $\tau_{sh}$}
     \label{fig:chi_forma_no_pz}
     \end{figure}
 \end{center}
@@ -370,7 +373,10 @@ grafico seguente
 \end{center}
 
 Si vede che i dati non sono compatibili con il modello teorico, in quanto pur riproducendone l'andamento risultano sensibilmente 
-staccati. Questo è dovuto a mi scusi ma io che cazzo ne so
+staccati, in particolare in prossimità del picco. La forma \ref{eqn:V_sh} ha massimo in $V_0$/e, ossia il picco è proporzionale all'altezza dell'impulso
+inserito, per cui si dovrebbe avere $V_{sh,th}^{max}$ = $(365 \pm 5) mV $, mentre si è misurato  $V_{sh}^{max}=(346 \pm 6)mV$. La compatibilità è $\lambda=2.3$,
+accettabile, ma non ottima. Sembra dunque che nel circuito costruito in laboratorio il segnale erogato dal generatore si attenui leggermente all'ingresso del
+circuito, forse a causa di un settaggio non corretto di \textit{input impedance} nelle opzioni del generatore di funzioni  ????
 
 Si è infine nuovamente studiato il comportamento del circuito al variare della frequenza (le misure sono riportate in appendice); si è 
 ottenuto il seguente grafico di Bode (fig (\ref{fig:bodeshaper_no_pz})); al fine di ottenere un confronto immediato sono plottate 
@@ -515,7 +521,7 @@ intercorre con il $V_{out}$ della catena completa.
 
 Introducendo poi segnali sinusoidali in ingresso di frequenza variabile si è effettuato un grafico di Bode per verificare la risposta
 in frequenza della catena elettronica. Combinando quindi le funzioni di trasferimento del circuito preamplificatore 
-\ref{eqn:preamp_trasf}, dello shaper compensato AGGIUNGERE RIFERIMENTO CORRETTA e dell'amplificatore di strumentazione 
+\ref{eqn:preamp_trasf}, dello shaper compensato \ref{} e dell'amplificatore di strumentazione 
 \ref{eqn:ampinv_trasf}, si ottiene la funzione di trasferimento totale.
 
 \begin{multline}
@@ -651,8 +657,6 @@ segnale letto.
 
 Effettuata dunque la calibrazione, si è acquisita la forma d'onda in uscita dalla catena elettronica completa con in input il solito
 impulso di tensione, partendo da una durata di $10 \mu s$ e diminuendola via via di un'unità ad ogni nuova acquisizione.
-
-
 
 \section{Conclusioni}
 
