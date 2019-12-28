@@ -660,6 +660,7 @@ impulso di tensione, partendo da una durata di $10 \mu s$ e diminuendola via via
 
 \section{Conclusioni}
 
+\newpage
 \appendix
 \section{Appendici}
 \label{appendice}
@@ -712,4 +713,170 @@ per il valore di $t$ di Student l'ipotesi di non correlazione è stata rifiutata
 \end{table}
 
 \subsection{Dati sperimentali}
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{ccc}
+        \toprule
+        t ($\mu s$) & $V_{pre}^{max}$ (mV) & div (mV) \\
+        \midrule
+        2 & -176 & 50 \\
+        4 & -352 & 100 \\
+        6 & -520 & 100 \\
+        8 & -680 & 100 \\
+        10 & -848 & 200 \\
+        \bottomrule
+    \end{tabular}
+    \caption{Verifica linearità tra durata impulso e $V_{pre}^{max}$ nel preamplificatore}
+\end{table}
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{cc}
+        \toprule
+        t ($\mu s$)& $V_{pre}^{max}$ (mV) \\
+        div = 50 $\mu s$ & div = 50 mV\\
+        \midrule
+        38 & -144 \\
+        78 & -120 \\
+        116 & -100 \\
+        156 & -82 \\
+        196 & -68 \\
+        242 & -56 \\
+        292 & -44 \\
+        404 & -26 \\
+        \bottomrule
+    \end{tabular}
+    \caption{Misura scarica RC}
+\end{table}
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{ccccc}
+        \toprule
+        f (Hz) & $V_{in}$ (V) & div (mV) & $V_{out}$ & div\\
+        \midrule
+        10 & 1.06 & 200 & 19.2 V & 5 V\\
+        31 & 1.06 & 200 & 19.2 V& 5 V\\
+        96 & 1.06 & 200 & 19 V& 5 V\\
+        298 & 1.06 & 200 & 17.6 V& 5 V\\
+        924 & 1.06 & 200 & 11.3 V& 2 V\\
+        2863 & 1.06 & 200 & 4.64 V& 1 V\\
+        8875 & 1.06 & 200 & 1.56 V& 500 mV\\
+        27513 & 1.05 & 200 & 516 mV& 100 mV\\
+        85289 & 1.05 & 200 & 170 mV& 50 mV\\
+        264396 & 1.05 & 200 & 57.6 mV & 20 mV\\
+        819628 & 1.05 & 200 & 21.6 mV& 20 mV\\
+        \bottomrule
+    \end{tabular}
+    \caption{Risposta in frequenza del preamplificatore}
+\end{table}
+
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{cc}
+        \toprule
+        t ($\mu s$)& $V_{pre}^{max}$ (mV) \\
+        div = 10 $\mu s$ & div = 50 mV\\
+        \midrule
+        3.2 & 142 \\
+        6.8 & 256 \\
+        11.6 & 328 \\
+        15.6 & 346 \\
+        19.2 & 340 \\
+        27.2 & 298 \\
+        32.8 & 248 \\
+        41.2 & 184 \\
+        46 & 152 \\
+        54.4 & 106 \\
+        64.4 & 66 \\
+        77.2 & 36 \\
+        85.2 & 24 \\
+        \bottomrule
+    \end{tabular}
+    \caption{Forma d'onda dello shaper}
+\end{table}
+
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{ccccc}
+        \toprule
+        f (Hz) & $V_{in}$ & div (mV) & $V_{out}$ (mV) & div (mV)\\
+        \midrule
+        100 & 1.01 V & 200 & 10.4 & 20\\
+        250 & 1.01 V& 200 & 24 & 20\\
+        625 & 1.01 V& 200 & 60 & 20\\
+        1563 & 992 mV & 200 & 144 & 20\\
+        3906 & 992 mV & 200 & 322 & 50\\
+        9766 & 992 mV & 200 & 476 & 100\\
+        24414 & 992 mV & 200 & 332 & 100\\
+        61035 & 984 mV & 200 & 151 & 20\\
+        152588 & 984 mV & 200 & 61.6 & 20\\
+        381470 & 984 mV & 200 & 24.8 & 20\\
+        953674 & 992 mV & 200 & 11.2 & 20\\
+        \bottomrule
+    \end{tabular}
+    \caption{Risposta in frequenza dello shaper}
+\end{table}
+
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{ccc}
+        \toprule
+        t ($\mu s$) & $V_{sh}^{max}$ (mV) & div (mV) \\
+        \midrule
+        2 & -60 & 20 \\
+        4 & -119 & 20 \\
+        6 & -174 & 50 \\
+        8 & -234 & 50 \\
+        10 & -292 & 50 \\
+        \bottomrule
+    \end{tabular}
+    \caption{Verifica linearità tra durata impulso e $V_{sh}^{max}$ nello shaper}
+\end{table}
+
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{ccc}
+        \toprule
+        t ($\mu s$) & $V_{out}$ & div (mV) \\
+        \midrule
+        2 & 476 mV& 100 \\
+        4 & 944 mV& 200 \\
+        6 & 1.39 V & 200 \\
+        8 & 1.86 V & 500 \\
+        10 & 2.3 V & 500 \\
+        \bottomrule
+    \end{tabular}
+    \caption{Verifica linearità tra durata impulso e $V_{out}$ nella catena elettronica}
+\end{table}
+
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{ccccc}
+        \toprule
+        f (Hz) & $V_{in}$ (V) & div (mV) & $V_{out}$ & div\\
+        \midrule
+        10 & 1.06 & 200 & 12 V & 2 V\\
+        31 & 1.06 & 200 & 12 V& 2 V\\
+        96 & 1.07 & 200 & 12 V& 2 V\\
+        298 & 1.07 & 200 & 11.5 V& 2 V\\
+        924 & 1.07 & 200 & 9.52 V& 2 V\\
+        2863 & 1.06 & 200 & 7.84 V& 2 V\\
+        8875 & 1.06 & 200 & 5.52 V& 2 V\\
+        27513 & 1.06 & 200 & 1.34 V& 200 mV\\
+        85289 & 1.06 & 200 & 164 mV& 50 mV\\
+        264396 & 1.04 & 200 & 19.2 mV & 20 mV\\
+        819628 & 1.05 & 200 & 3.2 mV & 20 mV\\
+        \bottomrule
+    \end{tabular}
+    \caption{Risposta in frequenza della catena elettronica}
+\end{table}
+
+
 \end{document}
