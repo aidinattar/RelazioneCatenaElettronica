@@ -1,0 +1,195 @@
+2 us
+
+file name: mis2
+time calibration constant with error: 1.04944	1.59001e-04
+voltage calibration constant with error: .774818       0.00919775	  
+voltage offset with error: -573.928	17.3356	 	
+file di simulazione: simul2
+
+--------FIRST  MAXIMUM---------
+time: 202.542 +/- 0.0306872
+amplitude: 437.984 +/- 21.0907
+
+simulation
+time: 202.542
+amplitude: 416.375
+
+
+
+--------SECOND MAXIMUM---------
+time: 1203.71 +/- 0.182374
+amplitude: 437.209 +/- 21.0855
+
+simulation
+time: 1202.54
+amplitude: 416.679
+
+
+asymptotic state:
+data: 55.6216 +/- 2.16544
+smlt: 0.399247 +/- 0.57735
+
+
+
+
+
+4 us 
+file name: mis4
+time calibration constant with error: 1.04944	1.59001e-04
+voltage calibration constant with error: .774818       0.00919775	  
+voltage offset with error: -573.928	17.3356	 	
+Warning in <TCanvas::Constructor>: Deleting canvas with same name: canvas
+file di simulazione: simul4
+
+--------FIRST  MAXIMUM---------
+time: 202.542 +/- 0.0306872
+amplitude: 843.214 +/- 24.1563
+
+simulation
+time: 202.542
+amplitude: 829.904
+
+
+
+--------SECOND MAXIMUM---------
+time: 1203.71 +/- 0.182374
+amplitude: 842.439 +/- 24.1499
+
+simulation
+time: 1202.41
+amplitude: 830.102
+
+
+asymptotic state:
+data: 57.7523 +/- 2.16659
+smlt: 0.794147 +/- 0.57735
+
+
+
+5 us 
+
+file name: mis5
+time calibration constant with error: 1.04944	1.59001e-04
+voltage calibration constant with error: .774818       0.00919775	  
+voltage offset with error: -573.928	17.3356	 	
+Warning in <TCanvas::Constructor>: Deleting canvas with same name: canvas
+file di simulazione: simul5
+
+--------FIRST  MAXIMUM---------
+time: 203.591 +/- 0.0308462
+amplitude: 1049.32 +/- 25.9197
+
+simulation
+time: 203.591
+amplitude: 1036.72
+
+
+
+--------SECOND MAXIMUM---------
+time: 1205.81 +/- 0.182692
+amplitude: 1046.99 +/- 25.8991
+
+simulation
+time: 1203.59
+amplitude: 1037.44
+
+
+asymptotic state:
+data: 53.185 +/- 2.16413
+smlt: 1.06705 +/- 0.57735
+
+
+6 us
+file name: mis6
+time calibration constant with error: 1.04944	1.59001e-04
+voltage calibration constant with error: .774818       0.00919775	  
+voltage offset with error: -573.928	17.3356	 	
+Warning in <TCanvas::Constructor>: Deleting canvas with same name: canvas
+file di simulazione: simul6
+
+--------FIRST  MAXIMUM---------
+time: 202.542 +/- 0.0306872
+amplitude: 1260.84 +/- 27.8371
+
+simulation
+time: 202.542
+amplitude: 1241.85
+
+
+
+--------SECOND MAXIMUM---------
+time: 1204.76 +/- 0.182533
+amplitude: 1260.84 +/- 27.8371
+
+simulation
+time: 1202.45
+amplitude: 1242.77
+
+
+asymptotic state:
+data: 56.906 +/- 2.16613
+smlt: 1.12641 +/- 0.353553
+
+8 us
+
+file name: mis8
+time calibration constant with error: 1.04944	1.59001e-04
+voltage calibration constant with error:  .774818       0.00919775	  
+voltage offset with error:  -573.928	17.3356	 	
+Warning in <TCanvas::Constructor>: Deleting canvas with same name: canvas
+file di simulazione: simul8
+
+--------FIRST  MAXIMUM---------
+time: 205.69 +/- 0.0311642
+amplitude: 1670.72 +/- 31.7888
+
+simulation
+time: 205.69
+amplitude: 1645
+
+
+
+--------SECOND MAXIMUM---------
+time: 1206.86 +/- 0.182851
+amplitude: 1672.27 +/- 31.8042
+
+simulation
+time: 1205.71
+amplitude: 1646
+
+
+asymptotic state:
+data: 57.4058 +/- 2.1664
+smlt: 1.52884 +/- 0.353553
+
+file name: mis10
+time calibration constant with error:  1.04944	1.59001e-04
+voltage calibration constant with error: .774818       0.00919775	  
+voltage offset with error:  -573.928	17.3356	 	
+Warning in <TCanvas::Constructor>: Deleting canvas with same name: canvas
+file di simulazione: simul10
+
+--------FIRST  MAXIMUM---------
+time: 205.69 +/- 0.0311642
+amplitude: 2086.02 +/- 36.0216
+
+simulation
+time: 205.69
+amplitude: 2046.19
+
+
+
+--------SECOND MAXIMUM---------
+time: 1206.86 +/- 0.182851
+amplitude: 2087.57 +/- 36.0378
+
+simulation
+time: 1205.69
+amplitude: 2047.7
+
+
+asymptotic state:
+data: 51.4622 +/- 2.1632
+smlt: 2.03216 +/- 0.57735
+
+

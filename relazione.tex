@@ -44,7 +44,7 @@ Gruppo 14}
 \end{itemize}
 
 \vspace{3 cm}
-\begin{large}\textsc{\textbf{Scopo dell'esperienza}: studio della curva di trasferimento di un amplificatore invertente, del circuito con amplificatore delle differenze (non invertente), dei circuiti sommatore invertente, derivatore, raddrizzatore di precisione.} 
+\begin{large}\textsc{\textbf{Scopo dell'esperienza}: } 
 \end{large}
 \vspace{8.5cm}
 
@@ -825,16 +825,17 @@ counts stimato attraverso un algoritmo che individua punti di massimo e di minim
 \end{figure}
 \end{center}
 
-\begin{center}
-\begin{figure}[H]
-\centering
-\includegraphics[scale=0.4, angle=0]{calibtempiresidui.pdf}
-\caption{Residui del fit di calibrazione temporale}
-\label{fig:calibtempiresidui}
-\end{figure}
-\end{center}
+%\begin{center}
+%\begin{figure}[H]
+%\centering
+%\includegraphics[scale=0.4, angle=0]{calibtempiresidui.pdf}
+%\caption{Residui del fit di calibrazione temporale}
+%\label{fig:calibtempiresidui}
+%\end{figure}
+%\end{center}
 
 Ne si ricava che il software acquisisce un punto in ogni intervallo pari alla slope b, ossia ogni $(1.0490 \pm 0.0002)\mu s$.
+Inoltre, come atteso il valore di offset risulta compatibile con lo 0.
 
 Per la calibrazione verticale sulle tensioni si sono immesse nel circuito onde quadrate tra 0 e una tensione di altezza variabile, 
 per poi effettuare nuovamente un fit lineare del tipo $V = a + b \cdot ch$, dove ch stavolta esprime il plateau della tensione 
@@ -844,24 +845,24 @@ segnale letto.
 \begin{center}
 \begin{figure}[H]
 \centering
-\includegraphics[scale=0.4, angle=0]{calibtempi.pdf}
-\caption{Calibrazione temporale}
+\includegraphics[scale=0.4, angle=0]{calibverticale.pdf}
+\caption{calibrazione verticale}
 \label{fig:calibtempi}
 \end{figure}
 \end{center}
 
-\begin{center}
-\begin{figure}[H]
-\centering
-\includegraphics[scale=0.4, angle=0]{calibtempiresidui.pdf}
-\caption{Residui del fit di calibrazione temporale}
-\label{fig:calibtempiresidui}
-\end{figure}
-\end{center}
+Il valore acquisito da arduino dovrà quindi essere moltiplicato per la slope ($0.7578 \pm 0.0006)$mV
+e traslato dell'offset ($-547 \pm 16$) mV 
+
 
 
 Effettuata dunque la calibrazione, si è acquisita la forma d'onda in uscita dalla catena elettronica completa con in input il solito
 impulso di tensione, partendo da una durata di $10 \mu s$ e diminuendola via via di un'unità ad ogni nuova acquisizione.
+
+
+Si specifica che si riporta, per brevità, l'analisi per una una sola forma d'onda, per le altre
+si riporteranno solo i risultati notevoli.
+
 
 \section{Conclusioni}
 
