@@ -373,7 +373,7 @@ Si specifica inoltre che i valori di $C_{sh}^{(1)}\approx C_{sh}^{(2)}$ e $R_{sh
 il valore di $\tau_{sh}$ indicato nel logbook. Tuttavia, a causa di un cambio di combinazione in corso d'opera per problemi sorti durante la 
 prima giornata di esperienza, $\tau_{sh}$ e $C_{sh}$ con cui si è lavorato sono sì quelli della nuova combinazione, ma le altre grandezze in gioco sono rimaste quelle
 della combinazione originale ($C_{pre,th}=330$ pF, $\tau_{pre}=220$ $\mu s$). Si è utilizzata quindi una capacità di 220 pF
-e una costante di tempo caratteristica $\tau_{sh}$ di 15 $\mu s$ che in realtà non sono associati ai parametri del preamplificatore usati in nessuna combinazione.
+e una costante di tempo caratteristica $\tau_{sh}$ di 15 $\mu s$ che in realtà non sono associati ai parametri usati del preamplificatore in nessuna combinazione.
 
 Trattando il circuito con Laplace e considerando la fase stazionaria, si ottiene che la funzione di trasferimento in funzione di 
 $\omega$ è la seguente:
@@ -819,6 +819,15 @@ counts stimato attraverso un algoritmo che individua punti di massimo e di minim
 \begin{center}
 \begin{figure}[H]
 \centering
+\includegraphics[scale=0.4, angle=0]{4_1.pdf}
+\caption{Acquisizione forma sinusoidale}
+\label{fig:period_counts}
+\end{figure}
+\end{center}
+
+\begin{center}
+\begin{figure}[H]
+\centering
 \includegraphics[scale=0.4, angle=0]{calibtempi.pdf}
 \caption{Calibrazione temporale}
 \label{fig:calibtempi}
@@ -838,9 +847,17 @@ Ne si ricava che il software acquisisce un punto in ogni intervallo pari alla sl
 Inoltre, come atteso il valore di offset risulta compatibile con lo 0.
 
 Per la calibrazione verticale sulle tensioni si sono immesse nel circuito onde quadrate tra 0 e una tensione di altezza variabile, 
-per poi effettuare nuovamente un fit lineare del tipo $V = a + b \cdot ch$, dove ch stavolta esprime il plateau della tensione 
-in conteggi: il parametro b fornirà il fattore di conversione mV/counts, mentre a rappresenterà l'offset aggiunto dalla scheda al 
-segnale letto.
+per poi effettuare nuovamente un fit lineare del tipo $V = a + b \cdot ch$, dove ch stavolta indica l'altezza dei plateau della tensione 
+in conteggi: il parametro b fornirà il fattore di conversione mV/counts, mentre a mostra l'offset aggiunto dalla scheda arduino alla tensione effettiva.
+
+\begin{center}
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.4, angle=0]{4_2.pdf}
+\caption{Acquisizione onda quadrata}
+\label{fig:voltage_counts}
+\end{figure}
+\end{center}
 
 \begin{center}
 \begin{figure}[H]
@@ -851,20 +868,126 @@ segnale letto.
 \end{figure}
 \end{center}
 
-Il valore acquisito da arduino dovrà quindi essere moltiplicato per la slope ($0.7578 \pm 0.0006)$mV
-e traslato dell'offset ($-547 \pm 16$) mV 
+Il valore acquisito da arduino dovrà quindi essere moltiplicato per la slope ($0.775 \pm 0.009)$mV/counts
+e traslato dell'offset ($-574 \pm 17$) mV.
 
 
 
 Effettuata dunque la calibrazione, si è acquisita la forma d'onda in uscita dalla catena elettronica completa con in input il solito
 impulso di tensione, partendo da una durata di $10 \mu s$ e diminuendola via via di un'unità ad ogni nuova acquisizione.
 
+Riportiamo di seguito, per evitare risultati ripetitivi, solamente due grafici di confronto tra la forma d'onda acquisita dalla scheda e opportunamente 
+convertita con i parametri ottenuti dalla
+calibrazione e la simulazione ottenuta dal software LTspice; uno dei due grafici si riferisce a un impulso in ingresso di durata 10 $\mu s$, l'altro di 2 $\mu s$.
+Per realizzare al meglio tale sovrapposizione grafica, si è dovuto allineare il primo picco della simulazione con quello restituito dalla scheda, poiché Arduino
+presenta un delay temporale nell'acquisizione che ostacola un corretto allineamento delle due curve.
 
-Si specifica che si riporta, per brevità, l'analisi per una una sola forma d'onda, per le altre
-si riporteranno solo i risultati notevoli.
+
+\begin{center}
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.4, angle=0]{arduino10.pdf}
+\caption{Confronto grafico tra le due forme d'onda per $t_{pulse}=10 \mu s$}
+\label{fig:arduino10}
+\end{figure}
+\end{center}
+
+\begin{center}
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.4, angle=0]{arduino2.pdf}
+\caption{Confronto grafico tra le due forme d'onda per $t_{pulse}=2 \mu s$}
+\label{fig:arduino2}
+\end{figure}
+\end{center}
+
+
+Oltre al confronto grafico, si è eseguita anche un'analisi dei picchi (due per ciascun grafico): nello specifico, alcuni punti selezionati nell'intorno dei picchi 
+rilevati dalla scheda sono stati fittati con una parabola, il cui vertice fornisce la stima sperimentale ricercata. Si è anche calcolata la distanza in 
+$\sigma_{peak}$ tra il picco simulato e acquisito, dove $\sigma_{peak}$ è l'errore associato al vertice della suddetta parabola: l'errore sui punti della simulazione
+è considerao trascurabile, motivo per cui la distanza è valutata solamente in unità di errore dei punti do Arduino.
+Inoltre, si riporta un controllo asintotico della distanza in forma di compatibilità tra le code delle due forme d'onda, per verificare che queste 
+si adagino correttamente allo zero: in particolare si è scelto un intervallo di tempo appena precedente all'innalzamento del secondo picco e si è eseguita la media
+pesata tra i valori di tensione associati agli estremi di tale intervallo, con errore fornito dall'errore della media pesata. Nel caso della forma simulata, priva di 
+errore sui punti, si è svolta invece una media semplice attribuendo l'errore della media.
+
+Già da un confronto visivo immediato si intuisce la presenza di un discreto offset tra la simulazione e la forma convertita da Arduino, che si ripercuote
+anche nella compatibilità tra le coppie di picchi rispettive e nel controllo dello stato asintotico, in cui tale scarto risalta in modo notevole, come esposto
+nel seguito.
+
+
+Come anticipato, segue un confronto tra i picchi di tensione, uno tra i tempi del secondo picco (per verificare che persista la corretta periodicità),
+e infine il controllo della distanza delle tensioni asintotica $V_{as}$. 
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{cccc}
+        \toprule
+                        & Arduino & simulazione & compatibilità \\
+        \midrule
+        $V_{peak}^{(1)}$ (mV)&   $2086 \pm 36$ & $2046.19$ & 1.1 $\sigma_{peak}$\\
+        $V_{peak}^{(2)}$ (mV)&   $2088 \pm 36$ & $2047.7$ & 1.1 $\sigma_{peak}$\\
+        $t_{peak}^{(2)}$ ($\mu s$)&   $1206.9 \pm 0.2$ & $1205.69$ & 6.4 $\sigma_{sper}$\\
+        $V_{as}$       (mV)&   $51 \pm 2$ & $2.03 \pm 0.09$ & 24.3 \\
+        \bottomrule
+    \end{tabular}
+    \caption{Confronto analitico tra le due forme d'onda per $t_{pulse}=10 \mu s$}
+\end{table}
+
+Si  precisa che per compatibilità si intende distanza in $\sigma_{Ard}$ laddove l'errore sulla simulazione è considerato trascurabile; invece 
+la compatibilità per $V_{as}$ è quella "tradizionale" alla luce del metodo
+precedentemente descritto , in quanto disponiamo di entrambi gli errori.
+
+I risultati del caso $t_{pulse}=2 \mu s$ sono del tutto analoghi:
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{cccc}
+        \toprule
+                        & Arduino & simulazione & compatibilità \\
+        \midrule
+        $V_{peak}^{(1)}$ (mV)&   $438 \pm 21$ & $416.375$ & 1.0 $\sigma_{peak}$\\
+        $V_{peak}^{(2)}$ (mV)&   $437 \pm 21$ & $416.679$ & 1.0 $\sigma_{peak}$\\
+        $t_{peak}^{(2)}$ ($\mu s$)&   $1203.7 \pm 0.2$ & $1202.54$ & 6.4 $\sigma_{sper}$\\
+        $V_{as}$       (mV)&   $56 \pm 2$ & $0.4 \pm 0.02$ & 25.5 \\
+        \bottomrule
+    \end{tabular}
+    \caption{Confronto analitico tra le due forme d'onda per $t_{pulse}=2 \mu s$}
+\end{table}
+
+Il risultato è chiaro: nonostante la compatibilità tra i due picchi risulti buona, le due curve non hanno lo stesso comportamento asintotico, ossia è presente
+un certo offset che la calibrazione non riesce a prevedere. Si nota anche una certa incompatibilità tra gli istanti di tempo del secondo picco, che segnala 
+un problema anche nella distribuzione temporale.
+
+A scopo esemplificativo si riporta anche il caso $t_{pulse}=5 \mu s$, ancora in linea con le considerazioni fatte.
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{cccc}
+        \toprule
+                        & Arduino & simulazione & compatibilità \\
+        \midrule
+        $V_{peak}^{(1)}$ (mV)&   $1049 \pm 26$ & $1036.72$ & 0.5 $\sigma_{peak}$\\
+        $V_{peak}^{(2)}$ (mV)&   $1047 \pm 26$ & $1037.44$ & 0.4 $\sigma_{peak}$\\
+        $t_{peak}^{(2)}$ ($\mu s$)&   $1205.8 \pm 0.2$ & $1203.59$ & 12.2 $\sigma_{sper}$\\
+        $V_{as}$       (mV)&   $53 \pm 2$ & $1.07 \pm 0.05$ & 24.1 \\
+        \bottomrule
+    \end{tabular}
+    \caption{Confronto analitico tra le due forme d'onda per $t_{pulse}=5 \mu s$}
+\end{table}
+
+
 
 
 \section{Conclusioni}
+
+Si può considerare nel complesso ben riuscita la realizzazione della catena elettronica, poichè i dati sperimentali sono in linea con 
+le aspettative teoriche, sia considerando i singoli componenti che studiando il circuito nel complesso. Il problema principale dell'esperienza risiede invece 
+nell'analisi con la scheda Arduino, che sembra descrivere solo sommariamente i dati e produce problemi di compatibilità, in primis l'offset di tensione. 
+Tali incongruenze potrebbero essere legate a una cattiva riuscita della calibrazione, oppure al fatto che l'acquisizione si è svolta una settimana dopo il resto 
+della presa dati, e il circuito, seppur riposto e recuperato identico, potrebbe aver subito qualche modifica accidentale imprevedibile.
+
+
 
 \newpage
 \appendix
