@@ -68,13 +68,13 @@ costruiti i circuiti da studiare;  i valori misurati di resistenze e capacità u
 Si è inoltre fatto uso di due sonde con fattore di attenuazione 10x precedentemente compensate per la visualizzazione del 
 segnale nei due canali dell'oscilloscopio.
 
-Per l'analisi dati sono stati utilizzati programmi scritti in c++, root, gnuplot ed Excel.
+Per l'analisi dati sono stati utilizzati programmi scritti in c++, root ed Excel.
 
 \begin{center}
 \begin{figure}[H]
 \centering
 \includegraphics[scale=0.28, angle=0]{alimentazione.pdf}
-\caption{ Schema per l'alimentazione dell'operazionale }
+\caption{ schema per l'alimentazione dell'operazionale }
 \label{fig:alimentazione}
 \end{figure}
 \end{center} 
@@ -94,7 +94,7 @@ Si è dunque costruito il circuito come in figura
 \begin{figure}[H]
 \centering
 \includegraphics[scale=0.3, angle=0]{preamp.pdf}
-\caption{ Circuito amplificatore di carica }
+\caption{ circuito amplificatore di carica }
 \label{fig:preamp}
 \end{figure}
 \end{center}
@@ -137,30 +137,24 @@ dettata da
 
 Si precisa che sono stati suggeriti dei valori per i parametri del circuito $\tau_{pre,th} = 220 \mu s$ e $C_{pre} = 450 pF$, con $R_{pre}$ calcolato di 
 conseguenza. Pertanto i valori misurati con il multimetro sono
-
 \begin{align*}
     R_{pre} = (475.4 \pm 0.2)k\Omega \quad \sigma_{\%}=0.04 \% \\    
     C_{pre} = (149 \pm 14) pF \quad \sigma_{\%}=3.1 \%    \\
     \tau_{pre,th} = (213 \pm 7)\mu s \quad \sigma_{\%}=3.1 \%     \\
 \end{align*}
-
 Si è dunque impostato un impulso della durata di $T_{pulse}$ = $2 \mu s$: sapendo inoltre che la carica da iniettare 
 corrispondeva a $Q_{in}^{th}$ = $80 pC$ e che la resistenza di ingresso scelta misurava $R_{in}=(26.64\pm0.01) k\Omega$ ($\sigma_{\%}=0.04\%$), 
 si è selezionata l'altezza $V_{in}$ dell'impulso in modo che fosse soddisfatta la relazione
-
 \begin{equation}
     \label{eqn:Qin}
     Q_{in} = \frac{V_{in}}{R_{in}} T_{pulse}.
 \end{equation}
-
 Ne si è ricavato $V_{in}^{th}$ =1.06 V. Per controllare la correttezza del circuito si è misurato il picco $V_{pre}^{max}$, che sarà
 dato, utilizzando l'approssimazione della \ref{eqn:Vout1_preamp}, da
-
 \begin{equation}
     \label{eqn:Vpre_max}
     V_{pre}^{max} = -\frac{R_{pre}}{R_{in}} V_{in} \frac{T_{pulse}}{\tau_{pre}} = - \frac{Q_{in}}{C_{pre}}
 \end{equation}
-
 da cui, inserendo il valore misurato $V_{in}^{th}=(1.02\pm 0.02) V$, si ricava $V_{pre,th}^{max} =  (-170 \pm 6) mV$. Invece dalla 
 misura si ottiene $V_{pre,sper}^{max} = (-176 \pm 4) mV$, per cui $\lambda = 0.76$ e lo scostamento percentuale è $\epsilon = 3.2 \%$, 
 ossia il valore misurato è ottimamente compatibile con quello atteso.
@@ -173,7 +167,7 @@ interpolante e i principali parametri di bontà del fit.
 \begin{figure}[H]
 \centering
 \includegraphics[scale=0.4, angle=0]{fitpreamp.pdf}
-\caption{Carica iniettata e picco di tensione in uscita}
+\caption{carica iniettata e picco di tensione in uscita}
 \label{fig:QinvsVpre}
 \end{figure}
 \end{center}
@@ -182,7 +176,7 @@ interpolante e i principali parametri di bontà del fit.
 \begin{figure}[H]
 \centering
 \includegraphics[scale=0.4, angle=0]{residuipreamp.pdf}
-\caption{Grafico dei residui della relazione tra $Q_{in}$ e $V_{pre}^{max}$}
+\caption{grafico dei residui della relazione tra $Q_{in}$ e $V_{pre}^{max}$}
 \label{fig:QinvsVpre_res}
 \end{figure}
 \end{center}
@@ -199,17 +193,18 @@ interpolante e i principali parametri di bontà del fit.
     \caption{parametri di verifica della bontà del fit}
 \end{table}
 
+Si specifica che il fit è stato effettuato utilizzando
+gli errori di entrambe le coordinate, poichè nessuno dei 
+due errori relativi è risultato trascurabile rispetto all'altro.
 Gli estimatori danno tutti risposta positiva, quindi possiamo concludere che la relaizone lineare è ben verificata.
 Inoltre dal valore di pendenza, considerando la legge lineare \ref{eqn:Vpre_max}, è possibile ottenere una stima sperimentale della capacità $C_{pre}$, 
 da confrontare con il valore misurato. Si ricava quindi $C_{pre,sper} = (452\pm 10)pF$, che ha $\lambda = 0.15 $ rispetto al valore misurato.
 
 Inoltre dallo studio della \ref{eqn:Vout2_preamp}, e in particolare della sua linearizzazione logaritmica, è possibile ricavare
 una stima sperimentale di $\tau_{pre}$. Infatti applicando il logaritmo naturale si ottiene
-
 \begin{equation}
     \log V(t) = \log V_{pre}^{max} - \frac{t}{\tau_{pre}}
 \end{equation}
-
 per cui si trova una relazione lineare tra $\log V(t)$ e t, da cui $\tau_{pre}$=-1/b con b slope del fit.
 Si riporta il grafico di tempi e lograitmi delle tensioni, interpolati linearmente, e il relativo grafico dei residui
 
@@ -217,7 +212,7 @@ Si riporta il grafico di tempi e lograitmi delle tensioni, interpolati linearmen
 \begin{figure}[H]
 \centering
 \includegraphics[scale=0.4, angle=0]{preampRC.pdf}
-\caption{Relazione lineare tra logaritmi delle tensioni e tempi}
+\caption{relazione lineare tra logaritmi delle tensioni e tempi}
 \label{fig:QinvsVpre}
 \end{figure}
 \end{center}
@@ -226,7 +221,7 @@ Si riporta il grafico di tempi e lograitmi delle tensioni, interpolati linearmen
 \begin{figure}[H]
 \centering
 \includegraphics[scale=0.4, angle=0]{preampRCresidui.pdf}
-\caption{Grafico dei residui della relazione tra $\log V$ e t}
+\caption{grafico dei residui della relazione tra $\log V$ e t}
 \label{fig:QinvsVpre}
 \end{figure}
 \end{center}
@@ -245,13 +240,13 @@ Si riporta il grafico di tempi e lograitmi delle tensioni, interpolati linearmen
 
 Si osserva la buona riuscita del fit, che verifica la scarica RC del circuito al termine dell'impulso.
 
-Dal valore della pendenza, come anticipato prima, ricaviamo una stima di $\tau_{pre,sper}$. A scopo di controllo, è inoltre possibile 
+Dal valore della pendenza, come anticipato prima, ricaviamo una stima di $\tau_{pre}^{sper}$. A scopo di controllo, è inoltre possibile 
 ottenere una valutazione di $V_{pre}^{max}$ usando il parametro di offset a sapendo $V_{pre}^{max} = e^a$. Si riportano quindi i due
 valori calcolati con i loro errori calcolati per propagazione.
 
-\[\tau_{pre,sper} = (213 \pm 6)\mu s \quad \sigma_{\%} = 2.9 \%    \]
+\[\tau_{pre}^{sper} = (213 \pm 6)\mu s \quad \sigma_{\%} = 2.9 \%    \]
 \[V_{pre}^{max} = (-172 \pm 3)mV \quad \sigma_{\%} = 2.0 \%\]
-che risultano ottimamente compatibili con i valori attesi $V:{pre.th}^{max}$ e $\tau_{pre,th}$, in quanto $\lambda_{\tau} = 0.01$
+che risultano ottimamente compatibili con i valori attesi  $\tau_{pre}^{th}$ e $V_{pre,th}^{max}$, in quanto $\lambda_{\tau} = 0.01$
 e $\lambda_{V}=0.2$.
 
 Si è infine effettuato uno studio in frequenza del circuito con lo scopo di verificare la \ref{eqn:preamp_trasf}, variando la frequenza
@@ -344,7 +339,6 @@ tralasciare questi dati nell’analisi.
     \end{tabular}
     \caption{parametri di verifica della bontà del fit}
 \end{table}
-
 Tutti i parametri di verifica della bontà del fit permettono di accettare
 l'ipotesi di linearità dei dati.
 
@@ -361,7 +355,7 @@ riportato in figura (\ref{fig:shaper}), che dia per l'appunto una forma al segna
     \begin{figure}[H]
     \centering
     \includegraphics[scale=0.3, angle=0]{shaper.pdf}
-    \caption{Circuito formatore}
+    \caption{circuito formatore}
     \label{fig:shaper}
     \end{figure}
 \end{center}
@@ -380,7 +374,6 @@ $\omega$ è la seguente:
 \begin{equation}
 H(\omega)=\frac{\omega \tau}{1+\omega^2\tau^2}
 \end{equation}
-
 In particolare, inserendo in ingresso un'onda quadra tra 0 e $V_0$ si ottiene la funzione $V_{out}(t)$ facendo l'antitrasformata 
 dal dominio delle frequenze:
 
@@ -391,7 +384,7 @@ dal dominio delle frequenze:
     
 
 \subsubsection{Discussione dei dati}
-Si è nuovamente impostata sul generatore di funzioni un'onda quadra di frequenza di 100 Hz e ampiezza pari a $V_{0}=(992 \pm 15)mV$
+Si è nuovamente impostata sul generatore di funzioni un'onda quadra di frequenza di 100 Hz e ampiezza misurata pari a $V_{0}=(992 \pm 15)mV$
 in modo che simuli il comportamento di un preamplificatore ideale che mantenga il segnale alto per un tempo indefinito.
 
 Sapendo che $\tau_{th}=R_{sh}^{(1)} C_{sh}^{(1)} = R_{sh}^{(2)} C_{sh}^{(2)}=15 \mu s$ si sono scelti e misurati i seguenti valori:
@@ -411,7 +404,7 @@ $\tau_{sh}^{max}=(16 \pm 1)\mu s$.
 
 Si è poi verificata la correttezza del trasferimento immettendo nel circuito un'onda quadra di ampiezza 1V e misurando un set di 10 punti 
 della curva in uscita, indicata dal modello in \ref{eqn:V_sh}. In particolare però per l'identificazione della curva teorica si è 
-scelto di non utilizzare il $\tau_{sh,sper}$ ma bensì di sfruttarlo come parametro per applicare il metodo del minimo $\chi^{(2)}$, 
+scelto di non utilizzare il $\tau_{sh}^{sper}$ ma bensì di sfruttarlo come parametro per applicare il metodo del minimo $\chi^{(2)}$, 
 ossia vagliare i valori del $\chi^{(2)}$ rispetto ai dati sperimentali al variare di $\tau_{sh}$ e quindi
 della curva teorica e poi scegliere il tempo caratteristico per cui l'estimatore risulta avere un minimo. 
 La scelta del minimo è stata effettuata tramite un fit parabolico in prossimità della convessità, e calcolando l'ascissa del 
@@ -427,11 +420,10 @@ tali per cui $\chi^{(2)}_{\pm} = \chi^{(2)}_{min} + 1$.
     \label{fig:chi_forma_no_pz}
     \end{figure}
 \end{center}
-
 Da cui si sceglie $\tau_{sh} = (15.72\pm 0.07) \mu s$.  Tuttavia si osserva che
 il valore di $\chi^{(2)} \approx 110 $ corrispondente è tutt'altro che confortante 
 considerando il numero limitato di gradi di libertà. I grafici seguenti
-mostrano tale problematica
+mostrano tale problematica:
 
 
 \begin{center}
@@ -528,7 +520,7 @@ per la verifica della consistenza delle pendenze.
         {\includegraphics[width=.255\textwidth]{residuishaperdiscesa.pdf}} 
     \subfloat[][\emph{Residui fit della salita}]
         {\includegraphics[width=.255\textwidth]{residuishapersalita.pdf}}
-    \caption{Residui per i fit lineari dello shaper}
+    \caption{residui per i fit lineari dello shaper}
     \label{fig:residuishapersladis}
 \end{figure}
 
@@ -556,18 +548,13 @@ Si è proceduto inserendo come segnale in ingresso dello shaper il segnale di us
 di dover compensare l'effetto del pole-zero: infatti, se si considera in ingresso un segnale del tipo 
 \[V_{in}(t)=V_0 e^{-\frac{t}{\tau_{pre}}}\] 
 si ottiene la seguente trasformata di Laplace:
-
-
 \begin{equation}
     V_{in}(s)=\frac{Vo}{s+\frac{1}{\tau_{pre}}}
 \end{equation}
-che presenta un polo in $-\frac{1}{\tau_{pre}} $,  responsabile dell’undeshoot del segnale.
-
-
+che presenta un polo in $-\frac{1}{\tau_{pre}} $,  responsabile dell’undershoot del segnale.
 
 Si osserva però che il segnale in uscita dal primo stadio (CR) del formatore con una tensione in ingresso a gradino è descritto dalla seguente formula: 
-$V_{out}(s)^{CR}=\frac{V_{0}}{s+\frac{1}{\tau_{sh}}}$
-;
+$V_{out}(s)^{CR}=\frac{V_{0}}{s+\frac{1}{\tau_{sh}}}$;
 si vuole quindi modificare il circuito in modo che all'ingresso del buffer arrivi un segnale che segua questo stesso andamento.
 Si è quindi inserita una resistenza $R_{pz}$ in parallelo a $C_{sh}^{(1)}$ e si è studiato l'andamento di $ V_{out}(s)^{CR}$ di questo nuovo circuito mediante la trasformata di Laplace:
 
@@ -586,12 +573,11 @@ $$R_{pz}= \frac{\tau_{pre}}{C_{sh}^{(1)}}$$
 
 
 Si riporta quindi di seguito lo schema del circuito dello shaper compensato:
- 
 \begin{center}
     \begin{figure}[H]
     \centering
     \includegraphics[scale=0.3, angle=0]{shapercomp.pdf}
-    \caption{Circuito formatore con compensazione}
+    \caption{circuito formatore con compensazione}
     \label{fig:shaper}
     \end{figure}
 \end{center}
@@ -649,7 +635,7 @@ I parametri confermano la buona riuscita del fit lineare e dunque costituiscono 
 carica iniettata e uscita dello shaper.
 
 
-\section{Catena elettronica}
+\section{Circuito amplificatore invertente}
 
 \subsection{Descrizione del circuito}
 
@@ -744,7 +730,7 @@ su LTspice e il modello teorico espresso dalla \ref{eqn:catena_trasf}.
 \begin{figure}[H]
 \centering
 \includegraphics[scale=0.4, angle=0]{bodecatena.pdf}
-\caption{Grafico di Bode della risposta in frequenza della catena elettronica}
+\caption{grafico di Bode della risposta in frequenza della catena elettronica}
 \label{fig:catenaQvsV}
 \end{figure}
 \end{center}
@@ -753,12 +739,12 @@ su LTspice e il modello teorico espresso dalla \ref{eqn:catena_trasf}.
 \begin{figure}[H]
 \centering
 \includegraphics[scale=0.4, angle=0]{bodecatenaresidui.pdf}
-\caption{Grafico dei residui tra dati sperimentali e modello}
+\caption{grafico dei residui tra dati sperimentali e modello}
 \label{fig:catenaQvsV_res}
 \end{figure}
 \end{center}
 
-Si può osservare un certa incompatibilità dei dati con il modello teorico: il valore
+Si può osservare una forte incompatibilità dei dati con il modello teorico: il valore
 di $\chi^{(2)}$ risulta assolutamente incompatibile con il suo valore di aspettazione.
 Come si può osservare nel grafico dei residui, le problematiche sono sulle alte frequenze:
 questo fenomeno, alla luce dei problemi su preamplificatore e shaper in cui la curva teorica
@@ -814,13 +800,14 @@ acquisizioni preliminari al fine di realizzare una calibrazione orizzontale (sui
 
 In particolare per la calibrazione orizzontale si sono utilizzate onde sinusoidali di diversa frequenza (e dunque periodo), confrontando
 il periodo T con il conteggio dei punti nell'acquisizione secondo la formula $T = a + b \cdot ch$, dove ch rappresenta il periodo in 
-counts stimato attraverso un algoritmo che individua punti di massimo e di minimo successivi nella forma sinusoidale.
+counts stimato attraverso un algoritmo che individua gli zeri nella forma sinusoidale traslata in modo da essere simmetrica rispetto all'asse
+delle ascisse.
 
 \begin{center}
 \begin{figure}[H]
 \centering
 \includegraphics[scale=0.4, angle=0]{4_1.pdf}
-\caption{Acquisizione forma sinusoidale}
+\caption{acquisizione forma sinusoidale}
 \label{fig:period_counts}
 \end{figure}
 \end{center}
@@ -829,7 +816,7 @@ counts stimato attraverso un algoritmo che individua punti di massimo e di minim
 \begin{figure}[H]
 \centering
 \includegraphics[scale=0.4, angle=0]{calibtempi.pdf}
-\caption{Calibrazione temporale}
+\caption{calibrazione temporale}
 \label{fig:calibtempi}
 \end{figure}
 \end{center}
@@ -848,13 +835,13 @@ Inoltre, come atteso il valore di offset risulta compatibile con lo 0.
 
 Per la calibrazione verticale sulle tensioni si sono immesse nel circuito onde quadrate tra 0 e una tensione di altezza variabile, 
 per poi effettuare nuovamente un fit lineare del tipo $V = a + b \cdot ch$, dove ch stavolta indica l'altezza dei plateau della tensione 
-in conteggi: il parametro b fornirà il fattore di conversione mV/counts, mentre a mostra l'offset aggiunto dalla scheda arduino alla tensione effettiva.
+in conteggi: il parametro $b$ fornirà il fattore di conversione mV/counts, mentre $a$ mostra l'offset aggiunto dalla scheda arduino alla tensione effettiva.
 
 \begin{center}
 \begin{figure}[H]
 \centering
 \includegraphics[scale=0.4, angle=0]{4_2.pdf}
-\caption{Acquisizione onda quadrata}
+\caption{acquisizione onda quadrata}
 \label{fig:voltage_counts}
 \end{figure}
 \end{center}
@@ -876,7 +863,7 @@ e traslato dell'offset ($-574 \pm 17$) mV.
 Effettuata dunque la calibrazione, si è acquisita la forma d'onda in uscita dalla catena elettronica completa con in input il solito
 impulso di tensione, partendo da una durata di $10 \mu s$ e diminuendola via via di un'unità ad ogni nuova acquisizione.
 
-Riportiamo di seguito, per evitare risultati ripetitivi, solamente due grafici di confronto tra la forma d'onda acquisita dalla scheda e opportunamente 
+Si riportano di seguito, per evitare risultati ripetitivi, solamente due grafici di confronto tra la forma d'onda acquisita dalla scheda e opportunamente 
 convertita con i parametri ottenuti dalla
 calibrazione e la simulazione ottenuta dal software LTspice; uno dei due grafici si riferisce a un impulso in ingresso di durata 10 $\mu s$, l'altro di 2 $\mu s$.
 Per realizzare al meglio tale sovrapposizione grafica, si è dovuto allineare il primo picco della simulazione con quello restituito dalla scheda, poiché Arduino
@@ -887,7 +874,7 @@ presenta un delay temporale nell'acquisizione che ostacola un corretto allineame
 \begin{figure}[H]
 \centering
 \includegraphics[scale=0.4, angle=0]{arduino10.pdf}
-\caption{Confronto grafico tra le due forme d'onda per $t_{pulse}=10 \mu s$}
+\caption{confronto grafico tra le due forme d'onda per $t_{pulse}=10 \mu s$}
 \label{fig:arduino10}
 \end{figure}
 \end{center}
@@ -896,15 +883,15 @@ presenta un delay temporale nell'acquisizione che ostacola un corretto allineame
 \begin{figure}[H]
 \centering
 \includegraphics[scale=0.4, angle=0]{arduino2.pdf}
-\caption{Confronto grafico tra le due forme d'onda per $t_{pulse}=2 \mu s$}
+\caption{confronto grafico tra le due forme d'onda per $t_{pulse}=2 \mu s$}
 \label{fig:arduino2}
 \end{figure}
 \end{center}
 
 
-Oltre al confronto grafico, si è eseguita anche un'analisi dei picchi (due per ciascun grafico): nello specifico, alcuni punti selezionati nell'intorno dei picchi 
-rilevati dalla scheda sono stati fittati con una parabola, il cui vertice fornisce la stima sperimentale ricercata. Si è anche calcolata la distanza in 
-$\sigma_{peak}$ tra il picco simulato e acquisito, dove $\sigma_{peak}$ è l'errore associato al vertice della suddetta parabola: l'errore sui punti della simulazione
+Oltre al confronto grafico, si è eseguita anche un'analisi dei picchi (due per ciascun grafico): nello specifico, poichè il campionamento risulta sufficientemente fitto, si è preso il massimo
+acquisito come riferimento. Si è anche calcolata la distanza in 
+$\sigma_{peak}$ tra il picco simulato e acquisito, dove $\sigma_{peak}$ è l'errore associato al massimo: l'errore sui punti della simulazione
 è considerao trascurabile, motivo per cui la distanza è valutata solamente in unità di errore dei punti do Arduino.
 Inoltre, si riporta un controllo asintotico della distanza in forma di compatibilità tra le code delle due forme d'onda, per verificare che queste 
 si adagino correttamente allo zero: in particolare si è scelto un intervallo di tempo appena precedente all'innalzamento del secondo picco e si è eseguita la media
@@ -931,7 +918,7 @@ e infine il controllo della distanza delle tensioni asintotica $V_{as}$.
         $V_{as}$       (mV)&   $51 \pm 2$ & $2.03 \pm 0.09$ & 24.3 \\
         \bottomrule
     \end{tabular}
-    \caption{Confronto analitico tra le due forme d'onda per $t_{pulse}=10 \mu s$}
+    \caption{confronto analitico tra le due forme d'onda per $t_{pulse}=10 \mu s$}
 \end{table}
 
 Si  precisa che per compatibilità si intende distanza in $\sigma_{Ard}$ laddove l'errore sulla simulazione è considerato trascurabile; invece 
@@ -952,14 +939,17 @@ I risultati del caso $t_{pulse}=2 \mu s$ sono del tutto analoghi:
         $V_{as}$       (mV)&   $56 \pm 2$ & $0.4 \pm 0.02$ & 25.5 \\
         \bottomrule
     \end{tabular}
-    \caption{Confronto analitico tra le due forme d'onda per $t_{pulse}=2 \mu s$}
+    \caption{confronto analitico tra le due forme d'onda per $t_{pulse}=2 \mu s$}
 \end{table}
 
 Il risultato è chiaro: nonostante la compatibilità tra i due picchi risulti buona, le due curve non hanno lo stesso comportamento asintotico, ossia è presente
 un certo offset che la calibrazione non riesce a prevedere. Si nota anche una certa incompatibilità tra gli istanti di tempo del secondo picco, che segnala 
 un problema anche nella distribuzione temporale.
 
-A scopo esemplificativo si riporta anche il caso $t_{pulse}=5 \mu s$, ancora in linea con le considerazioni fatte.
+Le problematiche sono quindi da ricercare in prima battuta sulle calibrazioni e eventualmente su effetti parassiti nel circuito trascurati.
+
+A scopo esemplificativo si riporta anche il caso $t_{pulse}=5 \mu s$, ancora in linea con le considerazioni fatte. In realtà è stata effettuata tale analisi per tutti 
+i valori interi intermedi tra quelli considerati, tuttavia non vengono riportati poiché i risultati risultano sempre gli stessi e riportarli risulterebbe ridondante.
 
 \begin{table}[H]
     \centering
@@ -973,7 +963,7 @@ A scopo esemplificativo si riporta anche il caso $t_{pulse}=5 \mu s$, ancora in 
         $V_{as}$       (mV)&   $53 \pm 2$ & $1.07 \pm 0.05$ & 24.1 \\
         \bottomrule
     \end{tabular}
-    \caption{Confronto analitico tra le due forme d'onda per $t_{pulse}=5 \mu s$}
+    \caption{confronto analitico tra le due forme d'onda per $t_{pulse}=5 \mu s$}
 \end{table}
 
 
@@ -1038,7 +1028,7 @@ per il valore di $t$ di Student l'ipotesi di non correlazione è stata rifiutata
         $ \lambda \geq $  5     &Non compatibile        \\
         \bottomrule
     \end{tabular}
-    \caption{Indicazioni lettura compatibilità}
+    \caption{indicazioni lettura compatibilità}
     \label{tab:compatibilità}
 \end{table}
 
@@ -1057,7 +1047,7 @@ per il valore di $t$ di Student l'ipotesi di non correlazione è stata rifiutata
         10 & -848 & 200 \\
         \bottomrule
     \end{tabular}
-    \caption{Verifica linearità tra durata impulso e $V_{pre}^{max}$ nel preamplificatore}
+    \caption{verifica linearità tra durata impulso e $V_{pre}^{max}$ nel preamplificatore}
 \end{table}
 
 \begin{table}[H]
@@ -1077,7 +1067,7 @@ per il valore di $t$ di Student l'ipotesi di non correlazione è stata rifiutata
         404 & -26 \\
         \bottomrule
     \end{tabular}
-    \caption{Misura scarica RC}
+    \caption{misura scarica RC}
 \end{table}
 
 \begin{table}[H]
@@ -1099,7 +1089,7 @@ per il valore di $t$ di Student l'ipotesi di non correlazione è stata rifiutata
         819628 & 1.05 & 200 & 21.6 mV& 20 mV\\
         \bottomrule
     \end{tabular}
-    \caption{Risposta in frequenza del preamplificatore}
+    \caption{risposta in frequenza del preamplificatore}
 \end{table}
 
 
@@ -1125,7 +1115,7 @@ per il valore di $t$ di Student l'ipotesi di non correlazione è stata rifiutata
         85.2 & 24 \\
         \bottomrule
     \end{tabular}
-    \caption{Forma d'onda dello shaper}
+    \caption{forma d'onda dello shaper}
 \end{table}
 
 
@@ -1148,7 +1138,7 @@ per il valore di $t$ di Student l'ipotesi di non correlazione è stata rifiutata
         953674 & 992 mV & 200 & 11.2 & 20\\
         \bottomrule
     \end{tabular}
-    \caption{Risposta in frequenza dello shaper}
+    \caption{risposta in frequenza dello shaper}
 \end{table}
 
 
@@ -1165,7 +1155,7 @@ per il valore di $t$ di Student l'ipotesi di non correlazione è stata rifiutata
         10 & -292 & 50 \\
         \bottomrule
     \end{tabular}
-    \caption{Verifica linearità tra durata impulso e $V_{sh}^{max}$ nello shaper}
+    \caption{verifica linearità tra durata impulso e $V_{sh}^{max}$ nello shaper}
 \end{table}
 
 
@@ -1182,7 +1172,7 @@ per il valore di $t$ di Student l'ipotesi di non correlazione è stata rifiutata
         10 & 2.3 V & 500 \\
         \bottomrule
     \end{tabular}
-    \caption{Verifica linearità tra durata impulso e $V_{out}$ nella catena elettronica}
+    \caption{verifica linearità tra durata impulso e $V_{out}$ nella catena elettronica}
 \end{table}
 
 
@@ -1205,7 +1195,7 @@ per il valore di $t$ di Student l'ipotesi di non correlazione è stata rifiutata
         819628 & 1.05 & 200 & 3.2 mV & 20 mV\\
         \bottomrule
     \end{tabular}
-    \caption{Risposta in frequenza della catena elettronica}
+    \caption{risposta in frequenza della catena elettronica}
 \end{table}
 
 
