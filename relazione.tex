@@ -211,7 +211,7 @@ Si riporta il grafico di tempi e lograitmi delle tensioni, interpolati linearmen
 \centering
 \includegraphics[scale=0.4, angle=0]{preampRC.pdf}
 \caption{relazione lineare tra logaritmi delle tensioni e tempi}
-\label{fig:QinvsVpre}
+\label{fig:QinvsVsh}
 \end{figure}
 \end{center}
 
@@ -220,7 +220,7 @@ Si riporta il grafico di tempi e lograitmi delle tensioni, interpolati linearmen
 \centering
 \includegraphics[scale=0.4, angle=0]{preampRCresidui.pdf}
 \caption{grafico dei residui della relazione tra $\log V$ e t}
-\label{fig:QinvsVpreRESIDUI}
+\label{fig:QinvsVshRESIDUI}
 \end{figure}
 \end{center}
 
@@ -238,7 +238,7 @@ Si riporta il grafico di tempi e lograitmi delle tensioni, interpolati linearmen
 
 Si osserva la buona riuscita del fit, che verifica la scarica RC del circuito al termine dell'impulso.
 Tuttavia è possibile notare una forte sovrastima degli errori sia visivamente osservando il grafico dei
-residui in Figura \ref{fig:QinvsVpreRESIDUI}, sia osservando il valore molto piccolo di $\chi^{(2)}$
+residui in Figura \ref{fig:QinvsVshRESIDUI}, sia osservando il valore molto piccolo di $\chi^{(2)}$
 
 Dal valore della pendenza, come anticipato prima, ricaviamo una stima di $\tau_{pre}^{sper}$. A scopo di controllo, è inoltre possibile 
 ottenere una valutazione di $V_{pre}^{max}$ usando il parametro di offset a sapendo $V_{pre}^{max} = e^a$. Si riportano quindi i due
@@ -312,7 +312,7 @@ dunque i seguenti parametri di interpolazione:
     \centering
     \includegraphics[scale=0.4, angle=0]{residuipreamplineare.pdf}
     \caption{residui dell'interpolazione lineare della discesa}
-    \label{fig:bodepreamp_res}
+    \label{fig:bodepreamp_res_lineare}
     \end{figure}
 \end{center}
 
@@ -440,7 +440,7 @@ mostrano tale problematica:
     \centering
     \includegraphics[scale=0.375, angle=0]{residui_forma_onda_no_pz.pdf}
     \caption{residui della risposta dello shaper a un'onda quadra}
-    \label{fig:forma_no_pz}
+    \label{fig:forma_no_pz_residui}
     \end{figure}
 \end{center}
 
@@ -583,7 +583,7 @@ Si riporta quindi di seguito lo schema del circuito dello shaper compensato:
     \centering
     \includegraphics[scale=0.3, angle=0]{shapercomp.pdf}
     \caption{circuito formatore con compensazione}
-    \label{fig:shaper}
+    \label{fig:shaper_pz}
     \end{figure}
 \end{center}
 dove $V_1$ è il segnale in uscita dal preamplificatore.
@@ -656,7 +656,7 @@ l'impedenza di ingresso è l'impedenza interna dell'opamp $U_1$, che si può con
     \centering
     \includegraphics[scale=0.26, angle=0]{catena.pdf}
     \caption{circuito amplificatore invertente}
-    \label{fig:shaper}
+    \label{fig:invertnete}
     \end{figure}
 \end{center}
 
@@ -745,7 +745,7 @@ su LTspice e il modello teorico espresso dalla \ref{eqn:catena_trasf}.
 \centering
 \includegraphics[scale=0.4, angle=0]{bodecatena.pdf}
 \caption{grafico di Bode della risposta in frequenza della catena elettronica}
-\label{fig:catenaQvsV}
+\label{fig:catenaBODE}
 \end{figure}
 \end{center}
 
@@ -754,7 +754,7 @@ su LTspice e il modello teorico espresso dalla \ref{eqn:catena_trasf}.
 \centering
 \includegraphics[scale=0.4, angle=0]{bodecatenaresidui.pdf}
 \caption{grafico dei residui tra dati sperimentali e modello}
-\label{fig:catenaQvsV_res}
+\label{fig:catenaBODE_res}
 \end{figure}
 \end{center}
 
@@ -856,7 +856,7 @@ in conteggi: il parametro $b$ fornirà il fattore di conversione mV/counts, ment
 \centering
 \includegraphics[scale=0.4, angle=0]{calibverticale.pdf}
 \caption{calibrazione verticale}
-\label{fig:calibtempi}
+\label{fig:calibverticale}
 \end{figure}
 \end{center}
 
