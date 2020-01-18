@@ -63,15 +63,18 @@ due multimetri digitali (Metrix 32292 e Agilent U1230) e una scheda Arduino Due.
 Si è inoltre fatto uso di due integrati TL082C contenenti in tutto 4 amplificatori operazionali.
 
 I circuiti studiati sono stati costruiti sulla basetta millefori alimentando gli amplificatori operazionali come nello schema riportato 
-in figura \ref{fig:alimentazione}, in particolare si è fatto uso del modello TL082 JFET; dopodiché si sono 
-costruiti i circuiti da studiare;  i valori misurati di resistenze e capacità utilizzate verranno riportati in seguito.
-Si è inoltre fatto uso di due sonde con fattore di attenuazione 10x precedentemente compensate per la visualizzazione del 
+in Figura \ref{fig:alimentazione}
+
+I valori misurati di resistenze e capacità utilizzate verranno riportati in seguito, mentre la procedura per identificare le incertezze
+è descritta in appendice.
+
+Infine si è fatto uso di due sonde con fattore di attenuazione 10x precedentemente compensate per la visualizzazione del 
 segnale nei due canali dell'oscilloscopio.
 
 Per l'analisi dati sono stati utilizzati programmi scritti in c++, root ed Excel.
 
 \begin{center}
-\begin{figure}[H]
+\begin{figure}[ht]
 \centering
 \includegraphics[scale=0.28, angle=0]{alimentazione.pdf}
 \caption{ schema per l'alimentazione dell'operazionale }
@@ -85,30 +88,25 @@ Per l'analisi dati sono stati utilizzati programmi scritti in c++, root ed Excel
 
 Lo scopo dell'esperienza completa è costruire un circuito che possa rilevare piccoli segnali, amplificarli tanto da poterli processare con più facilità
 e poi amplificarli ulteriormente per offrirli allo sperimentatore. Il primo passo della realizzazione di tale \textit{catena elettronica} è il circuito
-preamplificatore. Qui il generatore di funzione è utilizzato proprio per simulare piccoli segnali di cui sopra analoghi a quelli che proverrebbero tipicamente 
+preamplificatore. Qui il generatore di funzioni è utilizzato proprio per simulare piccoli segnali di cui sopra analoghi a quelli che proverrebbero tipicamente 
 da esperienze di spettrocopia: si forniscono dunque in ingresso impulsi di tensione (PULSE) come quelli che produrrebbe il passaggio di una radiazione ionizzante in 
 un volume di gas. 
-Si è dunque costruito il circuito come in figura
-
+Si è dunque costruito il circuito come in Figura \ref{fig:preamp}
 \begin{center}
-\begin{figure}[H]
+\begin{figure}[ht]
 \centering
 \includegraphics[scale=0.3, angle=0]{preamp.pdf}
 \caption{ circuito amplificatore di carica }
 \label{fig:preamp}
 \end{figure}
 \end{center}
-
-la cui funzione di trasferimento è data, nel formalismo di Laplace, da
-
+La funzione di trasferimento è data, nel formalismo di Laplace, da
 \begin{equation}
     \label{eqn:preamp_Laplace}
     H(s) = -\frac{R_{pre}}{R_{in}} \frac{1}{1+sR_{pre}C_{pre}}
 \end{equation}
-
 in cui possiamo effettuare la sostituzione $s \longleftrightarrow i\omega$ per riprodurre la soluzione stazionaria. Considerando poi
 solamente il modulo, e definendo il tempo caratteristico $\tau_{pre}=R_{pre}C_{pre}$, avremo
-
 \begin{equation}
     \label{eqn:preamp_trasf}
     H(\omega) = \frac{R_{pre}}{R_{in}} \frac{1}{\sqrt{1+\omega^2\tau_{pre}^2}}
@@ -135,28 +133,28 @@ dettata da
 
 \subsection{Discussione dati}
 
-Si precisa che sono stati suggeriti dei valori per i parametri del circuito $\tau_{pre,th} = 220 \mu s$ e $C_{pre} = 450 pF$, con $R_{pre}$ calcolato di 
+Si precisa che sono stati suggeriti dei valori per i parametri del circuito $\tau_{pre,th} = 220 \mu$s e $C_{pre} = 450$ pF, con $R_{pre}$ calcolato di 
 conseguenza. Pertanto i valori misurati con il multimetro sono
 \begin{align*}
-    R_{pre} = (475.4 \pm 0.2)k\Omega \quad \sigma_{\%}=0.04 \% \\    
-    C_{pre} = (149 \pm 14) pF \quad \sigma_{\%}=3.1 \%    \\
-    \tau_{pre,th} = (213 \pm 7)\mu s \quad \sigma_{\%}=3.1 \%     \\
+    R_{pre} = (475.4 \pm 0.2)\text{k}\Omega \quad \sigma_{\%}=0.04 \% \\    
+    C_{pre} = (149 \pm 14) \text{pF} \quad \sigma_{\%}=3.1 \%    \\
+    \tau_{pre,th} = (213 \pm 7)\mu \text{s} \quad \sigma_{\%}=3.1 \%     \\
 \end{align*}
-Si è dunque impostato un impulso della durata di $T_{pulse}$ = $2 \mu s$: sapendo inoltre che la carica da iniettare 
-corrispondeva a $Q_{in}^{th}$ = $80 pC$ e che la resistenza di ingresso scelta misurava $R_{in}=(26.64\pm0.01) k\Omega$ ($\sigma_{\%}=0.04\%$), 
+Si è dunque impostato un impulso della durata di $T_{pulse}$ = $2 \mu$s: sapendo inoltre che la carica da iniettare 
+corrispondeva a $Q_{in}^{th}$ = 80 pC e che la resistenza di ingresso scelta misurava $R_{in}=(26.64\pm0.01)$ k$\Omega$ ($\sigma_{\%}=0.04\%$), 
 si è selezionata l'altezza $V_{in}$ dell'impulso in modo che fosse soddisfatta la relazione
 \begin{equation}
     \label{eqn:Qin}
     Q_{in} = \frac{V_{in}}{R_{in}} T_{pulse}.
 \end{equation}
-Ne si è ricavato $V_{in}^{th}$ =1.06 V. Per controllare la correttezza del circuito si è misurato il picco $V_{pre}^{max}$,
+Ne si è ricavato $V_{in}^{th} =1.06 $V. Per controllare la correttezza del circuito si è misurato il picco $V_{pre}^{max}$,
 dato, utilizzando l'approssimazione della \ref{eqn:Vout1_preamp}, da
 \begin{equation}
     \label{eqn:Vpre_max}
     V_{pre}^{max} = -\frac{R_{pre}}{R_{in}} V_{in} \frac{T_{pulse}}{\tau_{pre}} = - \frac{Q_{in}}{C_{pre}}
 \end{equation}
-da cui, inserendo il valore misurato $V_{in}^{th}=(1.02\pm 0.02) V$, si ricava $V_{pre,th}^{max} =  (-170 \pm 6) mV$. Invece dalla 
-misura si ottiene $V_{pre,sper}^{max} = (-176 \pm 4) mV$, per cui $\lambda = 0.76$ e lo scostamento percentuale è $\epsilon = 3.2 \%$, 
+da cui, inserendo il valore misurato $V_{in}^{th}=(1.02\pm 0.02) $V, si ricava $V_{pre,th}^{max} =  (-170 \pm 6) $mV. Invece dalla 
+misura si ottiene $V_{pre,sper}^{max} = (-176 \pm 4) $mV, per cui $\lambda = 0.76$ e lo scostamento percentuale è $\epsilon = 3.2 \%$, 
 ossia il valore misurato è ottimamente compatibile con quello atteso.
 
 Si è inoltre la verificata la linearità tra $Q_{in}$ e $V_{pre}^{max}$ descritta da \ref{eqn:Vpre_max} variando la durata dell'impulso
@@ -198,7 +196,7 @@ gli errori di entrambe le coordinate, poichè nessuno dei
 due errori relativi è risultato trascurabile rispetto all'altro.
 Gli estimatori danno tutti risposta positiva, quindi possiamo concludere che la relazione lineare è ben verificata.
 Inoltre dal valore di pendenza, considerando la legge lineare \ref{eqn:Vpre_max}, è possibile ottenere una stima sperimentale della capacità $C_{pre}$, 
-da confrontare con il valore misurato. Si ricava quindi $C_{pre,sper} = (452\pm 10)pF$, che ha $\lambda = 0.15 $ rispetto al valore misurato.
+da confrontare con il valore misurato. Si ricava quindi $C_{pre,sper} = (452\pm 10)$pF, che ha $\lambda = 0.15 $ rispetto al valore misurato.
 
 Inoltre dallo studio della \ref{eqn:Vout2_preamp}, e in particolare della sua linearizzazione logaritmica, è possibile ricavare
 una stima sperimentale di $\tau_{pre}$. Infatti applicando il logaritmo naturale si ottiene
@@ -222,7 +220,7 @@ Si riporta il grafico di tempi e lograitmi delle tensioni, interpolati linearmen
 \centering
 \includegraphics[scale=0.4, angle=0]{preampRCresidui.pdf}
 \caption{grafico dei residui della relazione tra $\log V$ e t}
-\label{fig:QinvsVpre}
+\label{fig:QinvsVpreRESIDUI}
 \end{figure}
 \end{center}
 
@@ -239,15 +237,19 @@ Si riporta il grafico di tempi e lograitmi delle tensioni, interpolati linearmen
 \end{table}
 
 Si osserva la buona riuscita del fit, che verifica la scarica RC del circuito al termine dell'impulso.
+Tuttavia è possibile notare una forte sovrastima degli errori sia visivamente osservando il grafico dei
+residui in Figura \ref{fig:QinvsVpreRESIDUI}, sia osservando il valore molto piccolo di $\chi^{(2)}$
 
 Dal valore della pendenza, come anticipato prima, ricaviamo una stima di $\tau_{pre}^{sper}$. A scopo di controllo, è inoltre possibile 
 ottenere una valutazione di $V_{pre}^{max}$ usando il parametro di offset a sapendo $V_{pre}^{max} = e^a$. Si riportano quindi i due
 valori calcolati con i loro errori calcolati per propagazione.
 
-\[\tau_{pre}^{sper} = (213 \pm 6)\mu s \quad \sigma_{\%} = 2.9 \%    \]
-\[V_{pre}^{max} = (-172 \pm 3)mV \quad \sigma_{\%} = 2.0 \%\]
+\[\tau_{pre}^{sper} = (213 \pm 6)\mu \text{s} \quad \sigma_{\%} = 2.9 \%    \]
+\[V_{pre}^{max} = (-172 \pm 3)\text{mV} \quad \sigma_{\%} = 2.0 \%\]
 che risultano ottimamente compatibili con i valori attesi  $\tau_{pre}^{th}$ e $V_{pre,th}^{max}$, in quanto $\lambda_{\tau} = 0.01$
 e $\lambda_{V}=0.2$.
+ 
+\medskip
 
 Si è infine effettuato uno studio in frequenza del circuito con lo scopo di verificare la \ref{eqn:preamp_trasf}, variando la frequenza
 e verificando il variare del modulo dell'amplificazione di fronte a un ingresso sinusoidale.
@@ -283,7 +285,7 @@ frequenze, mentre per alte frequenze tendono a discostarsi, anche in modo
 significativo da esso. Si osserva quindi un valore di $\chi^{(2)} \approx 43$ del tutto 
 incompatibile con il suo valore di aspettazione ($gdl = 8$). 
 
-La natura di tali problematiche è da ricercarsi in effetti trascurati quali capacità parassite della breadboard utilizzata o
+La natura di tali problematiche è da ricercarsi in effetti trascurati, quali capacità parassite della breadboard utilizzata o
 altri fenomeni che causano la non idealità dell'esperimento.
 
 Come si può notare in Figura \ref{fig:bodepreamp} si è effettuato anche un
@@ -317,7 +319,7 @@ dunque i seguenti parametri di interpolazione:
 Si nota che il valore di slope non è di fatto
 compatibile con il valore atteso: questa
 problematica potrebbe essere dovuta a una sottostima degli
-errori. In alternativa, è possibile che i primi dati possano
+errori. In alternativa, è possibile che gli ultimi dati possano
 avere qualche bias: infatti escludendo questi punti dal fit si
 ottiene un valore di pendenza compatibile con il valore di
 aspettazione. Si evita tuttavia di scartare dati: si otterrebbe
@@ -383,7 +385,7 @@ dal dominio delle frequenze:
     
 
 \subsubsection{Discussione dei dati}
-Si è nuovamente impostata sul generatore di funzioni un'onda quadra di frequenza di 100 Hz e ampiezza misurata pari a $V_{0}=(992 \pm 15)mV$
+Si è nuovamente impostata sul generatore di funzioni un'onda quadra di frequenza di 100 Hz e ampiezza misurata pari a $V_{0}=(992 \pm 15)$mV
 in modo che simuli il comportamento di un preamplificatore ideale che mantenga il segnale alto per un tempo indefinito.
 
 Sapendo che $\tau_{th}=R_{sh}^{(1)} C_{sh}^{(1)} = R_{sh}^{(2)} C_{sh}^{(2)}=15 \mu s$ si sono scelti e misurati i seguenti valori:
@@ -394,12 +396,11 @@ R_{sh}^{(2)} = (68.075  \pm 0.03)k\Omega \quad\quad \sigma_{\%}=  0.04\% \\
 C_{sh}^{(1)}= (234 \pm  9)pF \quad\quad \sigma_{\%}= 4 \% \\
 C_{sh}^{(2)}= (234 \pm  9)pF \quad\quad \sigma_{\%}= 4 \% \\
 \end{align*}
-
 dove l'errore è stato calcolato secondo quanto scritto in appendice. %tenendo conto delle specifiche del multimetro Metrix 32292 relative
 %ad un fondoscala di 100 k$\Omega$ per le resistenze e di 1000 pF per le misure delle capacità.
 
-Mediante i cursori si è quindi misurato il valore massimo (in valore assoluto) $V_{sh}^{max}=(346 \pm 6)mV$ e il tempo corrispondente 
-$\tau_{sh}^{max}=(16 \pm 1)\mu s$.
+Mediante i cursori si è quindi misurato il valore massimo (in valore assoluto) $V_{sh}^{max}=(346 \pm 6)$mV e il tempo corrispondente 
+$\tau_{sh}^{max}=(16 \pm 1)\mu$ s.
 
 Si è poi verificata la correttezza del trasferimento immettendo nel circuito un'onda quadra di ampiezza 1V e misurando un set di 10 punti 
 della curva in uscita, indicata dal modello in \ref{eqn:V_sh}. In particolare però per l'identificazione della curva teorica si è 
@@ -447,8 +448,11 @@ mostrano tale problematica:
 Si nota che i dati non sono compatibili con il modello teorico, in quanto pur riproducendone l'andamento risultano sensibilmente 
 staccati, in particolare in prossimità del picco. La forma \ref{eqn:V_sh} ha massimo in $V_0$/e, ossia il picco è proporzionale all'altezza dell'impulso
 inserito, per cui si dovrebbe avere $V_{sh,th}^{max}$ = $(365 \pm 5) mV $, mentre si è misurato  $V_{sh}^{max}=(346 \pm 6)mV$. La compatibilità è $\lambda=2.3$,
-accettabile, ma non ottima. Da una parte abbiamo quindi il cattivo $\chi^{(2)}$, dall'altra una compatibilità accettabile tra i due picchi: si potrebbe dunque 
-sospettare una certa sottostima degli errori, che però non sembra sufficiente a spiegare un tale distacco dei dati dal modello.
+accettabile, ma comunque pessima. Da una parte abbiamo quindi il cattivo $\chi^{(2)}$, dall'altra una compatibilità accettabile tra i due picchi: si potrebbe dunque 
+sospettare una certa sottostima degli errori, che però non sembra sufficiente a spiegare un tale distacco dei dati dal modello, che sembrerebbe 
+sistematico, in quanto i dati tendono a rimanere sempre al di sotto della curva teorica.
+
+
 %Sembra dunque che nel circuito costruito in laboratorio il segnale erogato dal generatore si attenui leggermente all'ingresso del
 %circuito, forse a causa di un settaggio non corretto di \textit{input impedance} nelle opzioni del generatore di funzioni  ????
 
@@ -461,12 +465,13 @@ Osservando anche la curva ottenuta dalla simulazione spice si nota che
 essa risulta molto fedele alla curva ottenuta con il fit, quindi il problema
 sembrerebbe essere sui dati.
 
-Tale problematica potrebbe essere dovuta a impostazioni sbagliate nell'onda in ingresso,
+Tale problematica potrebbe essere riconducibile ad un errore umano, dovuto a impostazioni sbagliate nell'onda in ingresso,
 come ad esempio l'ampiezza dell'onda, o in alternativa
 a qualche bias dovuta ancora alla non idealità del circuito.
+ 
+\medskip
 
-
-Si è infine nuovamente studiato il comportamento del circuito al variare della frequenza (le misure sono riportate in appendice). Si è 
+Si è infine nuovamente studiato il comportamento del circuito al variare della frequenza. Si è 
 ottenuto il seguente grafico di Bode (Figura \ref{fig:bodeshaper_no_pz}), al fine di ottenere un confronto immediato sono plottate 
 sovrapposte la curva teorica relativa ai dati sperimentali ed il fit dei dati ottenuti mediante la simulazione di LT-spice:
 
@@ -593,7 +598,7 @@ Studiando infine la funzione di trasferimento dell'intero circuito  mediante la 
 \subsubsection{Discussione dei dati}
 
 Si è osservato che senza utilizzare lo shaper base per un segnale esponenziale come quello fornito dal preamplificatore si ottiene il 
-fenomeno dell'undershoot: infatti unendo preamp e shaper si è misurato $V_{sh, undershoot}=(346 \pm 6)mV$ (l'undershoot è positivo poichè
+fenomeno dell'undershoot: infatti unendo preamplificatore e shaper si è misurato $V_{sh, undershoot}=(346 \pm 6)mV$ (l'undershoot è positivo poichè
 il segnale è ribaltato a causa della natura invertente del preamplificatore). Inserendo invece la resistenza 
 $R_{pz} = (668.0 \pm 3) k\Omega$ si vede che l'effetto di undershoot sparisce e il segnale si adagia correttamente sullo zero 
 delle tensioni.
@@ -830,16 +835,7 @@ delle ascisse.
 \end{figure}
 \end{center}
 
-%\begin{center}
-%\begin{figure}[H]
-%\centering
-%\includegraphics[scale=0.4, angle=0]{calibtempiresidui.pdf}
-%\caption{Residui del fit di calibrazione temporale}
-%\label{fig:calibtempiresidui}
-%\end{figure}
-%\end{center}
-
-Ne si ricava che il software acquisisce un punto in ogni intervallo pari alla slope b, ossia ogni $(1.0490 \pm 0.0002)\mu s$.
+Ne si ricava che il software acquisisce un punto in ogni intervallo pari alla slope b, ossia ogni $(1.0490 \pm 0.0002)\mu $s.
 Inoltre, come atteso il valore di offset risulta compatibile con lo 0.
 
 Per la calibrazione verticale sulle tensioni si sono immesse nel circuito onde quadrate tra 0 e una tensione di altezza variabile, 
@@ -867,14 +863,18 @@ in conteggi: il parametro $b$ fornirà il fattore di conversione mV/counts, ment
 Il valore acquisito da arduino dovrà quindi essere moltiplicato per la slope ($0.775 \pm 0.009)$mV/counts
 e traslato dell'offset ($-574 \pm 17$) mV.
 
+L'algortimo utilizzato in questo caso individua i punti nel plateu superiore e in quello 
+inferiore, e effettua di tali punti a serie di medie, escludendo di volta in volta i punti che si discostano
+per più di $3\sigma$.
+
 
 
 Effettuata dunque la calibrazione, si è acquisita la forma d'onda in uscita dalla catena elettronica completa con in input il solito
-impulso di tensione, partendo da una durata di $10 \mu s$ e diminuendola via via di un'unità ad ogni nuova acquisizione.
+impulso di tensione, partendo da una durata di $10 \mu $s e diminuendola via via di un'unità ad ogni nuova acquisizione.
 
 Si riportano di seguito, per evitare risultati ripetitivi, solamente due grafici di confronto tra la forma d'onda acquisita dalla scheda e opportunamente 
 convertita con i parametri ottenuti dalla
-calibrazione e la simulazione ottenuta dal software LTspice; uno dei due grafici si riferisce a un impulso in ingresso di durata 10 $\mu s$, l'altro di 2 $\mu s$.
+calibrazione e la simulazione ottenuta dal software LTspice; uno dei due grafici si riferisce a un impulso in ingresso di durata 10 $\mu $s, l'altro di 2 $\mu $s.
 Per realizzare al meglio tale sovrapposizione grafica, si è dovuto allineare il primo picco della simulazione con quello restituito dalla scheda, poiché Arduino
 presenta un delay temporale nell'acquisizione che ostacola un corretto allineamento delle due curve.
 
@@ -900,8 +900,8 @@ presenta un delay temporale nell'acquisizione che ostacola un corretto allineame
 
 Oltre al confronto grafico, si è eseguita anche un'analisi dei picchi (due per ciascun grafico): nello specifico, poichè il campionamento risulta sufficientemente fitto, si è preso il massimo
 acquisito come riferimento. Si è anche calcolata la distanza in 
-$\sigma_{Ard}$ tra il picco simulato e acquisito, dove $\sigma_{Ard}$ è l'errore associato al massimo: l'errore sui punti della simulazione
-è considerao trascurabile, motivo per cui la distanza è valutata solamente in unità di errore dei punti do Arduino.
+$\sigma$ tra il picco simulato e acquisito, dove $\sigma$ è l'errore associato al massimo: l'errore sui punti della simulazione
+è considerao trascurabile, motivo per cui la distanza è valutata solamente in unità di errore dei dati sperimentali.
 Inoltre, si riporta un controllo asintotico della distanza in forma di compatibilità tra le code delle due forme d'onda, per verificare che queste 
 si adagino correttamente allo zero: in particolare si è scelto un intervallo di tempo appena precedente all'innalzamento del secondo picco e si è eseguita la media
 pesata tra i valori di tensione associati agli estremi di tale intervallo, con errore fornito dall'errore della media pesata. Nel caso della forma simulata, priva di 
@@ -919,18 +919,18 @@ e infine il controllo della distanza delle tensioni asintotica $V_{as}$.
     \centering
     \begin{tabular}{cccc}
         \toprule
-                        & Arduino & simulazione & compatibilità \\
+                        & Arduino & Simulazione & Compatibilità \\
         \midrule
-        $V_{peak}^{(1)}$ (mV)&   $2086 \pm 36$ & $2046.19$ & 1.1 $\sigma_{Ard}$\\
-        $V_{peak}^{(2)}$ (mV)&   $2088 \pm 36$ & $2047.7$ & 1.1 $\sigma_{Ard}$\\
-        $t_{peak}^{(2)}$ ($\mu s$)&   $1206.9 \pm 0.2$ & $1205.69$ & 6.4 $\sigma_{Ard}$\\
+        $V_{peak}^{(1)}$ (mV)&   $2086 \pm 36$ & $2046.19$ & 1.1 $\sigma$\\
+        $V_{peak}^{(2)}$ (mV)&   $2088 \pm 36$ & $2047.7$ & 1.1 $\sigma$\\
+        $t_{peak}^{(2)}$ ($\mu s$)&   $1206.9 \pm 0.2$ & $1205.69$ & 6.4 $\sigma$\\
         $V_{as}$       (mV)&   $51 \pm 2$ & $2.03 \pm 0.09$ & 24.3 \\
         \bottomrule
     \end{tabular}
     \caption{confronto analitico tra le due forme d'onda per $t_{pulse}=10 \mu s$}
 \end{table}
 
-Si  precisa che per "compatibilità" si intende "distanza in $\sigma_{Ard}$" laddove l'errore sulla simulazione è considerato trascurabile; invece 
+Si  precisa che per "compatibilità" si intende "distanza in $\sigma$" laddove l'errore sulla simulazione è considerato trascurabile; invece 
 la compatibilità per $V_{as}$ è quella "tradizionale" alla luce del metodo
 precedentemente descritto , in quanto disponiamo di entrambi gli errori.
 
@@ -940,11 +940,11 @@ I risultati del caso $t_{pulse}=2 \mu s$ sono del tutto analoghi:
     \centering
     \begin{tabular}{cccc}
         \toprule
-                        & Arduino & simulazione & compatibilità \\
+                        & Arduino & Simulazione & Compatibilità \\
         \midrule
-        $V_{peak}^{(1)}$ (mV)&   $438 \pm 21$ & $416.375$ & 1.0 $\sigma_{Ard}$\\
-        $V_{peak}^{(2)}$ (mV)&   $437 \pm 21$ & $416.679$ & 1.0 $\sigma_{Ard}$\\
-        $t_{peak}^{(2)}$ ($\mu s$)&   $1203.7 \pm 0.2$ & $1202.54$ & 6.4 $\sigma_{Ard}$\\
+        $V_{peak}^{(1)}$ (mV)&   $438 \pm 21$ & $416.375$ & 1.0 $\sigma$\\
+        $V_{peak}^{(2)}$ (mV)&   $437 \pm 21$ & $416.679$ & 1.0 $\sigma$\\
+        $t_{peak}^{(2)}$ ($\mu s$)&   $1203.7 \pm 0.2$ & $1202.54$ & 6.4 $\sigma$\\
         $V_{as}$       (mV)&   $56 \pm 2$ & $0.4 \pm 0.02$ & 25.5 \\
         \bottomrule
     \end{tabular}
@@ -955,8 +955,6 @@ Il risultato è chiaro: nonostante la compatibilità tra i due picchi risulti bu
 un certo offset che la calibrazione non riesce a prevedere. Si nota anche una certa incompatibilità tra gli istanti di tempo del secondo picco, che segnala 
 un problema anche nella distribuzione temporale.
 
-Le problematiche sono quindi da ricercare in prima battuta sullo svolgimento della calibrazione, in cui non si riesce ad includere la sistematicità di tale fenomeno;
-eventualmente potrebbero essere presenti nel circuito altri fenomeni elettronici ignorati.
 
 A scopo esemplificativo si riporta anche il caso $t_{pulse}=5 \mu s$, ancora in linea con le considerazioni fatte. In realtà è stata effettuata tale analisi per tutti 
 i valori interi intermedi tra quelli considerati, tuttavia non vengono riportati poiché i risultati risultano sempre gli stessi e riportarli risulterebbe ridondante.
@@ -965,18 +963,25 @@ i valori interi intermedi tra quelli considerati, tuttavia non vengono riportati
     \centering
     \begin{tabular}{cccc}
         \toprule
-                        & Arduino & simulazione & compatibilità \\
+                        & Arduino & Simulazione & Compatibilità \\
         \midrule
-        $V_{peak}^{(1)}$ (mV)&   $1049 \pm 26$ & $1036.72$ & 0.5 $\sigma_{Ard}$\\
-        $V_{peak}^{(2)}$ (mV)&   $1047 \pm 26$ & $1037.44$ & 0.4 $\sigma_{Ard}$\\
-        $t_{peak}^{(2)}$ ($\mu s$)&   $1205.8 \pm 0.2$ & $1203.59$ & 12.2 $\sigma_{Ard}$\\
+        $V_{peak}^{(1)}$ (mV)&   $1049 \pm 26$ & $1036.72$ & 0.5 $\sigma$\\
+        $V_{peak}^{(2)}$ (mV)&   $1047 \pm 26$ & $1037.44$ & 0.4 $\sigma$\\
+        $t_{peak}^{(2)}$ ($\mu s$)&   $1205.8 \pm 0.2$ & $1203.59$ & 12.2 $\sigma$\\
         $V_{as}$       (mV)&   $53 \pm 2$ & $1.07 \pm 0.05$ & 24.1 \\
         \bottomrule
     \end{tabular}
     \caption{confronto analitico tra le due forme d'onda per $t_{pulse}=5 \mu s$}
 \end{table}
 
+Le problematiche sono chiare: la calibrazione difettosa porta a problematiche nella posizione dello zero.
+In realtà anche il valore della slope nella calibrazione ha dei problemi che però sono nascosti dalla buona compatibilità 
+dei picchi sperimentali con quelli simulati. Tuttavia la covarianza tra i due parametri di interpolazione è ovviamente non nulla,
+non è quindi sufficiente individuare l'offset dello zero e traslare il segnale di conseguenza: si andrebbe a perdere compatiblità in presenza
+del segnale. 
 
+Ci sono inoltre evidenti criticità anche sulla calibrazione temporale, sottolineate dall'incompatibilità del periodo del segnale misurato e quello 
+simulato.
 
 
 \section{Conclusioni}
@@ -993,10 +998,12 @@ funzionamento non pulito dei suoi componenti.
 Da queste problematiche è naturale aspettarsi che il grafico di Bode del circuito completo non sia perfetto: in effetti la pendenza della discesa lineare è di nuovo
 incompatibile.
 
-Ma mentre queste complicazioni possono facilmente spiegarsi alla luce del non perfetto apparato strumentale, è più difficile spiegare i cattivi risultati emersi dall'
-analisi della scheda Arduino, che costituiscono il problema principale dell'esperienza. 
-Le acquisizioni infatti sembrano descrivere solo sommariamente i dati e producono problemi di compatibilità, primp tra tutti il forte offset asintotico di tensione. 
-Tali incongruenze sono probabilmetne legate a una cattiva riuscita della calibrazione, ma è possibile che le problematiche sorgano dal fatto che l'acquisizione si è 
+Ma, mentre queste complicazioni possono probabilmente spiegarsi alla luce del non perfetto apparato strumentale, è più difficile spiegare i cattivi risultati emersi 
+dall'analisi dei dati acquisito con la scheda Arduino, che costituiscono il problema principale dell'esperienza. 
+Le acquisizioni infatti sembrano descrivere solo sommariamente i dati e producono problemi di compatibilità, primo tra tutti il forte offset asintotico di tensione. 
+Tali incongruenze sono probabilmente legate a una cattiva riuscita della calibrazione. I problemi di quest'ultima risultano 
+difficili da individuare: potrebbero essere dovuti a problemi della scheda di acquisizione, cosi come a problematiche nell'algoritmo di ricerca dei massimi e dei periodi.
+Non si esclude nemmeno che le problematiche sorgano dal fatto che l'acquisizione si è 
 svolta una settimana dopo il resto della presa dati, e il circuito, seppur riposto e recuperato identico, potrebbe aver subito qualche modifica accidentale e 
 imprevedibile.
 
@@ -1115,6 +1122,27 @@ per il valore di $t$ di Student l'ipotesi di non correlazione è stata rifiutata
     \caption{risposta in frequenza del preamplificatore}
 \end{table}
 
+\begin{table}[H]
+    \centering
+    \begin{tabular}{ccccc}
+        \toprule
+        f (Hz) & $V_{in}$ & div (mV) & $V_{out}$ (mV) & div (mV)\\
+        \midrule
+        100 & 1.01 V & 200 & 10.4 & 20\\
+        250 & 1.01 V& 200 & 24 & 20\\
+        625 & 1.01 V& 200 & 60 & 20\\
+        1563 & 992 mV & 200 & 144 & 20\\
+        3906 & 992 mV & 200 & 322 & 50\\
+        9766 & 992 mV & 200 & 476 & 100\\
+        24414 & 992 mV & 200 & 332 & 100\\
+        61035 & 984 mV & 200 & 151 & 20\\
+        152588 & 984 mV & 200 & 61.6 & 20\\
+        381470 & 984 mV & 200 & 24.8 & 20\\
+        953674 & 992 mV & 200 & 11.2 & 20\\
+        \bottomrule
+    \end{tabular}
+    \caption{risposta in frequenza dello shaper}
+\end{table}
 
 \begin{table}[H]
     \centering
@@ -1142,27 +1170,6 @@ per il valore di $t$ di Student l'ipotesi di non correlazione è stata rifiutata
 \end{table}
 
 
-\begin{table}[H]
-    \centering
-    \begin{tabular}{ccccc}
-        \toprule
-        f (Hz) & $V_{in}$ & div (mV) & $V_{out}$ (mV) & div (mV)\\
-        \midrule
-        100 & 1.01 V & 200 & 10.4 & 20\\
-        250 & 1.01 V& 200 & 24 & 20\\
-        625 & 1.01 V& 200 & 60 & 20\\
-        1563 & 992 mV & 200 & 144 & 20\\
-        3906 & 992 mV & 200 & 322 & 50\\
-        9766 & 992 mV & 200 & 476 & 100\\
-        24414 & 992 mV & 200 & 332 & 100\\
-        61035 & 984 mV & 200 & 151 & 20\\
-        152588 & 984 mV & 200 & 61.6 & 20\\
-        381470 & 984 mV & 200 & 24.8 & 20\\
-        953674 & 992 mV & 200 & 11.2 & 20\\
-        \bottomrule
-    \end{tabular}
-    \caption{risposta in frequenza dello shaper}
-\end{table}
 
 
 \begin{table}[H]
