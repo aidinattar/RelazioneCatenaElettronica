@@ -838,14 +838,14 @@ acquisizioni preliminari al fine di realizzare una calibrazione orizzontale (sui
 In particolare per la calibrazione orizzontale si sono utilizzate onde sinusoidali di diversa frequenza (e dunque periodo), confrontando
 il periodo T con il conteggio dei punti nell'acquisizione secondo la formula $T = a + b \cdot ch$, dove ch rappresenta il periodo in 
 counts stimato attraverso un algoritmo che individua gli zeri nella forma sinusoidale traslata in modo da essere simmetrica rispetto all'asse
-delle ascisse.
+delle ascisse. Per brevità si riporta, per entrambe le calibrazioni, un solo set di dati.
 
 \begin{center}
     \begin{figure}[H]
         \centering
         \includegraphics[scale=0.4, angle=0]{4_1.pdf}
         \setlength{\belowcaptionskip}{-20pt}
-        \caption{acquisizione forma sinusoidale}
+        \caption{acquisizione forma sinusoidale per frequenza 1 kHz}
         \label{fig:period_counts}
     \end{figure}
 \end{center}
@@ -872,7 +872,7 @@ in conteggi: il parametro $b$ fornirà il fattore di conversione mV/counts, ment
         \centering
         \includegraphics[scale=0.4, angle=0]{4_2.pdf}
         \setlength{\belowcaptionskip}{-20pt}
-        \caption{acquisizione onda quadrata}
+        \caption{acquisizione onda quadrata per tensione 200 mV}
         \label{fig:voltage_counts}
     \end{figure}
 \end{center}
