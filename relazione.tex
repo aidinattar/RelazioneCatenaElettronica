@@ -207,7 +207,7 @@ una stima sperimentale di $\tau_{pre}$. Infatti applicando il logaritmo naturale
     \log V(t) = \log V_{pre}^{max} - \frac{t}{\tau_{pre}}
 \end{equation}
 per cui si trova una relazione lineare tra $\log V(t)$ e t, da cui $\tau_{pre}$=-1/b con b slope del fit.
-Si riporta il grafico di tempi e lograitmi delle tensioni, interpolati linearmente, e il relativo grafico dei residui
+Si riporta il grafico di tempi e logaritmi delle tensioni, interpolati linearmente, e il relativo grafico dei residui
 
 \begin{center}
 \begin{figure}[H]
@@ -1039,11 +1039,11 @@ funzionamento non pulito dei suoi componenti.
 Da queste problematiche è naturale aspettarsi che il grafico di Bode del circuito completo non sia ideale: in effetti la pendenza della discesa lineare è di nuovo
 incompatibile.
 
-Ma, mentre queste complicazioni possono probabilmente spiegarsi alla luce del non perfetto apparato strumentale, è più difficile spiegare i cattivi risultati emersi 
+Tuttavia, mentre queste complicazioni possono probabilmente spiegarsi alla luce del non perfetto apparato strumentale, è più difficile giustificare i cattivi risultati emersi 
 dall'analisi dei dati acquisito con la scheda Arduino, che costituiscono il problema principale dell'esperienza. 
 Le acquisizioni infatti sembrano descrivere solo sommariamente i dati e producono problemi di compatibilità, primo tra tutti il forte offset asintotico di tensione. 
-Tali incongruenze sono probabilmente legate a una cattiva riuscita della calibrazione. I problemi di quest'ultima risultano 
-difficili da individuare: potrebbero essere dovuti a problemi della scheda di acquisizione, cosi come a problematiche nell'algoritmo di ricerca dei massimi e dei periodi.
+Tali incongruenze sono probabilmente legate a una cattiva riuscita della calibrazione, che  risulta 
+difficile da spiegare: potrebbe essere dovuta a problemi della scheda di acquisizione o, forse, nell'algoritmo di ricerca dei massimi e dei periodi.
 Non si esclude nemmeno che le problematiche sorgano dal fatto che l'acquisizione si è 
 svolta una settimana dopo il resto della presa dati, e il circuito, seppur riposto e recuperato identico, potrebbe aver subito qualche modifica accidentale e 
 imprevedibile.
