@@ -23,6 +23,7 @@
 \usepackage{times}
 \usepackage{booktabs}
 \usepackage{subfig}
+\usepackage{multirow}
 
 
 
@@ -37,11 +38,11 @@ Gruppo 14}
 
 \maketitle
 
-\begin{itemize}
-    \item[$\circ$] Aidin Attar - 1170698 - aidin.attar@studenti.unipd.it
-    \item[$\circ$] Ema Baci - 1171107 – ema.baci@studenti.unipd.it
-    \item[$\circ$] Alessandro Bianchetti – 1162147 – alessandro.bianchetti@studenti.unipd.it
-\end{itemize}
+    \begin{itemize}
+        \item[$\circ$] Aidin Attar - 1170698 - aidin.attar@studenti.unipd.it
+        \item[$\circ$] Ema Baci - 1171107 – ema.baci@studenti.unipd.it
+        \item[$\circ$] Alessandro Bianchetti – 1162147 – alessandro.bianchetti@studenti.unipd.it
+    \end{itemize}
 
 \vspace{3 cm}
 \begin{large}\textsc{\textbf{Scopo dell'esperienza}: studio della catena elettronica come modello di rivelatore per radiazione ionizzante} 
@@ -165,18 +166,20 @@ interpolante e i principali parametri di bontà del fit.
 \begin{figure}[H]
 \centering
 \includegraphics[scale=0.4, angle=0]{fitpreamp.pdf}
+\setlength{\belowcaptionskip}{-20pt}
 \caption{carica iniettata e picco di tensione in uscita}
 \label{fig:QinvsVpre}
 \end{figure}
 \end{center}
 
 \begin{center}
-\begin{figure}[H]
-\centering
-\includegraphics[scale=0.4, angle=0]{residuipreamp.pdf}
-\caption{grafico dei residui della relazione tra $Q_{in}$ e $V_{pre}^{max}$}
-\label{fig:QinvsVpre_res}
-\end{figure}
+    \begin{figure}[H]
+        \centering
+        \includegraphics[scale=0.4, angle=0]{residuipreamp.pdf}
+        \setlength{\belowcaptionskip}{-20pt}
+        \caption{grafico dei residui della relazione tra $Q_{in}$ e $V_{pre}^{max}$}
+        \label{fig:QinvsVpre_res}
+    \end{figure}
 \end{center}
 
 \begin{table}[ht]
@@ -210,6 +213,7 @@ Si riporta il grafico di tempi e lograitmi delle tensioni, interpolati linearmen
 \begin{figure}[H]
 \centering
 \includegraphics[scale=0.4, angle=0]{preampRC.pdf}
+\setlength{\belowcaptionskip}{-20pt}
 \caption{relazione lineare tra logaritmi delle tensioni e tempi}
 \label{fig:QinvsVsh}
 \end{figure}
@@ -219,6 +223,7 @@ Si riporta il grafico di tempi e lograitmi delle tensioni, interpolati linearmen
 \begin{figure}[H]
 \centering
 \includegraphics[scale=0.4, angle=0]{preampRCresidui.pdf}
+\setlength{\belowcaptionskip}{-20pt}
 \caption{grafico dei residui della relazione tra $\log V$ e t}
 \label{fig:QinvsVshRESIDUI}
 \end{figure}
@@ -238,7 +243,7 @@ Si riporta il grafico di tempi e lograitmi delle tensioni, interpolati linearmen
 
 Si osserva la buona riuscita del fit, che verifica la scarica RC del circuito al termine dell'impulso.
 Tuttavia è possibile notare una forte sovrastima degli errori sia visivamente osservando il grafico dei
-residui in Figura \ref{fig:QinvsVshRESIDUI}, sia osservando il valore molto piccolo di $\chi^{(2)}$
+residui in Figura \ref{fig:QinvsVshRESIDUI}, sia osservando il valore molto basso di $\chi^{(2)}$
 
 Dal valore della pendenza, come anticipato prima, ricaviamo una stima di $\tau_{pre}^{sper}$. A scopo di controllo, è inoltre possibile 
 ottenere una valutazione di $V_{pre}^{max}$ usando il parametro di offset a sapendo $V_{pre}^{max} = e^a$. Si riportano quindi i due
@@ -257,12 +262,13 @@ Si riporta in particolare il grafico di Bode che raffigura frequenza e amplifica
 anche la simulazione effettuata su LTspice e il modello teorico rappresentato dalla \ref{eqn:preamp_trasf}.
 
 \begin{center}
-\begin{figure}[H]
-\centering
-\includegraphics[scale=0.4, angle=0]{bodepreamp.pdf}
-\caption{grafico di Bode del circuito preamplificatore}
-\label{fig:bodepreamp}
-\end{figure}
+    \begin{figure}[H]
+        \centering
+        \includegraphics[scale=0.4, angle=0]{bodepreamp.pdf}
+        \setlength{\belowcaptionskip}{-20pt}
+        \caption{grafico di Bode del circuito preamplificatore}
+        \label{fig:bodepreamp}
+    \end{figure}
 \end{center}
 
 
@@ -273,10 +279,11 @@ anche la simulazione effettuata su LTspice e il modello teorico rappresentato da
 
 \begin{center}
     \begin{figure}[H]
-    \centering
-    \includegraphics[scale=0.4, angle=0]{bodepreampresidui.pdf}
-    \caption{residui del grafico di Bode}
-    \label{fig:bodepreamp_res}
+        \centering
+        \includegraphics[scale=0.4, angle=0]{bodepreampresidui.pdf}
+        \setlength{\belowcaptionskip}{-20pt}
+        \caption{residui del grafico di Bode}
+        \label{fig:bodepreamp_res}
     \end{figure}
 \end{center}
 
@@ -308,12 +315,13 @@ dunque i seguenti parametri di interpolazione:
 
 
 \begin{center}
-    \begin{figure}[H]
-    \centering
-    \includegraphics[scale=0.4, angle=0]{residuipreamplineare.pdf}
-    \caption{residui dell'interpolazione lineare della discesa}
-    \label{fig:bodepreamp_res_lineare}
-    \end{figure}
+        \begin{figure}[H]
+            \centering
+            \includegraphics[scale=0.4, angle=0]{residuipreamplineare.pdf}
+            \setlength{\belowcaptionskip}{-20pt}
+            \caption{residui dell'interpolazione lineare della discesa}
+            \label{fig:bodepreamp_res_lineare}
+        \end{figure}
 \end{center}
 
 Si nota che il valore di slope non è di fatto
@@ -350,14 +358,14 @@ l'ipotesi di linearità dei dati.
 \subsubsection{Breve discussione del circuito}
 
 Il secondo passo per la costruzione della catena elettronica consiste invece nella costruzione del circuito formatore il cui schema è 
-riportato in figura (\ref{fig:shaper}), che plasmi il segnale fornendo tipicamente un profilo gaussiano.
+riportato in Figura \ref{fig:shaper}, che plasmi il segnale fornendo tipicamente un profilo gaussiano.
 
 \begin{center}
-    \begin{figure}[H]
-    \centering
-    \includegraphics[scale=0.3, angle=0]{shaper.pdf}
-    \caption{circuito formatore}
-    \label{fig:shaper}
+    \begin{figure}[ht]
+        \centering
+        \includegraphics[scale=0.3, angle=0]{shaper.pdf}
+        \caption{circuito formatore}
+        \label{fig:shaper}
     \end{figure}
 \end{center}
     
@@ -414,10 +422,11 @@ tali per cui $\chi^{(2)}_{\pm} = \chi^{(2)}_{min} + 1$.
 
 \begin{center}
     \begin{figure}[H]
-    \centering
-    \includegraphics[scale=0.375, angle=0]{chi_forma_no_pz.pdf}
-    \caption{andamento di $\chi^{(2)}$ al variare di $\tau_{sh}$}
-    \label{fig:chi_forma_no_pz}
+        \centering
+        \includegraphics[scale=0.375, angle=0]{chi_forma_no_pz.pdf}
+        \setlength{\belowcaptionskip}{-20pt}
+        \caption{andamento di $\chi^{(2)}$ al variare di $\tau_{sh}$}
+        \label{fig:chi_forma_no_pz}
     \end{figure}
 \end{center}
 Da cui si sceglie $\tau_{sh} = (15.72\pm 0.07) \mu s$.  Tuttavia si osserva che
@@ -428,19 +437,21 @@ mostrano tale problematica:
 
 \begin{center}
     \begin{figure}[H]
-    \centering
-    \includegraphics[scale=0.375, angle=0]{forma_no_pz.pdf}
-    \caption{risposta del circuito formatore a un'onda quadrata in ingresso}
-    \label{fig:forma_no_pz}
+        \centering
+        \includegraphics[scale=0.375, angle=0]{forma_no_pz.pdf}
+        \setlength{\belowcaptionskip}{-20pt}
+        \caption{risposta del circuito formatore a un'onda quadrata in ingresso}
+        \label{fig:forma_no_pz}
     \end{figure}
 \end{center}
 
 \begin{center}
     \begin{figure}[H]
-    \centering
-    \includegraphics[scale=0.375, angle=0]{residui_forma_onda_no_pz.pdf}
-    \caption{residui della risposta dello shaper a un'onda quadra}
-    \label{fig:forma_no_pz_residui}
+        \centering
+        \includegraphics[scale=0.375, angle=0]{residui_forma_onda_no_pz.pdf}
+        \setlength{\belowcaptionskip}{-20pt}
+        \caption{residui della risposta dello shaper a un'onda quadra}
+        \label{fig:forma_no_pz_residui}
     \end{figure}
 \end{center}
 
@@ -456,7 +467,7 @@ sistematico, in quanto i dati tendono a rimanere sempre al di sotto della curva 
 %Sembra dunque che nel circuito costruito in laboratorio il segnale erogato dal generatore si attenui leggermente all'ingresso del
 %circuito, forse a causa di un settaggio non corretto di \textit{input impedance} nelle opzioni del generatore di funzioni  ????
 
-Come anticipato, il valore di $\chi$ ottenuto porta a dover rifiutare il 
+Come anticipato, il valore di $\chi^{(2)}$ ottenuto porta a dover rifiutare il 
 fit. Dal grafico dei residui si osserva la tendenza per la quale 
 ai tempi iniziali la curva risulta completamente inadatta, mentre sulla coda descrive bene
 i dati.
@@ -473,23 +484,25 @@ a qualche bias dovuta ancora alla non idealità del circuito.
 
 Si è infine nuovamente studiato il comportamento del circuito al variare della frequenza. Si è 
 ottenuto il seguente grafico di Bode (Figura \ref{fig:bodeshaper_no_pz}), al fine di ottenere un confronto immediato sono plottate 
-sovrapposte la curva teorica relativa ai dati sperimentali ed il fit dei dati ottenuti mediante la simulazione di LT-spice:
+sovrapposte la curva teorica relativa ai dati sperimentali ed il fit dei dati ottenuti mediante la simulazione di LTspice:
 
 \begin{center}
     \begin{figure}[H]
-    \centering
-    \includegraphics[scale=0.375, angle=0]{bodeshaper_no_pz.pdf}
-    \caption{grafico di Bode del circuito formatore}
-    \label{fig:bodeshaper_no_pz}
+        \centering
+        \includegraphics[scale=0.375, angle=0]{bodeshaper_no_pz.pdf}
+        \setlength{\belowcaptionskip}{-40pt}
+        \caption{grafico di Bode del circuito formatore}
+        \label{fig:bodeshaper_no_pz}
     \end{figure}
 \end{center}
 
 \begin{center}
-    \begin{figure}[H]
-    \centering
-    \includegraphics[scale=0.3875, angle=0]{bodeshaperresidui_no_pz.pdf}
-    \caption{ residui del grafico di Bode }
-    \label{fig:bodeshaperresidui_no_pz}
+    \begin{figure}[ht]
+        \centering
+        \includegraphics[scale=0.3875, angle=0]{bodeshaperresidui_no_pz.pdf}
+        \setlength{\belowcaptionskip}{-20pt}
+        \caption{ residui del grafico di Bode }
+        \label{fig:bodeshaperresidui_no_pz}
     \end{figure}
 \end{center}
 
@@ -516,6 +529,7 @@ per la verifica della consistenza delle pendenze.
         discesa &\multicolumn{2}{c}{77$\pm$2}&\multicolumn{2}{c}{-19.4$\pm$0.4}\\
         \bottomrule
     \end{tabular}
+    \setlength{\belowcaptionskip}{-20pt}
     \caption{parametri di interpolazione della salita e della discesa}
 \end{table}
 
@@ -580,10 +594,11 @@ $$R_{pz}= \frac{\tau_{pre}}{C_{sh}^{(1)}}$$
 Si riporta quindi di seguito lo schema del circuito dello shaper compensato:
 \begin{center}
     \begin{figure}[H]
-    \centering
-    \includegraphics[scale=0.3, angle=0]{shapercomp.pdf}
-    \caption{circuito formatore con compensazione}
-    \label{fig:shaper_pz}
+        \centering
+        \includegraphics[scale=0.3, angle=0]{shapercomp.pdf}
+        \setlength{\belowcaptionskip}{-20pt}
+        \caption{circuito formatore con compensazione}
+        \label{fig:shaper_pz}
     \end{figure}
 \end{center}
 dove $V_1$ è il segnale in uscita dal preamplificatore.
@@ -608,19 +623,21 @@ lineare, variando la durata dell'impulso in ingresso e acquisendo i picchi delle
 
 \begin{center}
     \begin{figure}[H]
-    \centering
-    \includegraphics[scale=0.375, angle=0]{fitshaper.pdf}
-    \caption{carica iniettata e picco di tensione in uscita}
-    \label{fig:fitshaper}
+        \centering
+        \includegraphics[scale=0.375, angle=0]{fitshaper.pdf}
+        \setlength{\belowcaptionskip}{-20pt}
+        \caption{carica iniettata e picco di tensione in uscita}
+        \label{fig:fitshaper}
     \end{figure}
 \end{center}
 
 \begin{center}
     \begin{figure}[H]
-    \centering
-    \includegraphics[scale=0.375, angle=0]{residuishaper.pdf}
-    \caption{grafico dei residui della relazione tra $Q_{in}$ e $V_{pre}^{max}$}
-    \label{fig:residuishaper}
+        \centering
+        \includegraphics[scale=0.375, angle=0]{residuishaper.pdf}
+        \setlength{\belowcaptionskip}{-20pt}
+        \caption{grafico dei residui della relazione tra $Q_{in}$ e $V_{pre}^{max}$}
+        \label{fig:residuishaper}
     \end{figure}
 \end{center}
 
@@ -653,10 +670,11 @@ l'impedenza di ingresso è l'impedenza interna dell'opamp $U_1$, che si può con
 
 \begin{center}
     \begin{figure}[H]
-    \centering
-    \includegraphics[scale=0.26, angle=0]{catena.pdf}
-    \caption{circuito amplificatore invertente}
-    \label{fig:invertnete}
+        \centering
+        \includegraphics[scale=0.26, angle=0]{catena.pdf}
+        \setlength{\belowcaptionskip}{-20pt}
+        \caption{circuito amplificatore invertente}
+        \label{fig:invertnete}
     \end{figure}
 \end{center}
 
@@ -704,21 +722,23 @@ da cui $H_{sper}=-6.88$. Realizzato dunque il circuito si è proceduto con l'acq
 ingresso, di cui si riportano di seguito dati e fit lineare.
 
 \begin{center}
-\begin{figure}[H]
-\centering
-\includegraphics[scale=0.4, angle=0]{fitcatena.pdf}
-\caption{Relazione lineare tra carica iniettata e uscita della catena}
-\label{fig:catenaQvsV}
-\end{figure}
+    \begin{figure}[H]
+        \centering
+        \includegraphics[scale=0.4, angle=0]{fitcatena.pdf}
+        \setlength{\belowcaptionskip}{-20pt}
+        \caption{Relazione lineare tra carica iniettata e uscita della catena}
+        \label{fig:catenaQvsV}
+    \end{figure}
 \end{center}
 
 \begin{center}
-\begin{figure}[H]
-\centering
-\includegraphics[scale=0.4, angle=0]{residuicatena.pdf}
-\caption{Grafico dei residui della relazione tra $Q_{in}$ e $V_{out}$}
-\label{fig:catenaQvsV_res}
-\end{figure}
+    \begin{figure}[H]
+        \centering
+        \includegraphics[scale=0.4, angle=0]{residuicatena.pdf}
+        \setlength{\belowcaptionskip}{-20pt}
+        \caption{Grafico dei residui della relazione tra $Q_{in}$ e $V_{out}$}
+        \label{fig:catenaQvsV_res}
+    \end{figure}
 \end{center}
 
 \begin{table}[ht]
@@ -741,21 +761,23 @@ su LTspice e il modello teorico espresso dalla \ref{eqn:catena_trasf}.
 
 
 \begin{center}
-\begin{figure}[H]
-\centering
-\includegraphics[scale=0.4, angle=0]{bodecatena.pdf}
-\caption{grafico di Bode della risposta in frequenza della catena elettronica}
-\label{fig:catenaBODE}
-\end{figure}
+    \begin{figure}[H]
+        \centering
+        \includegraphics[scale=0.4, angle=0]{bodecatena.pdf}
+        \setlength{\belowcaptionskip}{-20pt}
+        \caption{grafico di Bode della risposta in frequenza della catena elettronica}
+        \label{fig:catenaBODE}
+    \end{figure}
 \end{center}
 
 \begin{center}
-\begin{figure}[H]
-\centering
-\includegraphics[scale=0.4, angle=0]{bodecatenaresidui.pdf}
-\caption{grafico dei residui tra dati sperimentali e modello}
-\label{fig:catenaBODE_res}
-\end{figure}
+    \begin{figure}[H]
+        \centering
+        \includegraphics[scale=0.4, angle=0]{bodecatenaresidui.pdf}
+        \setlength{\belowcaptionskip}{-20pt}
+        \caption{grafico dei residui tra dati sperimentali e modello}
+        \label{fig:catenaBODE_res}
+    \end{figure}
 \end{center}
 
 Si può osservare una forte incompatibilità dei dati con il modello teorico: il valore
@@ -784,10 +806,11 @@ Si è infine effettuato un fit della discesa per verificare che la pendenza sia 
 
 \begin{center}
     \begin{figure}[H]
-    \centering
-    \includegraphics[scale=0.375, angle=0]{residuicatenadiscesa.pdf}
-    \caption{grafico dei residui del fit della discesa della catena}
-    \label{fig:residuicatenadiscesa}
+        \centering
+        \includegraphics[scale=0.375, angle=0]{residuicatenadiscesa.pdf}
+        \setlength{\belowcaptionskip}{-20pt}
+        \caption{grafico dei residui del fit della discesa della catena}
+        \label{fig:residuicatenadiscesa}
     \end{figure}
 \end{center}
 
@@ -818,21 +841,23 @@ counts stimato attraverso un algoritmo che individua gli zeri nella forma sinuso
 delle ascisse.
 
 \begin{center}
-\begin{figure}[H]
-\centering
-\includegraphics[scale=0.4, angle=0]{4_1.pdf}
-\caption{acquisizione forma sinusoidale}
-\label{fig:period_counts}
-\end{figure}
+    \begin{figure}[H]
+        \centering
+        \includegraphics[scale=0.4, angle=0]{4_1.pdf}
+        \setlength{\belowcaptionskip}{-20pt}
+        \caption{acquisizione forma sinusoidale}
+        \label{fig:period_counts}
+    \end{figure}
 \end{center}
 
 \begin{center}
-\begin{figure}[H]
-\centering
-\includegraphics[scale=0.4, angle=0]{calibtempi.pdf}
-\caption{calibrazione temporale}
-\label{fig:calibtempi}
-\end{figure}
+    \begin{figure}[H]
+        \centering
+        \includegraphics[scale=0.4, angle=0]{calibtempi.pdf}
+        \setlength{\belowcaptionskip}{-20pt}
+        \caption{calibrazione temporale}
+        \label{fig:calibtempi}
+    \end{figure}
 \end{center}
 
 Ne si ricava che il software acquisisce un punto in ogni intervallo pari alla slope b, ossia ogni $(1.0490 \pm 0.0002)\mu $s.
@@ -843,21 +868,23 @@ per poi effettuare nuovamente un fit lineare del tipo $V = a + b \cdot ch$, dove
 in conteggi: il parametro $b$ fornirà il fattore di conversione mV/counts, mentre $a$ mostra l'offset aggiunto dalla scheda arduino alla tensione effettiva.
 
 \begin{center}
-\begin{figure}[H]
-\centering
-\includegraphics[scale=0.4, angle=0]{4_2.pdf}
-\caption{acquisizione onda quadrata}
-\label{fig:voltage_counts}
-\end{figure}
+    \begin{figure}[H]
+        \centering
+        \includegraphics[scale=0.4, angle=0]{4_2.pdf}
+        \setlength{\belowcaptionskip}{-20pt}
+        \caption{acquisizione onda quadrata}
+        \label{fig:voltage_counts}
+    \end{figure}
 \end{center}
 
 \begin{center}
-\begin{figure}[H]
-\centering
-\includegraphics[scale=0.4, angle=0]{calibverticale.pdf}
-\caption{calibrazione verticale}
-\label{fig:calibverticale}
-\end{figure}
+    \begin{figure}[H]
+        \centering
+        \includegraphics[scale=0.4, angle=0]{calibverticale.pdf}
+        \setlength{\belowcaptionskip}{-20pt}
+        \caption{calibrazione verticale}
+        \label{fig:calibverticale}
+    \end{figure}
 \end{center}
 
 Il valore acquisito da Arduino dovrà quindi essere moltiplicato per la slope ($0.775 \pm 0.009)$mV/counts
@@ -880,21 +907,23 @@ presenta un delay temporale nell'acquisizione che ostacola un corretto allineame
 
 
 \begin{center}
-\begin{figure}[H]
-\centering
-\includegraphics[scale=0.4, angle=0]{arduino10.pdf}
-\caption{confronto grafico tra le due forme d'onda per $t_{pulse}=10 \mu s$}
-\label{fig:arduino10}
-\end{figure}
+    \begin{figure}[H]
+        \centering
+        \includegraphics[scale=0.4, angle=0]{arduino10.pdf}
+        \setlength{\belowcaptionskip}{-20pt}
+        \caption{confronto grafico tra le due forme d'onda per $t_{pulse}=10 \mu s$}
+        \label{fig:arduino10}
+    \end{figure}
 \end{center}
 
 \begin{center}
-\begin{figure}[H]
-\centering
-\includegraphics[scale=0.4, angle=0]{arduino2.pdf}
-\caption{confronto grafico tra le due forme d'onda per $t_{pulse}=2 \mu s$}
-\label{fig:arduino2}
-\end{figure}
+    \begin{figure}[H]
+        \centering
+        \includegraphics[scale=0.4, angle=0]{arduino2.pdf}
+        \setlength{\belowcaptionskip}{-20pt}
+        \caption{confronto grafico tra le due forme d'onda per $t_{pulse}=2 \mu s$}
+        \label{fig:arduino2}
+    \end{figure}
 \end{center}
 
 
@@ -921,10 +950,14 @@ e infine il controllo della distanza delle tensioni asintotica $V_{as}$.
         \toprule
                         & Arduino & Simulazione & Compatibilità \\
         \midrule
-        $V_{peak}^{(1)}$ (mV)&   $2086 \pm 36$ & $2046.19$ & 1.1 $\sigma$\\
-        $V_{peak}^{(2)}$ (mV)&   $2088 \pm 36$ & $2047.7$ & 1.1 $\sigma$\\
-        $t_{peak}^{(2)}$ ($\mu s$)&   $1206.9 \pm 0.2$ & $1205.69$ & 6.4 $\sigma$\\
-        $V_{as}$       (mV)&   $51 \pm 2$ & $2.03 \pm 0.09$ & 24.3 \\
+        $V_{peak}^{(1)}$    &   \multirow{2}{*}{$2086 \pm 36$} & \multirow{2}{*}{$2046.19$} & \multirow{2}{*}{1.1 $\sigma$}\\
+        (mV)\\
+        $V_{peak}^{(2)}$    &   \multirow{2}{*}{$2088 \pm 36$} & \multirow{2}{*}{$2047.7$} & \multirow{2}{*}{1.1 $\sigma$}\\
+        (mV)\\
+        $t_{peak}^{(2)}$    &   \multirow{2}{*}{$1206.9 \pm 0.2$} & \multirow{2}{*}{$1205.69$} & \multirow{2}{*}{6.4 $\sigma$}\\
+        ($\mu s$)\\
+        $V_{as}$            &   \multirow{2}{*}{$51 \pm 2$} & \multirow{2}{*}{$2.03 \pm 0.09$} & \multirow{2}{*}{24.3} \\
+        (mV)\\
         \bottomrule
     \end{tabular}
     \caption{confronto analitico tra le due forme d'onda per $t_{pulse}=10 \mu s$}
@@ -942,10 +975,14 @@ I risultati del caso $t_{pulse}=2 \mu s$ sono del tutto analoghi:
         \toprule
                         & Arduino & Simulazione & Compatibilità \\
         \midrule
-        $V_{peak}^{(1)}$ (mV)&   $438 \pm 21$ & $416.375$ & 1.0 $\sigma$\\
-        $V_{peak}^{(2)}$ (mV)&   $437 \pm 21$ & $416.679$ & 1.0 $\sigma$\\
-        $t_{peak}^{(2)}$ ($\mu s$)&   $1203.7 \pm 0.2$ & $1202.54$ & 6.4 $\sigma$\\
-        $V_{as}$       (mV)&   $56 \pm 2$ & $0.4 \pm 0.02$ & 25.5 \\
+        $V_{peak}^{(1)}$    &   \multirow{2}{*}{$438 \pm 21$} & \multirow{2}{*}{$416.38$} & \multirow{2}{*}{1.0 $\sigma$}\\
+        (mV)\\
+        $V_{peak}^{(2)}$    &   \multirow{2}{*}{$437 \pm 21$} & \multirow{2}{*}{$416.68$} & \multirow{2}{*}{1.0 $\sigma$}\\
+        (mV)\\
+        $t_{peak}^{(2)}$    &   \multirow{2}{*}{$1203.7 \pm 0.2$} & \multirow{2}{*}{$1202.51$} & \multirow{2}{*}{6.4 $\sigma$}\\
+        ($\mu s$)\\
+        $V_{as}$            &   \multirow{2}{*}{$56 \pm 2$} & \multirow{2}{*}{$0.4 \pm 0.02$} & \multirow{2}{*}{25.5} \\
+        (mV)\\
         \bottomrule
     \end{tabular}
     \caption{confronto analitico tra le due forme d'onda per $t_{pulse}=2 \mu s$}
@@ -959,16 +996,20 @@ un problema anche nella distribuzione temporale.
 A scopo esemplificativo si riporta anche il caso $t_{pulse}=5 \mu s$, ancora in linea con le considerazioni fatte. In realtà è stata effettuata tale analisi per tutti 
 i valori interi intermedi tra quelli considerati, tuttavia non vengono riportati poiché i risultati risultano sempre gli stessi e riportarli risulterebbe ridondante.
 
-\begin{table}[H]
+\begin{table}[ht]
     \centering
     \begin{tabular}{cccc}
         \toprule
                         & Arduino & Simulazione & Compatibilità \\
         \midrule
-        $V_{peak}^{(1)}$ (mV)&   $1049 \pm 26$ & $1036.72$ & 0.5 $\sigma$\\
-        $V_{peak}^{(2)}$ (mV)&   $1047 \pm 26$ & $1037.44$ & 0.4 $\sigma$\\
-        $t_{peak}^{(2)}$ ($\mu s$)&   $1205.8 \pm 0.2$ & $1203.59$ & 12.2 $\sigma$\\
-        $V_{as}$       (mV)&   $53 \pm 2$ & $1.07 \pm 0.05$ & 24.1 \\
+        $V_{peak}^{(1)}$    &   \multirow{2}{*}{$1049 \pm 26$} & \multirow{2}{*}{$1036.72$} & \multirow{2}{*}{0.5 $\sigma$}\\
+        (mV)\\
+        $V_{peak}^{(2)}$    &   \multirow{2}{*}{$1047 \pm 26$} & \multirow{2}{*}{$1037.44$} & \multirow{2}{*}{0.4 $\sigma$}\\
+        (mV)\\
+        $t_{peak}^{(2)}$    &   \multirow{2}{*}{$1205.8 \pm 0.2$} & \multirow{2}{*}{$1203.59$} & \multirow{2}{*}{12.2 $\sigma$}\\
+        ($\mu s$)\\
+        $V_{as}$            &   \multirow{2}{*}{$53 \pm 2$} & \multirow{2}{*}{$1.07 \pm 0.05$} & \multirow{2}{*}{24.1} \\
+        (mV)\\
         \bottomrule
     \end{tabular}
     \caption{confronto analitico tra le due forme d'onda per $t_{pulse}=5 \mu s$}
@@ -1034,6 +1075,11 @@ Nel corso della relazione sono stati riportati diverse volte i parametri per la 
 Per quanto riguarda i valori di $\chi^{(2)}$, l'ipotesi che il fit descriva i dati viene accettata o rifiutata con 0.90 CL, mentre
 per il valore di $t$ di Student l'ipotesi di non correlazione è stata rifiutata o accettata con lo stesso CL.
 
+Il valore di $\chi^{(2)}$ riportato nel caso di fit con errori sia in ascissa che in ordinata sono calcolati, in accordo con la documentazione di ROOT, secondo:
+\[\frac{(y-f1(x))^{2}}{ey^{2}+(\frac{1}{2}(exl+exh)f1'(x))^{2}}\]
+
+Si specifica inoltre che per i fit effettuati con errore costante il valore di $\chi^{(2)}$, se riportato si riferisce alla somma dei
+residui al quadrato, \textit{non} normalizzati.
 
 \subsection{Tabella delle compatibilità}
 \medskip
