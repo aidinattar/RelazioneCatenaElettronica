@@ -860,12 +860,12 @@ in conteggi: il parametro $b$ fornirà il fattore di conversione mV/counts, ment
 \end{figure}
 \end{center}
 
-Il valore acquisito da arduino dovrà quindi essere moltiplicato per la slope ($0.775 \pm 0.009)$mV/counts
+Il valore acquisito da Arduino dovrà quindi essere moltiplicato per la slope ($0.775 \pm 0.009)$mV/counts
 e traslato dell'offset ($-574 \pm 17$) mV.
 
-L'algortimo utilizzato in questo caso individua i punti nel plateu superiore e in quello 
-inferiore, e effettua di tali punti a serie di medie, escludendo di volta in volta i punti che si discostano
-per più di $3\sigma$.
+L'algoritmo utilizzato in questo caso individua i punti nel plateau superiore e in quello 
+inferiore, e effettua di tali punti la media in modo iterato, escludendo di volta in volta i punti che si discostano
+dalla media "provvisoria" per più di $3\sigma$.
 
 
 
@@ -974,10 +974,10 @@ i valori interi intermedi tra quelli considerati, tuttavia non vengono riportati
     \caption{confronto analitico tra le due forme d'onda per $t_{pulse}=5 \mu s$}
 \end{table}
 
-Le problematiche sono chiare: la calibrazione difettosa porta a problematiche nella posizione dello zero.
+In conclusione, è evidente che la calibrazione difettosa porta a problematiche nella posizione dello zero.
 In realtà anche il valore della slope nella calibrazione ha dei problemi che però sono nascosti dalla buona compatibilità 
 dei picchi sperimentali con quelli simulati. Tuttavia la covarianza tra i due parametri di interpolazione è ovviamente non nulla,
-non è quindi sufficiente individuare l'offset dello zero e traslare il segnale di conseguenza: si andrebbe a perdere compatiblità in presenza
+non è quindi sufficiente individuare l'offset dello zero e traslare il segnale di conseguenza: si andrebbe a perdere compatibilità in presenza
 del segnale. 
 
 Ci sono inoltre evidenti criticità anche sulla calibrazione temporale, sottolineate dall'incompatibilità del periodo del segnale misurato e quello 
@@ -995,7 +995,7 @@ un'onda quadra: i dati si staccano dal fit soprattutto in prossimità del picco,
 il riferimento teorico assunto corretto, dà ragione al fit piuttosto che ai dati, motivo per cui si sospetta una cattiva configurazione del circuito costruito o un
 funzionamento non pulito dei suoi componenti.
 
-Da queste problematiche è naturale aspettarsi che il grafico di Bode del circuito completo non sia perfetto: in effetti la pendenza della discesa lineare è di nuovo
+Da queste problematiche è naturale aspettarsi che il grafico di Bode del circuito completo non sia ideale: in effetti la pendenza della discesa lineare è di nuovo
 incompatibile.
 
 Ma, mentre queste complicazioni possono probabilmente spiegarsi alla luce del non perfetto apparato strumentale, è più difficile spiegare i cattivi risultati emersi 
